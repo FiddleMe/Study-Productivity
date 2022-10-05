@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <style>
+        body {
+            margin: 20px auto;
+            font-family: 'Lato';
+            background:#666;
+            color:#fff;
+        }
+        
+        *{
+            margin:0;
+            padding:0;
+        }
+        
+        h2 {
+            font-weight: bold;
+            font-size: 2rem;
+        }
+        
+        p {
+            font-size: 1rem;
+            font-weight: normal;
+        }
+        
+        ul,li{
+            list-style:none;
+        }
+        ul{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        ul li a{
+            text-decoration:none;
+            color:#000;
+            background:#ffc;
+            display:block;
+            height:10em;
+            width:10em;
+            padding:1em;
+        }
+        ul li{
+            margin:1em;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>
+          <a href="#">
+            <h2>Title #1</h2>
+            <p>Text Content #1</p>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <h2>Title #2</h2>
+            <p>Text Content #2</p>
+          </a>
+        </li>
+        […]
+      </ul>
+      <script>
+           $(document).ready(function () {
+                all_notes = $("li a");
+                
+                all_notes.on("keyup", function () {
+                    note_title = $(this).find("h2").text();
+                    note_content = $(this).find("p").text();
+                
+                    item_key = "list_" + $(this).parent().index();
+                
+                    data = {
+                    title: note_title,
+                    content: note_content
+                    };
+                
+                    window.localStorage.setItem(item_key, JSON.stringify(data));
+                });
+                
+                all_notes.each(function (index) {
+                    data = JSON.parse(window.localStorage.getItem("list_" + index));
+                
+                    if (data !== null) {
+                    note_title = data.title;
+                    note_content = data.content;
+                
+                    $(this).find("h2").text(note_title);
+                    $(this).find("p").text(note_content);
+                    }
+                });
+                });
+      </script>
+</body>
+</html>
