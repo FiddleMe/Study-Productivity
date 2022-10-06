@@ -26,5 +26,13 @@
     <button type="submit">Signup</button>   
 </div> -->
 <script type="module" src="js/index.js"></script>
+<script>
+    firebase.auth().onAuthStateChanged(function(user){
+        if (user){
+            console.log("change window")
+            // window.location.href = "GOTO LOCATION";
+        }
+    })
+</script>
 </body>
 </html>
