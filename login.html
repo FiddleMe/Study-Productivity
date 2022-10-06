@@ -5,18 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+  
 </head>
 <body>
+    
+ 
    <!--LOGIN FORM-->
-    <form>  
+
+        
         <div>   
             <label>Username : </label>   
-            <input id="loginName" type="text" placeholder="Enter Username" name="username" required>  
+            <input id="loginName" type="text" placeholder="Enter Username" name="username" >  
             <label>Password : </label>   
-            <input id="loginPassword" type="password" placeholder="Enter Password" name="password" required>  
-            <button onclick="login()" type="submit">Login</button>   
+            <input id="loginPassword" type="password" placeholder="Enter Password" name="password">
+            <button id="login">Login</button>   
         </div>
-    </form> 
+
 <!-- SIGNUP FORM
     <div>   
     <label>Username : </label>   
@@ -25,14 +30,8 @@
     <input id="signupPassword" type="password" placeholder="Enter Password" name="password" required>  
     <button type="submit">Signup</button>   
 </div> -->
-<script type="module" src="js/index.js"></script>
-<script>
-    firebase.auth().onAuthStateChanged(function(user){
-        if (user){
-            console.log("change window")
-            // window.location.href = "GOTO LOCATION";
-        }
-    })
-</script>
+<script type="module" src="./js/index.js"></script>
+
+
 </body>
 </html>

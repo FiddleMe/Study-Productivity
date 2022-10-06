@@ -2,7 +2,9 @@
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, setPersistence, browserSessionPersistence} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+  import { getStorage } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-storage.js";
+  import { } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -24,23 +26,48 @@
   const analytics = getAnalytics(app);
   const auth = getAuth();
   
-  function login(){
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      const uid = user.uid;
+      alert("hi" + uid);
+      // ...
+    } else {
+      // User is signed out
+      // ...
+    }
+});
+
+function login(){
+    
     var email = document.getElementById("loginName").value;
+    console.log(email);
     var password = document.getElementById("loginPassword").value;
     // console.log(email)
     // console.log(password)
-    signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        console.log("logged in")
-        // ...
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-    });
+    if(email != "" && password != ""){
+      
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            console.log("logged in");
+            // ...
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode);
+            window.alert("Message: " + errorMessage);
+        });
+    }
+    else{
+      window.alert("Please fill up all fields!")
+    }
+    
   }
+  document.getElementById("login").addEventListener("click", login);
 
   function signup(){
     var email = document.getElementById("signupName").value;
