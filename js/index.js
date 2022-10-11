@@ -4,7 +4,7 @@
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
   import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, setPersistence, browserSessionPersistence} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
   import { getStorage } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-storage.js";
-  import { } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-database.js";
+  import { getFirestore, doc, setDoc, getDoc, collection, addDoc, updateDoc, deleteDoc,deleteField } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -25,6 +25,7 @@
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
   const auth = getAuth();
+  const db = getFirestore();
   
 onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -69,15 +70,58 @@ function login(){
   }
   document.getElementById("login").addEventListener("click", login);
 
+  //add new document to database
+  async function addDocument(param){
+    var ref = collection(db, "test");
+    const docRef = await addDoc(
+      ref, param 
+      /*{
+        testing: "Test"
+      }*/
+    )
+    .then(()=>{
+      alert("data added successfully")
+    })
+    .catch((error)=>{
+      alert("Unsuccessfuly")
+    })
+  }
+
+  //update user data
+  async function addUser(userId, param){
+    var ref = doc(db, "Users", userId);
+    const docRef = await setDoc(
+      ref, param 
+      /*{
+        testing: "Test"
+      }*/
+    )
+    .then(()=>{
+      alert("data added successfully")
+    })
+    .catch((error)=>{
+      alert("Unsuccessfuly")
+    })
+  }
+
+  //sign up function
   function signup(){
+    var friends = [];
     var email = document.getElementById("signupName").value;
     var password = document.getElementById("signupPassword").value;
+    var username = document.getElementById("username").value;
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in 
       console.log("signed up")
       const user = userCredential.user;
-      // ...
+      var paramaters = {
+        Username: username,
+        Friends: friends,
+        TotalTime: 0
+      }
+      addUser(user.uid, paramaters);
+        // ...
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -85,4 +129,13 @@ function login(){
       // ..
     });
   }
+  function logout(event){
+    event.preventDefault();
+    auth.signOut().then(() => {
+       console.log("user signed out")
+    })
+  }
+  document.getElementById("signup").addEventListener("click", signup);
+  document.getElementById("test").addEventListener("click", addDocument);
+  document.getElementById("logout").addEventListener("click", logout);
   
