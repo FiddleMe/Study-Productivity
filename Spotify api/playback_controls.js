@@ -8,13 +8,7 @@
 var token = window.location.hash;
 token = token.replace("#access_token=","");
 token = token.split("&")[0];
-
 console.log(token);
-var urlParams = new URLSearchParams(window.location.search);
-const state = urlParams.get('state');
-if (stateKey == state){
-    console.log("grant access");
-}
 
 window.onSpotifyWebPlaybackSDKReady = () => {
     const player = new Spotify.Player({
