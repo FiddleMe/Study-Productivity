@@ -135,6 +135,7 @@ function login(){
        console.log("user signed out")
     })
   }
+
   document.getElementById("signup").addEventListener("click", signup);
   document.getElementById("test").addEventListener("click", addDocument);
   document.getElementById("logout").addEventListener("click", logout);
