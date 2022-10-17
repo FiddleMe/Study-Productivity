@@ -10,10 +10,45 @@ function formatDate(date){
     return formatted_date;
 }
 
-//On session end, update score:
 
-function update_past_scores(score,past_scores) {
-    //Date object containing the current date and time.
+//get time in miliseconds 
+//do on session start and end:
+function get_time(){
+    var d = new Date();
+    var time = d.getTime();
+    console.log(d,time);
+    return time
+}
+//     var score = (end - start) / 60000 ;
+//         console.log(score);
+//On session end, update score, whereby score = time spent in session (minutes):
+
+//update score to database after session ends
+async function add_score(score, userId){
+    //update TotalScore from db
+    var ref = doc(db, "Users", userId);
+
+    const docSnap = await getDoc(ref);
+        
+    var curr_score = docSnap.data().TotalScore;
+        console.log(curr_score);
+    score += curr_score;
+        console.log(score);
+    var data = {
+        TotalScore: score
+    }
+    updateDoc(ref, data)
+    .then(ref => {
+        console.log("score updated");
+    })
+    .catch(error => {
+        console.log(error);
+    })
+    
+    //update PastScores from db
+    //i think this doesnt work yet, refer to add custom objects to firestore
+    var past_scores = docSnap.data().PastScores;
+    
     var today = formatDate(new Date());
 
     if (past_scores.has(today)){
@@ -28,8 +63,16 @@ function update_past_scores(score,past_scores) {
         console.log(past_scores);
     }
 
-    //TODO:
-    // update database with new past_scores
+    var data = {
+        PastScores: past_scores
+    }
+    updateDoc(ref, data)
+    .then(ref => {
+        console.log("score updated");
+    })
+    .catch(error => {
+        console.log(error);
+    })
 
 }
 
