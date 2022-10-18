@@ -1,102 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <style>
-        body {
-            margin: 20px auto;
-            font-family: 'Lato';
-            background:#666;
-            color:#fff;
-        }
-        
-        *{
-            margin:0;
-            padding:0;
-        }
-        
-        h2 {
-            font-weight: bold;
-            font-size: 2rem;
-        }
-        
-        p {
-            font-size: 1rem;
-            font-weight: normal;
-        }
-        
-        ul,li{
-            list-style:none;
-        }
-        ul{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        ul li a{
-            text-decoration:none;
-            color:#000;
-            background:#ffc;
-            display:block;
-            height:10em;
-            width:10em;
-            padding:1em;
-        }
-        ul li{
-            margin:1em;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="shortcut icon" type="image/png" href="notes.png" />
+  <link rel="stylesheet" href="stickynotes.css">
+  <title>Sticky Notes</title>
 </head>
 <body>
-    <ul>
-        <li>
-          <a href="#">
-            <h2>Title #1</h2>
-            <p>Text Content #1</p>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <h2>Title #2</h2>
-            <p>Text Content #2</p>
-          </a>
-        </li>
-        […]
-      </ul>
-      <script>
-           $(document).ready(function () {
-                all_notes = $("li a");
-                
-                all_notes.on("keyup", function () {
-                    note_title = $(this).find("h2").text();
-                    note_content = $(this).find("p").text();
-                
-                    item_key = "list_" + $(this).parent().index();
-                
-                    data = {
-                    title: note_title,
-                    content: note_content
-                    };
-                
-                    window.localStorage.setItem(item_key, JSON.stringify(data));
-                });
-                
-                all_notes.each(function (index) {
-                    data = JSON.parse(window.localStorage.getItem("list_" + index));
-                
-                    if (data !== null) {
-                    note_title = data.title;
-                    note_content = data.content;
-                
-                    $(this).find("h2").text(note_title);
-                    $(this).find("p").text(note_content);
-                    }
-                });
-                });
-      </script>
+
+  <div id="modal">
+    <div id="inner_modal">
+      <textarea placeholder="Note..." id="user_input" maxlength="1000"></textarea>
+      <i class="far fa-times-circle" id="hide"></i>
+    </div>
+  </div>
+  
+ 
+    
+    <header>
+      <div class="container">
+        <div id="header">
+          <h1><i class="fas fa-sticky-note"></i> Sticky Notes</h1>
+          <button id="add_note">Add Note</button>
+          <button id="button">test</button>
+        </div>
+      </div>
+    </header>
+    
+    <section>
+      <div class="container" id="fills">
+        <div id="all_notes"></div>
+      </div>
+    </section>
+      
+    
+
+ 
+ 
+<script src="./js/stickynotes.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+<script>
+  var myElement = document.getElementById('all_notes');
+  if(window.addEventListener) {
+    // Normal browsers
+    myElement.addEventListener('DOMSubtreeModified', contentChanged, false);
+  } else
+    if(window.attachEvent) {
+        // IE
+        myElement.attachEvent('DOMSubtreeModified', contentChanged);
+    }
+
+function contentChanged() {
+    // this function will run each time the content of the DIV changes
+   
+    /*interact('.note').draggable({
+        onmove: (event) => {
+          const target = event.target;
+          const x = target.getAttribute("data-x");
+          const y = target.getAttribute("data-y");
+          console.log(x,y);
+          const initialX = parseFloat(x) || 0;
+          const initialY = parseFloat(y) || 0;
+          const deltaX = event.dx;
+          const deltaY = event.dy;
+          const newX = initialX + deltaX;
+          const newY = initialY + deltaY;
+
+          target.style.transform = `translate(${newX}px, ${newY}px)`;
+          target.setAttribute('data-x', newX);
+          target.setAttribute('data-y', newY);
+        }
+      });*/
+        interact('.draggable').draggable({
+        // enable inertial throwing
+        inertia: true,
+        // keep the element within the area of it's parent
+        modifiers: [
+          interact.modifiers.restrictRect({
+            restriction: '#fills',
+            endOnly: true
+          })
+        ],
+        // enable autoScroll
+        autoScroll: true,
+
+        listeners: {
+          // call this function on every dragmove event
+          move: dragMoveListener,
+
+          // call this function on every dragend event
+          
+        }
+      })
+
+    function dragMoveListener (event) {
+      var target = event.target
+      // keep the dragged position in the data-x/data-y attributes
+      var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+      var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+
+      // translate the element
+      target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+
+      // update the posiion attributes
+      target.setAttribute('data-x', x)
+      target.setAttribute('data-y', y)
+    }
+    
+}
+
+  
+
+</script>
+
 </body>
 </html>

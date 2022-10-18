@@ -118,7 +118,8 @@ function login(){
       var paramaters = {
         Username: username,
         Friends: friends,
-        TotalTime: 0
+        TotalTime: 0,
+        PastScores: {}
       }
       addUser(user.uid, paramaters);
         // ...
