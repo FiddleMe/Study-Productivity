@@ -5,6 +5,7 @@
     <title>LofiStudy</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="mainpage.css">
 
     <style>
         .banner-image {
@@ -19,7 +20,7 @@
           font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
         }
         .navbar-brand{
-          font-size:x-large;
+          font-size:large;
         }
 
       </style>
@@ -27,45 +28,52 @@
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar fixed-top navbar-expand-sm navbar-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">LofiStudy</a>
-            
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!--text white is new line 30-->
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link text white" href="mainpage.html">Your Notes
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
+    <nav class="navbar navbar-expand-md bs-side-navbar fixed-top navbar-dark">
+      <a class="navbar-brand" href="#">LofiStudy</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+  
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                  <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Add Friends</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Block Settings</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">LeaderBoard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Spotify</a>
+            </li>
+          </ul>
+          <br><br><br>
+          <img  class="specialGif" src="possiblegif1.gif" alt="gifUsed" width="100" height="100">
 
-                    <li class="nav-item">
-                        <a class="nav-link text white" href="#">Leaderboard</a>
-                    </li>
-
-                    <li class="nav-item">
-                      
-                  </li>                    
-                </ul>
-                <form class="d-flex">
-                  <button class="btn btn-sm btn-outline-light" type="end">End Session</button>
-                </form>
-            </div>
-        </div>
-    </nav>
+          
+          <!--In case we need buttons
+            <form class="form-inline my-3 my-lg-0">
+              <button class="btn btn-outline-light" type="submit">Start Session</button>
+            </form>  -->
+          
+      </div>
+  </nav>
 
     <!-- Banner Image  -->
     <!--editted: w-100 removed-->
     <div class="banner-image  vh-100  d-flex justify-content-center align-items-center">
       <div class="content text-center">
+        <h1 style="color:white">Sticky notes here</h1>
       </div>
     </div>
 
-    <!-- Main Content Area -->
+    <!-- Main Content Area: To be replaced with sticky notes if it exceeds the first picture -->
     <div class="container my-5 d-grid gap-5">
         <div class="p-5 border">
           <p>
