@@ -66,7 +66,7 @@ const vueapp = Vue.createApp({
 
 
     created() { 
-  
+        this.friendsreq = [];
         var friends = []
         var result = []
         onAuthStateChanged(auth, (user) => {
@@ -80,21 +80,23 @@ const vueapp = Vue.createApp({
                 const unsubscribe = onSnapshot(q, (querySnapshot) => {
                     
                     
-                    querySnapshot.forEach((doc) => {
-                        
-                        console.log(doc.data().FriendRequests)
-                        friends.push(doc.data().FriendRequests);
-                        for(const v of friends){
-                            for(const a of v){
-                                for (const [key, value] of Object.entries(a)) {
-                                    if(`${value}` == "false"){
-                                      
-                                        result.push(`${key}`)
-                                       
+                    querySnapshot.docChanges().forEach((change) => {
+                        if(change.type === "added"){
+                            console.log(change.doc.data().FriendRequests)
+                            friends.push(change.doc.data().FriendRequests);
+                            for(const v of friends){
+                                for(const a of v){
+                                    for (const [key, value] of Object.entries(a)) {
+                                        if(`${value}` == "false"){
+                                        
+                                            result.push(`${key}`)
+                                        
+                                        }
                                     }
                                 }
                             }
                         }
+                        
                         this.getUserFromUID(result);
 
                         
