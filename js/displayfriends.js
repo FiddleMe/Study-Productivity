@@ -66,7 +66,9 @@ const vueapp = Vue.createApp({
 
 
     created() { 
-        var result = Array();
+  
+        var friends = []
+        var result = []
         onAuthStateChanged(auth, (user) => {
          
             if (user) {
@@ -79,7 +81,7 @@ const vueapp = Vue.createApp({
                     
                     
                     querySnapshot.forEach((doc) => {
-                        var friends = [];
+                        
                         console.log(doc.data().FriendRequests)
                         friends.push(doc.data().FriendRequests);
                         for(const v of friends){
