@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="mainpage.css">
+    <script src="https://unpkg.com/vue@next"></script>
 
 
     <style>
@@ -27,7 +28,6 @@
       </style>
 </head>
 <body>
-
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-md bs-side-navbar fixed-top navbar-dark">
@@ -52,8 +52,41 @@
                 <a class="nav-link" href="#">LeaderBoard</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Spotify</a>
+                <a class="nav-link" href="#"><button id="back">back</button>
+                  <button id="togglePlay">Start/Stop</button>
+                  <button id="next">next</button>
+                  <div id="playlist">
+                      List of songs
+                  </div>
+                  <button id="playlisttest">play playlist</button>
+                  <script src="js/Spotify api/playback_controls.js"></script>
+                  <script>
+                      async function test (){
+                          var playlist_uris = await get_playlist();
+                              console.log(playlist_uris);
+              
+                          var one_playlist_uris = playlist_uris[1];
+                              console.log(one_playlist_uris);
+              
+                          var song_uris = await get_songs_from_playlist(one_playlist_uris);
+                              console.log(song_uris);
+                          
+                          document.getElementById('playlisttest').onclick = function() {
+                              play_song(song_uris);
+                          }
+                          
+                      }  
+                       
+                      document.getElementById('playlisttest').onclick = function() {
+                          test();
+                      }
+                      
+                  </script>
+                  <script src="js/Spotify api/play_using_playlist.js"></script>
             </li>
+
+
+            
           </ul>
           <br><br><br>
           <img  class="specialGif" src="possiblegif1.gif" alt="gifUsed" width="100" height="100">
