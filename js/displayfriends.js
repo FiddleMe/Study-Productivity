@@ -28,22 +28,81 @@ const db = getFirestore();
 const vueapp = Vue.createApp({
     data() {
       return {
-        friendsreq: {}
+        friendsreq: []
       }
     },
+    methods: {
+        async getUserFromUID(result){
+   
+            const docRef = doc(db, "TotalUsers", "Users");
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                var namesArr = [];
+                var userArr = docSnap.data().users;
+                for(var elem of result){
+        
+                    for (const [key, value] of Object.entries(userArr)) {
+                       
+                        if(`${value}` == elem){
+                            namesArr.push(`${key}`);
+                        }
+                    }
+                }
 
-    
+                return this.friendsreq = namesArr;
+            } 
+            else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+            }
+
+        }
+    },
+
+
+    created() { 
+        var result = Array();
+        onAuthStateChanged(auth, (user) => {
+         
+            if (user) {
+              // User is signed in, see docs for a list of available properties
+              // https://firebase.google.com/docs/reference/js/firebase.User
+                const uid = user.uid;
+            
+                const q = query(collection(db, "Users"), where(documentId(), "==", uid));
+                const unsubscribe = onSnapshot(q, (querySnapshot) => {
+                    const friendsrequests = [];
+                    querySnapshot.forEach((doc) => {
+                        friendsrequests.push(doc.data().FriendRequests);
+                        
+                    }); 
+                    
+                    for(const v of friendsrequests){
+                        for(const a of v){
+                     
+                            for (const [key, value] of Object.entries(a)) {
+                                if(`${value}` == "false"){
+                                  
+                                    result.push(`${key}`)
+                                   
+                                }
+                            }
+                        }
+                    }
+           
+                    this.getUserFromUID(result);
+                   
+          
+                });
+              // ...
+        
+            }
+            
+        });
+          
+    }
       
-          
-          
-          
-          
-          
-          
-    
-  
-    
-  });
+});
   const vm = vueapp.mount("#displayfriends");
 
   /*
