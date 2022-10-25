@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+<body>
+    <div>
+       
+            <input type="text" id="frienduser" name="frienduser">
+            <br>
+            <button id="send">send friend request</button>
+            <button id="logout">logout</button>
+        
+    </div>
+
+    <section id="displayfriends">
+        <div v-bind="friendsreq">{{ friendsreq }}</div>
+        <div v-show="friendsreq.length>0">
+            <h1>You have friend requests from:</h1>
+            <ul v-for="friend in friendsreq">
+                <li>{{ friend }}</li>
+            </ul>
+        </div>
+    </section>
+<script src="./js/friends.js" type="module"></script>
+<script src="./js/displayfriends.js" type="module"></script> 
+
+</body>
+</html>

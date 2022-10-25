@@ -33,6 +33,8 @@ onAuthStateChanged(auth, (user) => {
       // https://firebase.google.com/docs/reference/js/firebase.User
       const uid = user.uid;
       alert("hi" + uid);
+      window.location.replace("./sendFriend.html");
+
       // ...
     } else {
       // User is signed out
