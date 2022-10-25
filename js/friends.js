@@ -25,18 +25,27 @@ const auth = getAuth();
 const db = getFirestore();
 
 //getfrienduser from uid
+document.getElementById("send").addEventListener("click",sendFriendRequest);
 
 
-document.getElementById("send").addEventListener("click", sendFriendRequest)
 //send friend request: call friend username input field id = frienduser 
 function sendFriendRequest(){
   var getFriendUsername = document.getElementById("frienduser").value;
-  
   const docRef = doc(db, "TotalUsers", "Users");
   const docSnap =  getDoc(docRef).then((docSnap)=>{
     if (docSnap.exists()) {
+      var friendUID = ""
       let friendarr = docSnap.data();
-      const friendUID = friendarr.users[getFriendUsername];
+      const friends = friendarr.users;
+      console.log(friends);
+      for (var valu of friends){
+        for (const [key, value] of Object.entries(valu)) {           
+          if(`${key}` == getFriendUsername){
+              friendUID = `${value}`;
+          }
+      }
+      }
+
       if(friendUID==null){
         alert("Invalid username");
         return;
@@ -52,8 +61,10 @@ function sendFriendRequest(){
             [uid]:false
           }
           
+          console.log(friendUID)
           updateData(friendUID,param);
           // ...
+
         } 
         //onauthstatechange else
         else {

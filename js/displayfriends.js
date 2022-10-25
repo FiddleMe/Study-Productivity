@@ -39,15 +39,19 @@ const vueapp = Vue.createApp({
             if (docSnap.exists()) {
                 var namesArr = [];
                 var userArr = docSnap.data().users;
+    
                 for(var elem of result){
-        
-                    for (const [key, value] of Object.entries(userArr)) {
-                       
-                        if(`${value}` == elem){
-                            namesArr.push(`${key}`);
+                    console.log(elem);
+                    for (var vals of userArr) {
+                        console.log(vals);
+                        for(const[key, value] of Object.entries(vals)){
+                            if(`${value}` == elem){
+                                namesArr.push(`${key}`);
+                            }
                         }
                     }
                 }
+       
 
                 return this.friendsreq = namesArr;
             } 
