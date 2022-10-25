@@ -33,7 +33,7 @@ const vueapp = Vue.createApp({
     },
     methods: {
         async getUserFromUID(result){
-   
+            
             const docRef = doc(db, "TotalUsers", "Users");
             const docSnap = await getDoc(docRef);
             if (docSnap.exists()) {
@@ -41,9 +41,9 @@ const vueapp = Vue.createApp({
                 var userArr = docSnap.data().users;
     
                 for(var elem of result){
-                    console.log(elem);
+         
                     for (var vals of userArr) {
-                        console.log(vals);
+             
                         for(const[key, value] of Object.entries(vals)){
                             if(`${value}` == elem){
                                 namesArr.push(`${key}`);
@@ -51,9 +51,10 @@ const vueapp = Vue.createApp({
                         }
                     }
                 }
-       
+                console.log(namesArr)
 
-                return this.friendsreq = namesArr;
+                this.friendsreq = namesArr;
+                namesArr = [];
             } 
             else {
             // doc.data() will be undefined in this case
@@ -72,29 +73,34 @@ const vueapp = Vue.createApp({
               // User is signed in, see docs for a list of available properties
               // https://firebase.google.com/docs/reference/js/firebase.User
                 const uid = user.uid;
-            
+               
                 const q = query(collection(db, "Users"), where(documentId(), "==", uid));
                 const unsubscribe = onSnapshot(q, (querySnapshot) => {
-                    const friendsrequests = [];
-                    querySnapshot.forEach((doc) => {
-                        friendsrequests.push(doc.data().FriendRequests);
-                        
-                    }); 
                     
-                    for(const v of friendsrequests){
-                        for(const a of v){
-                     
-                            for (const [key, value] of Object.entries(a)) {
-                                if(`${value}` == "false"){
-                                  
-                                    result.push(`${key}`)
-                                   
+                    
+                    querySnapshot.forEach((doc) => {
+                        var friends = [];
+                        console.log(doc.data().FriendRequests)
+                        friends.push(doc.data().FriendRequests);
+                        for(const v of friends){
+                            for(const a of v){
+                                for (const [key, value] of Object.entries(a)) {
+                                    if(`${value}` == "false"){
+                                      
+                                        result.push(`${key}`)
+                                       
+                                    }
                                 }
                             }
                         }
-                    }
-           
-                    this.getUserFromUID(result);
+                        this.getUserFromUID(result);
+
+                        
+                    }); 
+                    
+                    
+                    console.log(result);
+                    
                    
           
                 });
