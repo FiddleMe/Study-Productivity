@@ -52,13 +52,14 @@
                 <a class="nav-link" href="#">LeaderBoard</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#"><button id="back">back</button>
-                  <button id="togglePlay">Start/Stop</button>
-                  <button id="next">next</button>
-                  <div id="playlist">
+                <div id="app">
+                  <a class="nav-link" href="#"><button v-on:click="back">back</button>
+                  <button v-on:click="togglePlay">Start/Stop</button>
+                  <button v-on:click="next">next</button>
+                  <div v-on:click="playlist">
                       List of songs
                   </div>
-                  <button id="playlisttest">play playlist</button>
+                  <button v-on:click="playlisttest">play playlist</button>
                   <script src="js/Spotify api/playback_controls.js"></script>
                   <script>
                       async function test (){
@@ -82,7 +83,8 @@
                       }
                       
                   </script>
-                  <script src="js/Spotify api/play_using_playlist.js"></script>
+                  <script src="js/Spotify api/play_using_playlist.js"></script></div>
+                
             </li>
 
 
