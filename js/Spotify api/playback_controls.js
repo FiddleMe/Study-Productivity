@@ -111,10 +111,12 @@ function startSpotify() {
             console.log(name)
             const template = document.createElement('li');
             template.innerHTML = name;
+
             template.value = uri;
             template.id = uri;
             document.getElementById("playlists").appendChild(template);
-            document.getElementById(uri).addEventListener("click",playplaylist)
+            document.getElementById(uri).addEventListener("click",playplaylist);
+
             //Display playlists
             
             console.log(uri)
