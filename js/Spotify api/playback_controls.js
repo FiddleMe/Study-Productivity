@@ -89,9 +89,9 @@ function startSpotify() {
         document.getElementById('back').onclick = function() {
             player.previousTrack();
         };
-    
+        test();
     };
-    async function get_playlist(){
+    async function set_playlist(){
         console.log("Getting Playlist");
         const response = await fetch("https://api.spotify.com/v1/me/playlists",
         {
@@ -107,12 +107,19 @@ function startSpotify() {
         for(i in data.items){
             let name = data.items[i].name
             let uri = data.items[i].uri
+            uri = uri.split(":")[2]
             console.log(name)
             const template = document.createElement('li');
             template.innerHTML = name;
+            template.value = uri;
+            template.id = uri;
             document.getElementById("playlists").appendChild(template);
+            document.getElementById(uri).addEventListener("click",async function playplaylist(uri){
+                var songs = await get_songs_from_playlist(uri);
+                play_song(songs);
+            })
             //Display playlists
-            uri = uri.split(":")[2]
+            
             console.log(uri)
             uris.push(uri)
         }
@@ -168,25 +175,16 @@ function startSpotify() {
         };
     
     async function test (){
-        var playlist_uris = await get_playlist();
+        var playlist_uris = await set_playlist();
             console.log(playlist_uris);
-    
-        var one_playlist_uris = playlist_uris[1];
-            console.log(one_playlist_uris);
-    
-        var song_uris = await get_songs_from_playlist(one_playlist_uris);
-            console.log(song_uris);
-        
-        document.getElementById('playlisttest').onclick = function() {
-            play_song(song_uris);
-        }
         
     }  
+    // async function playplaylist(uri){
+    //     var songs = await get_songs_from_playlist(uri);
+    //     play_song(songs);
+    // }
         
-    document.getElementById('playlisttest').onclick = function() {
-        test();
-    }
-    
+
 }
 
 //to be placed on session page
