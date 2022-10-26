@@ -114,10 +114,7 @@ function startSpotify() {
             template.value = uri;
             template.id = uri;
             document.getElementById("playlists").appendChild(template);
-            document.getElementById(uri).addEventListener("click",async function playplaylist(uri){
-                var songs = await get_songs_from_playlist(uri);
-                play_song(songs);
-            })
+            document.getElementById(uri).addEventListener("click",playplaylist)
             //Display playlists
             
             console.log(uri)
@@ -179,10 +176,11 @@ function startSpotify() {
             console.log(playlist_uris);
         
     }  
-    // async function playplaylist(uri){
-    //     var songs = await get_songs_from_playlist(uri);
-    //     play_song(songs);
-    // }
+    async function playplaylist(e){
+        var uri = e.target.id
+        var songs = await get_songs_from_playlist(uri);
+        play_song(songs);
+    }
         
 
 }
