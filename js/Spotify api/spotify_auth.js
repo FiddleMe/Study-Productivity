@@ -3,7 +3,7 @@
 
 //to be changed to session page's url
 //personal note: remember to add to spotify's app dashboard
-const redirect_uri = "http://127.0.0.1:55313/mainpage.html";
+const redirect_uri = "http://127.0.0.1:5500/mainpage.html";
 //
 
 const client_id = "8829529abdc04af28a7fbc4428d376b6";
