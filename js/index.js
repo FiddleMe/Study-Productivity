@@ -4,7 +4,7 @@
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
   import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, setPersistence, browserSessionPersistence} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
   import { getStorage } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-storage.js";
-  import { getFirestore, doc, setDoc, getDoc, collection, addDoc, updateDoc, deleteDoc,deleteField } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
+  import { getFirestore, doc, arrayUnion, setDoc, getDoc, collection, addDoc, updateDoc, deleteDoc,deleteField } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -33,6 +33,8 @@ onAuthStateChanged(auth, (user) => {
       // https://firebase.google.com/docs/reference/js/firebase.User
       const uid = user.uid;
       alert("hi" + uid);
+     
+
       // ...
     } else {
       // User is signed out
@@ -54,6 +56,7 @@ function login(){
             // Signed in 
             const user = userCredential.user;
             console.log("logged in");
+            window.location.replace("./sendFriend.html");
             // ...
         })
         .catch((error) => {
@@ -104,6 +107,20 @@ function login(){
     })
   }
 
+  async function addTotalUsers(param){
+    var ref = doc(db, "TotalUsers", "Users");
+    const updates = await updateDoc(ref, {
+      users: arrayUnion(param)
+    })
+    .then(()=>{
+      alert("updated total successfully")
+      window.location.replace("./sendFriend.html");
+    })
+    .catch((error)=>{
+      alert("Unsuccessfuly")
+    })
+  }
+
   //sign up function
   function signup(){
     var friends = [];
@@ -121,8 +138,12 @@ function login(){
         TotalTime: 0,
         PastScores: {}
       }
+      var paramTotal = {
+        [username]:user.uid
+      }
       addUser(user.uid, paramaters);
         // ...
+      addTotalUsers(paramTotal);
     })
     .catch((error) => {
       const errorCode = error.code;

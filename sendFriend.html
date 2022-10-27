@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+</head>
+<body>
+    <!--please place id="displayfriends" at the relevant portions for vuejs to function-->
+    <div id="displayfriends">
+    <div>
+       <!--pls name the @click correctly-->
+            <input type="text" id="frienduser" name="frienduser">
+            <br>
+            <button @click="sendFriendRequest">send friend request</button>
+            <button @click="logout"id="logout">logout</button>
+        
+    </div>
+
+    <section>
+<!--pls name the the elements accordingly. friendsreq, {{friend}}, accept(friend,index) and reject(friend,index)-->
+        <div v-show="friendsreq.length>0">
+            <h1>You have friend requests from:</h1>
+            <ul v-for="(friend, index) in friendsreq">
+                <li>{{ friend }} 
+                    &nbsp&nbsp<button @click="accept(friend,index)">Accept</button>
+                   <button @click="reject(friend,index)">Reject</button>
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+<script src="./js/displayfriendsrequests.js" type="module"></script>
+
+
+</body>
+</html>
