@@ -9,26 +9,32 @@
 
 </head>
 <body>
+    <!--please place id="displayfriends" at the relevant portions for vuejs to function-->
+    <div id="displayfriends">
     <div>
-       
+       <!--pls name the @click correctly-->
             <input type="text" id="frienduser" name="frienduser">
             <br>
-            <button id="send">send friend request</button>
-            <button id="logout">logout</button>
+            <button @click="sendFriendRequest">send friend request</button>
+            <button @click="logout"id="logout">logout</button>
         
     </div>
 
-    <section id="displayfriends">
-
+    <section>
+<!--pls name the the elements accordingly. friendsreq, {{friend}}, accept(friend,index) and reject(friend,index)-->
         <div v-show="friendsreq.length>0">
             <h1>You have friend requests from:</h1>
-            <ul v-for="friend in friendsreq">
-                <li>{{ friend }}</li>
+            <ul v-for="(friend, index) in friendsreq">
+                <li>{{ friend }} 
+                    &nbsp&nbsp<button @click="accept(friend,index)">Accept</button>
+                   <button @click="reject(friend,index)">Reject</button>
+                </li>
             </ul>
         </div>
     </section>
-<script src="./js/friends.js" type="module"></script>
-<script src="./js/displayfriends.js" type="module"></script> 
+</div>
+<script src="./js/displayfriendsrequests.js" type="module"></script>
+
 
 </body>
 </html>
