@@ -32,8 +32,7 @@ onAuthStateChanged(auth, (user) => {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/firebase.User
       const uid = user.uid;
-      alert("hi" + uid);
-     
+   
 
       // ...
     } else {
@@ -124,9 +123,13 @@ function login(){
   //sign up function
   function signup(){
     var friends = [];
-    var email = document.getElementById("signupName").value;
+    var email = document.getElementById("email").value;
     var password = document.getElementById("signupPassword").value;
+    var confirm = document.getElementById("confirm").value;
     var username = document.getElementById("username").value;
+    if(confirm != password){
+      return
+    }
     createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in 
