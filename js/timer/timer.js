@@ -7,6 +7,7 @@ function display_countdown_timer(hours,minutes){
     var x = setInterval(function() {
         
         time = time - 1000;
+        var original_time = time;
 
         // Time calculations for hours, minutes and seconds
         var hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -21,6 +22,10 @@ function display_countdown_timer(hours,minutes){
         if (time < 0) {
             clearInterval(x);
             document.getElementById("timer").innerHTML = "EXPIRED";
+        }
+        if (time == original_time/2){
+            alert("halftime")
+        
         }
     }, 1000);
 }

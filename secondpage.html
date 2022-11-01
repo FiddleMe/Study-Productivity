@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoFiStudy</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<style>
+*{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+
+</style>
+
+<body>
+
+    <span class="w-100 vh-100 d-flex justify-content-center align-items-center">
+        <div class="content text-center">
+            <h1 class="display-1 text-primary">LofiStudy</h1>     
+            <br/> 
+        <form>
+                <label for="InputName1">Name</label>
+                <input type="name" class="form-control" id="InputName1" aria-describedby="nameHelp" placeholder="Enter your name">
+                <small id="nameHelp" class="form-text text-muted">You can always change your name 
+                later.</small>
+
+            <div class="row">
+                <div class="col">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <div class="col">
+                    <label for="exampleInputPassword2">Confirm</label>
+                    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+                </div>
+            </div>
+        </form>
+        <br/>
+        <div class="row">
+            <div class="col">
+                <a href ="firstpage.html"><button type="button" class="w-100 btn btn-light btn-lg rounded-pill">Back</button></a>
+            </div>
+            <div class="col">
+                <!-- placeholder -->
+                <!-- simple validation required to check pw is both correct before allowing to route to next page -->
+                <a href ="friend1page.html"> <type= "button" class="w-100 btn btn-primary btn-lg rounded-pill">Create Account</button> </a>
+            </div>
+
+        </div>
+        </div>
+    </span>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</body>
+</html>

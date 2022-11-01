@@ -3,7 +3,7 @@
 
 //to be changed to session page's url
 //personal note: remember to add to spotify's app dashboard
-const redirect_uri = "";
+const redirect_uri = "http://127.0.0.1:5500/mainpage.html";
 //
 
 const client_id = "8829529abdc04af28a7fbc4428d376b6";
@@ -13,6 +13,5 @@ url += '?response_type=token';
 url += '&client_id=' + encodeURIComponent(client_id);
 url += '&scope=' + encodeURIComponent(scopes);
 url += '&redirect_uri=' + encodeURIComponent(redirect_uri);
-url += '&state=' + encodeURIComponent(state);
 console.log(url);
 document.getElementById("auth").addEventListener("click", function(){location.assign(url)});
