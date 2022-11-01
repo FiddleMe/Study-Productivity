@@ -41,7 +41,7 @@
             <label>Add friend:</label>
             <input v-bind="text" class="form-control" id="addfriend" placeholder="Friend's Name">
             <a href ="mainpage.html"><button type="button" class="btn btn-secondary btn-lg btn-block">Skip for Now</button></a>
-            <a href ="friend2page.html"><button type="button" class="btn btn-primary btn-lg btn-block" @click="something">Add Friends</button></a>
+            <a href ="#"><button type="button" class="btn btn-primary btn-lg btn-block" @click="something">Add Friends</button></a>
         </div>
     </div>
 </form>    
@@ -61,15 +61,11 @@
             }
         },
         methods: { 
+            // this method is broken atm. 
                 addfriend() { 
                     return this.friends.push({ name: {text}, study: 4, profile:""});
                 } 
             }
-        
-        // methods() ({
-        //     addfriend: function(){
-        //         this.friends.push (name: {text})
-        // })
     }
 
     ).mount('#app1')
