@@ -17,58 +17,62 @@
 </style>
 
 <body>
-    <h1 class="display-4 text-primary">LofiStudy</h1>     
-
-<span id="app">
-
-    <form>
-        <div class="form-group-inline justify-content-center">
-            <div>
-                <label>Add friend:</label>
-                <input v-model="text" class="form-control" id="addfriend" placeholder="Friend's Name">
-                <a href ="mainpage.html"><button type="button" class="btn btn-secondary btn-lg btn-block">Skip for Now</button></a>
-                <a href ="friend2page.html"><button type="button" class="btn btn-primary btn-lg btn-block" @click="something">Add Friends</button></a>
-            </div>
+<h1 class="display-4 text-primary">LofiStudy</h1>
+<span id="app1">
+<table class="table" border='1'>
+    <thead>
+        <tr>
+            <th scope="col">Friends</th>
+            <th scope="col">Study Minutes</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr v-for="friend in friends"> 
+            <td>{{friend.name}}</td> 
+            <td>{{friend.study}} minutes</td> 
+            <td><a href='#'>profile</a></td>
+        </tr>   
+    </tbody>
+</table>
+<form>
+    <div class="form-group-inline justify-content-center">
+        <div>
+            <label>Add friend:</label>
+            <input v-bind="text" class="form-control" id="addfriend" placeholder="Friend's Name">
+            <a href ="mainpage.html"><button type="button" class="btn btn-secondary btn-lg btn-block">Skip for Now</button></a>
+            <a href ="friend2page.html"><button type="button" class="btn btn-primary btn-lg btn-block" @click="something">Add Friends</button></a>
         </div>
-    </form>
-    <div v-else>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">Friends</th>
-                <th scope="col">Study Minutes</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr v-for="friend in friends"> 
-                <td>{{friend.name}}</td> 
-                <td>{{friend.study}} minutes</td> 
-                <td><a href='#'>{{friend.action}}</a></td>
-            </tr>   
-
-        </tbody>
-    </table>
-</div>
-
+    </div>
+</form>    
 </span>
+
 <script>
-    const app = Vue.createApp( {
-    data() {
-        return {
-            friends: [{name: "", study: 90, action: profile}],
-            nofriend:false
-
-        }
-    },
-    methods: { 
-        something(){
-            this.nofriend!=this.nofriend
-        }
-
+    const vm = Vue.createApp({
+        data() {
+            return {
+                friends: [
+                    {name: 'Jessica', study: 90, profile: ""},
+                    {name: 'Rose', study: 1000, profile: ""},
+                    {name: 'Chaelin', study: 45, profile: ""},
+                    {name: 'Mother', study: 80, profile: ""},
+                ],
+                text:""
+            }
+        },
+        methods: { 
+                addfriend() { 
+                    return this.friends.push({ name: {text}, study: 4, profile:""});
+                } 
+            }
+        
+        // methods() ({
+        //     addfriend: function(){
+        //         this.friends.push (name: {text})
+        // })
     }
-})
-    const vm = app.mount('#app')
+
+    ).mount('#app1')
 </script>
 </body>
 </html>
