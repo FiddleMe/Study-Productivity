@@ -7,16 +7,13 @@
     <link href="http://netdna.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="mainpage.css">
     <style>
-      .banner-image {
-        background-image: url('banner-img.jpg');
-        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background-size: cover;
-        background-position: 100%;
-        background-repeat: no-repeat;
+      /* Font for everything */
+      *{
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
       }
-      .navbar-brand{
-        font-size:large;
-      }
+      /*ENDS: Font for everything */
+
+      /*Styling for playlist: May Change to button style*/
       .dropdown {
       position: relative;
       display: inline-block;
@@ -33,40 +30,166 @@
       .dropdown:hover .dropdown-content {
       display: block;
       }
-    </style>
-      <body>
-    
-        <nav class="navbar navbar-expand-md bs-side-navbar fixed-top navbar-dark">
-          <a class="navbar-brand" href="#">LofiStudy</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      /*ENDS: Styling for playlist*/
+
+      /*Styling for background and Login buttons*/
+      .modal{
+        position: absolute;
+        margin: auto;
+        z-index: 1;
+        height: 100vh;
+        width:100%;
+        background-color: rgba(0, 0, 0, 0.75);
+        display: none;
+      }
+      .inner_modal{
+        position:relative;
+        display: flex;
+        justify-content: center;  
+        align-items: center;
+        height: 100vh;
+        flex-direction: column;
+      }
+      input{
+        width: 300px;
+        height: 38px;
+        border-radius: 8px;
+      }
+      .bg-image{
+        background-image: url('images/background.gif'); 
+        height: 100vh; 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+      }
+      #getstarted{
+        position: absolute;
+        right: 20px;
+        top: 20px;
+      }
+      i{
+        right: 20px;
+        top: 20px;
+        position:absolute;
+        font-size: 2rem;
+        color: white;
+        cursor: pointer;
+        transition: 1s ease-in-out;
+      }
+      .text-center{
+        background-color:rgba(0, 0, 0, 0.30);
+        position: absolute; 
+        bottom: 0;
+        width: 100%;
+        color:  whitesmoke;
+        font-size: larger;
+      }
+      #inner_modal button{
+        margin: 50px;
+        width: 120px;
+      }
+      #signup{
+        margin: 20px;
+        color:white;
+      }
+      a{
+        text-decoration: none;
+      }
+      .glow-on-hover {
+      width: 100px;
+      height: 50px;
+      border: none;
+      outline: none;
+      color: #fff;
+      background: #111;
+      cursor: pointer;
+      position: relative;
+      z-index: 0;
+      border-radius: 10px;
+      opacity: 80%;
+      }
+      .glow-on-hover:before {
+      content: '';
+      background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+      position: absolute;
+      top: -2px;
+      left:-2px;
+      background-size: 400%;
+      z-index: -1;
+      filter: blur(5px);
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      animation: glowing 20s linear infinite;
+      opacity: 0;
+      transition: opacity .3s ease-in-out;
+      border-radius: 10px;
+      }  
+      .glow-on-hover:active {
+      color: #000
+      } 
+  
+      .glow-on-hover:active:after {
+      background: transparent;
+      }
+  
+      .glow-on-hover:hover:before {
+      opacity: 1;
+      }
+  
+      .glow-on-hover:after {
+      z-index: -1;
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: #111;
+      left: 0;
+      top: 0;
+      border-radius: 10px;
+      }
+  
+      @keyframes glowing {
+      0% { background-position: 0 0; }
+      50% { background-position: 400% 0; }
+      100% { background-position: 0 0; }
+    }
+  /*ENDS: Styling for backgrounf and login buttons*/
+  </style>
+
+    <body>
+      <div class="bg-image" class="container-fluid">
+
+      <!--NAVBAR-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">GIFHERE</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
-          </button>
-
-          
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                  <li class="nav-item active">
-                      <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
-                  </li>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Add Friends</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Block Settings</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">LeaderBoard</a>
+                </li>
                   <li class="nav-item">
-                      <a class="nav-link" href="#">Add Friends</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Block Settings</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">LeaderBoard</a>
-                  </li>
-                  <li class="nav-item">
-                      <button id="auth">Connect to Spotify</button>
+                    <button id="auth">Connect to Spotify</button>
                     <script src="js/Spotify api/spotify_auth.js"></script>
-                    <br />
-
-                    <br />
+                  </li>
+                  <li class="nav-item">
                     <button id="back">back</button>
                     <button id="togglePlay">Start/Stop</button>
                     <button id="next">next</button>
+                  </li>
                     <!--<div class="dropdown">
                       <button class="dropbtn">List of Songs</button>
 
@@ -77,32 +200,57 @@
                       </div>
                     </div>
                     <script src="js/Spotify api/playback_controls.js"></script>-->
-
+                  <li class="nav-item">
                     <div class="dropdown">
-                      <span>Playlist</span>
+                      <span style="color: White">Playlist</span>
                       <div class="dropdown-content">
-                      <ul id="playlists"></ul>
+                        <ul id="playlists"></ul>
                       </div>
                     </div>
                     <script src="js/Spotify api/playback_controls.js"></script>
+                  </li>   
+                  
+                  <!--Login, signup-->
+                  <li class="nav-item">
+                    <a>Look at me</a>
+                      <button id="getstarted" class="glow-on-hover" onclick="displaygetStarted()">Login</button>
+                          <div class="modal" id="loginpage">
+                            <div class="inner_modal">
+                              <i class="far fa-times-circle" id="hide"></i>
+                              <input type="text" class="username" placeholder="Username">
+                              <input type="password" class="password" placeholder="Password" >
+                              <button class="btn btn-primary">Login</button>
+                              <div id="signup">
+                                Don't have an account? <button class="btn btn-outline-primary"onclick="displaySignup()">Sign up now!</button>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="modal" id="signuppage">
+                            <div class="inner_modal">
+                              <i class="far fa-times-circle" id="hide_sign"></i>
+                              <input type="email" id="email" placeholder="Email">
+                              <input type="text" id="username" placeholder="Username">
+                              <input type="password" id="signupPassword" placeholder="Password" >
+                              <input type="password" id="confirm" placeholder="Password" >
+                              <button class="btn btn-primary">Sign Up</button>
+                              <div id="signup">
+                              <button class="btn btn-primary" onclick="displaygetStarted()">Back to login!</button>
+                              </div>
+                            </div>
+                          </div>
+                          <div id="footer" class="text-center p-3">
+                            Please sign in to utilise LofiStudy
+                          </div>  
+                        </div>
+                  </li>
+                  <!--Login, signup-->
+              </ul>   
+            </div>
+          </div>
+      </nav>
+      <!--ENDS:NAVBAR-->
 
-                   
-                </li>                
-                
-              </ul>
-              <br><br><br>
-              <img  class="specialGif" src="possiblegif1.gif" alt="gifUsed" width="100" height="100">
-               <!--In case we need buttons
-            <form class="form-inline my-3 my-lg-0">
-              <button class="btn btn-outline-light" type="submit">Start Session</button>
-            </form>  -->
-          
-      </div>
-    </nav>
-
-    <div class="d-flex justify-content-center">
-      
-    </div>
+  
      <!-- Banner Image  -->
     <!--editted: w-100 removed-->
     <div class="banner-image  vh-100  d-flex justify-content-center">
@@ -126,13 +274,10 @@
           <div id="progressBar">
           </div>
         </div>
-
-
-        <h1 style="color:white; padding: 24px">Sticky notes here</h1>
       </div>
     </div>
     <!-- Main Content Area: To be replaced with sticky notes if it exceeds the first picture -->
-    <div class="container my-5 d-grid gap-5">
+    <!--<div class="container my-5 d-grid gap-5">
       <div class="p-5 border">
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -173,9 +318,9 @@
           dolorem numquam quasi. df
         </p>
       </div>
-    </div>
+    </div>-->
 
-    <!-- Makes it sticky and changes color-->
+    <!-- Makes it sticky and changes color
     <script type="text/javascript">
       var nav = document.querySelector('nav');
 
@@ -186,7 +331,33 @@
           nav.classList.remove('bg-dark', 'shadow');
         }
       });
+    </script>-->
+
+
+
+  <!--Script of: Login, signup-->
+    <script>
+      function displaygetStarted(){
+        document.querySelector("#getstarted").style.display = "none";
+        document.querySelector("#signuppage").style.display = "none";
+        document.querySelector("#loginpage").style.display = "block";
+      }
+      document.querySelector("#hide").addEventListener("click", () => {
+        document.querySelector("#getstarted").style.display = "block";
+        document.querySelector("#loginpage").style.display = "none";
+      });
+    function displaySignup(){
+      document.querySelector("#getstarted").style.display = "none";
+      document.querySelector("#loginpage").style.display = "none";
+      document.querySelector("#signuppage").style.display = "block";
+      document.querySelector("#hide_sign").addEventListener("click", () => {
+      document.querySelector("#getstarted").style.display = "block";
+      document.querySelector("#signuppage").style.display = "none";
+      })
+    } 
     </script>
+  <!--ENDS: Login, signup-->
+
 
   <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="timer/timer.js"></script>
