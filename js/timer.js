@@ -3,8 +3,7 @@
 
 
 function displayTime(){
-    display_countdown_timer(document.getElementById('hours').value, document.getElementById('minutes').value),
-    console.log(document.getElementById('hours').value, document.getElementById('minutes').value)
+    display_countdown_timer(document.getElementById('hours').value, document.getElementById('minutes').value)
 }
 
 function display_countdown_timer(hours,minutes){
