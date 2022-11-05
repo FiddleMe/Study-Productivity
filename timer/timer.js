@@ -15,6 +15,11 @@ function display_countdown_timer(hours,minutes){
     var isHalf =  false
     var isDone = false
 
+    document.getElementById('input1').style.display = 'none'
+    document.getElementById('input2').style.display = 'none'
+    document.getElementById('save').style.display = 'none'
+
+
     
 
 
@@ -64,6 +69,9 @@ function display_countdown_timer(hours,minutes){
 
         if(isDone){
             alert("Congratulations! You have completed your session!")
+            document.getElementById('input1').style.display = 'block'
+            document.getElementById('input2').style.display = 'block'
+            document.getElementById('save').style.display = 'block'
         }
 
         time = time - 1000;

@@ -132,24 +132,28 @@
         <div class="content text-center container-fluid">
           <!-- <h1 class="p-3">Hello</h1> -->
           
-          <div class="input-group mx-auto my-5 col-lg-8">
+          <div class="input-group mx-auto my-5 col-lg-8" id="input1">
             <span class="input-group-text" id="basic-addon1">Hours</span>
             <input type="text" class="form-control" id="hours" name="hours" value="" aria-label="Username" aria-describedby="basic-addon1">
           </div>
 
-          <div class="input-group mx-auto my-4 col-lg-8  d-flex justify-content-center">
+          <div class="input-group mx-auto my-4 col-lg-8" id="input2">
             <span class="input-group-text" id="basic-addon1">Minutes</span>
             <input type="text" class="form-control" id="minutes" name="minutes" value="" aria-label="Username" aria-describedby="basic-addon1">
           </div>
 
-          <div id="progressBar" class="mb-1 col-lg-8 text-center mx-auto"></div>
-          <h3 id="timer" class="text-secondary"></h3>
+          
+          <div id="progressBar" class="my-5"></div>
+          <h3 id="timer" class="my-3 text-white"></h3>
+          
+
+          
   
         <div class="d-grid">
             <button id="save" id="start" onclick="displayTime()" class="btn rainbow rainbow:hover mb-3">Start Session</button>
         </div>
 
-        <div class="container col-lg-8 mx-auto">
+        <div class="container col-lg-8 my-4">
           <div id="modal">
             <div id="inner_modal">
               <textarea placeholder="Note..." id="user_input" maxlength="1000"></textarea>
