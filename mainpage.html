@@ -35,13 +35,15 @@
       }
     </style>
       <body>
+    
         <nav class="navbar navbar-expand-md bs-side-navbar fixed-top navbar-dark">
           <a class="navbar-brand" href="#">LofiStudy</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
           </button>
-      
+
+          
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                   <li class="nav-item active">
@@ -97,11 +99,36 @@
           
       </div>
     </nav>
+
+    <div class="d-flex justify-content-center">
+      
+    </div>
      <!-- Banner Image  -->
     <!--editted: w-100 removed-->
-    <div class="banner-image  vh-100  d-flex justify-content-center align-items-center">
+    <div class="banner-image  vh-100  d-flex justify-content-center">
       <div class="content text-center">
-        <h1 style="color:white">Sticky notes here</h1>
+        <div class="content text-center container-fluid">
+          <!-- <h1 class="p-3">Hello</h1> -->
+          <div class="input-group mx-auto my-5">
+            <span class="input-group-text" id="basic-addon1">Hours</span>
+            <input type="text" class="form-control" id="hours" name="hours" value="" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+  
+          <div class="input-group mx-auto my-4">
+            <span class="input-group-text" id="basic-addon1">Minutes</span>
+            <input type="text" class="form-control" id="minutes" name="minutes" value="" aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+  
+          <button type="button" class="btn btn-primary mb-3" onclick="displayTime()">Start Session</button>
+  
+          <h3 id="timer" class="text-secondary"></h3>
+  
+          <div id="progressBar">
+          </div>
+        </div>
+
+
+        <h1 style="color:white; padding: 24px">Sticky notes here</h1>
       </div>
     </div>
     <!-- Main Content Area: To be replaced with sticky notes if it exceeds the first picture -->
@@ -162,6 +189,7 @@
     </script>
 
   <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="timer/timer.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
   <!--https://codingyaar.com/bootstrap-navbar-hover-background-color/-->
