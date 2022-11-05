@@ -173,13 +173,13 @@
                   <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Add Friends</a>
+                  <a class="nav-link" aria-current="page" href="#">Add Friends</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Block Settings</a>
+                  <a class="nav-link" aria-current="page" href="#">Block Settings</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">LeaderBoard</a>
+                  <a class="nav-link" aria-current="page" href="#">LeaderBoard</a>
                 </li>
                   <li class="nav-item">
                     <button id="auth">Connect to Spotify</button>
@@ -207,49 +207,45 @@
                         <ul id="playlists"></ul>
                       </div>
                     </div>
-                    <script src="js/Spotify api/playback_controls.js"></script>
-                  </li>   
-                  
-                  <!--Login, signup-->
-                  <li class="nav-item">
-                    <a>Look at me</a>
-                      <button id="getstarted" class="glow-on-hover" onclick="displaygetStarted()">Login</button>
-                          <div class="modal" id="loginpage">
-                            <div class="inner_modal">
-                              <i class="far fa-times-circle" id="hide"></i>
-                              <input type="text" class="username" placeholder="Username">
-                              <input type="password" class="password" placeholder="Password" >
-                              <button class="btn btn-primary">Login</button>
-                              <div id="signup">
-                                Don't have an account? <button class="btn btn-outline-primary"onclick="displaySignup()">Sign up now!</button>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="modal" id="signuppage">
-                            <div class="inner_modal">
-                              <i class="far fa-times-circle" id="hide_sign"></i>
-                              <input type="email" id="email" placeholder="Email">
-                              <input type="text" id="username" placeholder="Username">
-                              <input type="password" id="signupPassword" placeholder="Password" >
-                              <input type="password" id="confirm" placeholder="Password" >
-                              <button class="btn btn-primary">Sign Up</button>
-                              <div id="signup">
-                              <button class="btn btn-primary" onclick="displaygetStarted()">Back to login!</button>
-                              </div>
-                            </div>
-                          </div>
-                          <div id="footer" class="text-center p-3">
-                            Please sign in to utilise LofiStudy
-                          </div>  
-                        </div>
+                    <script src="js/Spotify api/playback_controls.js"></script>    
                   </li>
-                  <!--Login, signup-->
               </ul>   
             </div>
           </div>
       </nav>
       <!--ENDS:NAVBAR-->
 
+       <!--Login, signup-->
+       <button id="getstarted" class="glow-on-hover" onclick="displaygetStarted()">Login</button>
+       <div class="modal" id="loginpage">
+         <div class="inner_modal">
+           <i class="far fa-times-circle" id="hide"></i>
+           <input type="text" class="username" placeholder="Username">
+           <input type="password" class="password" placeholder="Password" >
+           <button class="btn btn-primary">Login</button>
+           <div id="signup">
+             Don't have an account? <button class="btn btn-outline-primary"onclick="displaySignup()">Sign up now!</button>
+           </div>
+         </div>
+       </div>
+       <div class="modal" id="signuppage">
+         <div class="inner_modal">
+           <i class="far fa-times-circle" id="hide_sign"></i>
+           <input type="email" id="email" placeholder="Email">
+           <input type="text" id="username" placeholder="Username">
+           <input type="password" id="signupPassword" placeholder="Password" >
+           <input type="password" id="confirm" placeholder="Password" >
+           <button class="btn btn-primary">Sign Up</button>
+           <div id="signup">
+            <button class="btn btn-primary" onclick="displaygetStarted()">Back to login!</button>
+           </div>
+         </div>
+       </div>
+       <div id="footer" class="text-center p-3">
+         Please sign in to utilise LofiStudy
+       </div>  
+     </div>
+          <!--ENDS: Login, signup-->
   
      <!-- Banner Image  -->
     <!--editted: w-100 removed-->
