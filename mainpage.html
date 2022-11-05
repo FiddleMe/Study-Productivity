@@ -181,7 +181,7 @@
                 <li class="nav-item">
                   <a class="nav-link" aria-current="page" href="#">LeaderBoard</a>
                 </li>
-                  <li class="nav-item">
+                  <!--<li class="nav-item">
                     <button id="auth">Connect to Spotify</button>
                     <script src="js/Spotify api/spotify_auth.js"></script>
                   </li>
@@ -189,7 +189,7 @@
                     <button id="back">back</button>
                     <button id="togglePlay">Start/Stop</button>
                     <button id="next">next</button>
-                  </li>
+                  </li>-->
                     <!--<div class="dropdown">
                       <button class="dropbtn">List of Songs</button>
 
@@ -200,16 +200,29 @@
                       </div>
                     </div>
                     <script src="js/Spotify api/playback_controls.js"></script>-->
-                  <li class="nav-item">
+                  <!--<li class="nav-item">
                     <div class="dropdown">
                       <span style="color: White">Playlist</span>
                       <div class="dropdown-content">
                         <ul id="playlists"></ul>
                       </div>
-                    </div>
-                    <script src="js/Spotify api/playback_controls.js"></script>    
-                  </li>
+                    </div> 
+                  </li>-->
               </ul>   
+              <form class="d-flex">
+                <button id="auth">Connect to Spotify</button>
+                <script src="js/Spotify api/spotify_auth.js"></script>
+                <button id="back">back</button>
+                <button id="togglePlay">Start/Stop</button>
+                <button id="next">next</button>
+                <div class="dropdown">
+                  <button id="playlist_button">Playlist</button>
+                  <div class="dropdown-content">
+                    <ul id="playlists"></ul>
+                  </div>
+                </div> 
+              </form>
+              <script src="js/Spotify api/playback_controls.js"></script>   
             </div>
           </div>
       </nav>
