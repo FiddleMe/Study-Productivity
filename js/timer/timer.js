@@ -15,6 +15,7 @@ function display_countdown_timer(hours,minutes){
         var seconds = Math.floor((time % (1000 * 60)) / 1000);
 
         // Display the result in the element with id="timer"
+        //update
         document.getElementById("timer").innerHTML = hours + "h "
         + minutes + "m " + seconds + "s ";
 
