@@ -14,16 +14,18 @@
 </head>
 <style>
 *{
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* change this to white */
+    color: black;
 }
 
 </style>
 
 <body>
-<h1 class="display-4 text-primary">LofiStudy</h1>
+<h2 class="text-warning">Analytics</h1>
 <span id="app1">
 <div>
-    <canvas id="myChart"></canvas>
+    <canvas id="myChart" style="position: relative; height:40vh; width:80vw"></canvas>
 </div>
 
 <table class="table" border='1'>
@@ -39,7 +41,8 @@
             <td>{{friend.name}}</td> 
             <td>{{friend.study}} minutes</td> 
             <!-- tooltips are triggered when hovering over -->
-            <td><a href='#' data-toggle="tooltip" data-placement="right" title="Under Construction">View me!</a></td>
+            <td><a href='#' data-bs-toggle="tooltip" data-bs-placement="right" title="Under Construction">View me!</a>
+            </td>
         </tr>   
     </tbody>
 </table>
@@ -77,9 +80,9 @@
                 // retrieve from database 
                 series: [
                     {name: 'Jessica', study: 90, profile: ""},
-                    {name: 'Chaeyoung', study: 1000, profile: ""},
+                    {name: 'Chaeyoung', study: 100, profile: ""},
                     {name: 'Sunny', study: 45, profile: ""},
-                    {name: 'Lisa', study:980, profile: ""},
+                    {name: 'Lisa', study:80, profile: ""},
                 ],
                 friendname:""
             }
@@ -105,7 +108,7 @@
                     }
                     else{
                     // study_time is a placeholder of number to be retrieved from database
-                    study_time=Math.floor(Math.random() * 1000);
+                    study_time=Math.floor(Math.random() * 100);
                     new_friend=this.friendname;
                     this.friendname="";
                     return this.series.push({ name: new_friend , study: study_time, profile:""});
@@ -153,6 +156,7 @@ var myChart = new Chart(
     config
 );
 </script>
+
 
 </body>
 </html>
