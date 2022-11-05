@@ -13,6 +13,11 @@
       }
       /*ENDS: Font for everything */
 
+      #possiblegif1{
+        width: 100px;
+        height: 100px;
+      }
+
       /*Styling for playlist: May Change to button style*/
       .dropdown {
       position: relative;
@@ -163,7 +168,8 @@
       <!--NAVBAR-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <div class="container-fluid">
-            <a class="navbar-brand" href="#">GIFHERE</a>
+            <img src="images/possiblegif1.gif" alt="" id="possiblegif1">
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -210,17 +216,18 @@
                   </li>-->
               </ul>   
               <form class="d-flex">
-                <button id="auth">Connect to Spotify</button>
+                <button id="auth" class="glow-on-hover" style="margin-left:10px" >Connect to Spotify</button>
                 <script src="js/Spotify api/spotify_auth.js"></script>
-                <button id="back">back</button>
-                <button id="togglePlay">Start/Stop</button>
-                <button id="next">next</button>
+                <button id="back" class="glow-on-hover" style="margin-left:10px" >Back</button>
+                <button id="togglePlay" class="glow-on-hover" style="margin-left:10px">Start/Stop</button>
+                <button id="next" class="glow-on-hover" style="margin-left:10px">next</button>
                 <div class="dropdown">
-                  <button id="playlist_button">Playlist</button>
+                  <button id="playlist_button" class="glow-on-hover" style="margin-left:10px">Playlist</button>
                   <div class="dropdown-content">
                     <ul id="playlists"></ul>
                   </div>
                 </div> 
+                <button id="getstarted" class="glow-on-hover" onclick="displaygetStarted()">Login</button>
               </form>
               <script src="js/Spotify api/playback_controls.js"></script>   
             </div>
@@ -229,7 +236,7 @@
       <!--ENDS:NAVBAR-->
 
        <!--Login, signup-->
-       <button id="getstarted" class="glow-on-hover" onclick="displaygetStarted()">Login</button>
+       
        <div class="modal" id="loginpage">
          <div class="inner_modal">
            <i class="far fa-times-circle" id="hide"></i>
