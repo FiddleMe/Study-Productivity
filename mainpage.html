@@ -6,7 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="mainpage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="shortcut icon" type="image/png" href="notes.png" />
+    <link rel="stylesheet" href="stickynotes.css">
     <style>
+
       .banner-image {
         background-image: url('banner-img.jpg');
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -14,13 +18,16 @@
         background-position: 100%;
         background-repeat: no-repeat;
       }
+
       .navbar-brand{
         font-size:large;
       }
+
       .dropdown {
       position: relative;
       display: inline-block;
       }
+
       .dropdown-content {
       display: none;
       position: absolute;
@@ -30,9 +37,25 @@
       padding: 12px 16px;
       z-index: 1;
       }
+
       .dropdown:hover .dropdown-content {
       display: block;
       }
+
+      .rainbow:hover{
+      background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
+      animation: slidebg 5s linear infinite;
+      color: white
+      }
+
+      .rainbow{
+      background-color: #343A40;
+      border-radius: 4px;  
+      color: #fff;
+      cursor: pointer;
+      padding: 8px 16px;  
+    }
+
     </style>
       <body>
     
@@ -45,7 +68,7 @@
 
           
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
+              <ul class="navbar-nav mr-3">
                   <li class="nav-item active">
                       <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
                   </li>
@@ -53,7 +76,7 @@
                       <a class="nav-link" href="#">Add Friends</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Block Settings</a>
+                    <a class="nav-link" href="restriction/options.html">Block Settings</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">LeaderBoard</a>
@@ -64,9 +87,9 @@
                     <br />
 
                     <br />
-                    <button id="back">back</button>
-                    <button id="togglePlay">Start/Stop</button>
-                    <button id="next">next</button>
+                    <button id="back">⏮️</button>
+                    <button id="togglePlay">⏯️</button>
+                    <button id="next">⏭️</button>
                     <!--<div class="dropdown">
                       <button class="dropbtn">List of Songs</button>
 
@@ -85,8 +108,7 @@
                       </div>
                     </div>
                     <script src="js/Spotify api/playback_controls.js"></script>
-
-                   
+  
                 </li>                
                 
               </ul>
@@ -100,37 +122,65 @@
       </div>
     </nav>
 
-    <div class="d-flex justify-content-center">
+    <!-- <div class="d-flex justify-content-center">
       
-    </div>
+    </div> -->
      <!-- Banner Image  -->
     <!--editted: w-100 removed-->
     <div class="banner-image  vh-100  d-flex justify-content-center">
       <div class="content text-center">
         <div class="content text-center container-fluid">
           <!-- <h1 class="p-3">Hello</h1> -->
-          <div class="input-group mx-auto my-5">
+          
+          <div class="input-group mx-auto my-5 col-lg-8">
             <span class="input-group-text" id="basic-addon1">Hours</span>
             <input type="text" class="form-control" id="hours" name="hours" value="" aria-label="Username" aria-describedby="basic-addon1">
           </div>
-  
-          <div class="input-group mx-auto my-4">
+
+          <div class="input-group mx-auto my-4 col-lg-8  d-flex justify-content-center">
             <span class="input-group-text" id="basic-addon1">Minutes</span>
             <input type="text" class="form-control" id="minutes" name="minutes" value="" aria-label="Username" aria-describedby="basic-addon1">
           </div>
-  
-          <button type="button" class="btn btn-primary mb-3" onclick="displayTime()">Start Session</button>
-  
+
+          <div id="progressBar" class="mb-1 col-lg-8 text-center mx-auto"></div>
           <h3 id="timer" class="text-secondary"></h3>
   
-          <div id="progressBar">
-          </div>
+        <div class="d-grid">
+            <button id="save" id="start" onclick="displayTime()" class="btn rainbow rainbow:hover mb-3">Start Session</button>
         </div>
 
+        <div class="container col-lg-8 mx-auto">
+          <div id="modal">
+            <div id="inner_modal">
+              <textarea placeholder="Note..." id="user_input" maxlength="1000"></textarea>
+              <i class="far fa-times-circle" id="hide"></i>
+            </div>
+          </div>
+        
+          <header>
+            <div class="container">
+              <div id="header">
+                <h1><i class="fas fa-sticky-note"></i> Sticky Notes</h1>
+                <button id="add_note">Add Note</button>
+              </div>
+            </div>
+          </header>
+          
+          <section>
+            <div class="container" id="fills">
+              <div id="all_notes"></div>
+            </div>
+          </section>
+        </div>
+      </div>
 
-        <h1 style="color:white; padding: 24px">Sticky notes here</h1>
       </div>
     </div>
+        <!-- <h1 style="color:white; padding: 24px">Sticky notes here</h1> -->
+        
+        
+          
+        
     <!-- Main Content Area: To be replaced with sticky notes if it exceeds the first picture -->
     <div class="container my-5 d-grid gap-5">
       <div class="p-5 border">
@@ -188,8 +238,86 @@
       });
     </script>
 
+<script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+<script>
+  var myElement = document.getElementById('all_notes');
+  if(window.addEventListener) {
+    // Normal browsers
+    myElement.addEventListener('DOMSubtreeModified', contentChanged, false);
+  } else
+    if(window.attachEvent) {
+        // IE
+        myElement.attachEvent('DOMSubtreeModified', contentChanged);
+    }
+
+function contentChanged() {
+    // this function will run each time the content of the DIV changes
+   
+    /*interact('.note').draggable({
+        onmove: (event) => {
+          const target = event.target;
+          const x = target.getAttribute("data-x");
+          const y = target.getAttribute("data-y");
+          console.log(x,y);
+          const initialX = parseFloat(x) || 0;
+          const initialY = parseFloat(y) || 0;
+          const deltaX = event.dx;
+          const deltaY = event.dy;
+          const newX = initialX + deltaX;
+          const newY = initialY + deltaY;
+
+          target.style.transform = `translate(${newX}px, ${newY}px)`;
+          target.setAttribute('data-x', newX);
+          target.setAttribute('data-y', newY);
+        }
+      });*/
+        interact('.draggable').draggable({
+        // enable inertial throwing
+        inertia: true,
+        // keep the element within the area of it's parent
+        modifiers: [
+          interact.modifiers.restrictRect({
+            restriction: '#fills',
+            endOnly: true
+          })
+        ],
+        // enable autoScroll
+        autoScroll: true,
+
+        listeners: {
+          // call this function on every dragmove event
+          move: dragMoveListener,
+
+          // call this function on every dragend event
+          
+        }
+      })
+
+    function dragMoveListener (event) {
+      var target = event.target
+      // keep the dragged position in the data-x/data-y attributes
+      var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+      var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
+
+      // translate the element
+      target.style.transform = 'translate(' + x + 'px, ' + y + 'px)'
+
+      // update the posiion attributes
+      target.setAttribute('data-x', x)
+      target.setAttribute('data-y', y)
+    }
+    
+}
+
+  
+
+</script>
+
+
+
   <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
   <script src="timer/timer.js"></script>
+  <script src="js/stickynotes.js"></script>
   <script src="http://netdna.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
   <!--https://codingyaar.com/bootstrap-navbar-hover-background-color/-->

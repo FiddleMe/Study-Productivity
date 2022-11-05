@@ -15,13 +15,14 @@ function display_countdown_timer(hours,minutes){
     var isHalf =  false
     var isDone = false
 
+    
+
 
     var x = setInterval(function() {
         
         let progresswidth =  time / initialTime * 100
-        console.log(progresswidth)
+        // console.log(progresswidth)
         
-
         // Time calculations for hours, minutes and seconds
         var hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         var minutes = Math.floor((time % (1000 * 60 * 60)) / (1000 * 60));
@@ -30,6 +31,7 @@ function display_countdown_timer(hours,minutes){
         // Display the result in the element with id="timer"
         document.getElementById("timer").innerHTML = ''
         document.getElementById("timer").innerHTML = `Time left: ` + hours + "h " + minutes + "m " + seconds + "s ";
+
 
         // console.log(document.getElementById('progressBar').innerHTML)
 
@@ -56,7 +58,7 @@ function display_countdown_timer(hours,minutes){
         }
 
         if (isHalf){
-            alert("Halftime")
+            alert("You're halfway there! Keep Going!")
             isHalf = false
         }
 

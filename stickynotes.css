@@ -12,7 +12,7 @@ body{
   height: 100%;
   position: relative;
   background-color:  #c68c53a8;
-  font-family: 'Architects Daughter', cursive;
+  /* font-family: 'Architects Daughter', cursive; */
 }
 
 button{
@@ -35,7 +35,7 @@ button:hover{
   z-index: 1;
   width: 100%;
   min-height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  /* background-color: rgba(0, 0, 0, 0.5); */
 }
 
 #inner_modal{
@@ -112,7 +112,8 @@ section{
 }
 
 .draggable{
-  width:300px;
+  width:auto;
+  max-width: 300px;
   height: 300px;
   transition: 2s;
   cursor: move;
