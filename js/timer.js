@@ -1,7 +1,7 @@
 // input time(hrs, mins) specified by user
 //updates element with id="timer" with a countdown timer
 
-function display_countdown_timer(hours,minutes){
+function displayTime(hours,minutes){
     var time = (hours * 60 * 60 + minutes * 60) * 1000
     // Update the count down every 1 second
     var x = setInterval(function() {
