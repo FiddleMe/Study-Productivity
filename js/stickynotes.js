@@ -58,9 +58,13 @@ createStickyNote = (text) => {
       element.addEventListener("click", update);
   }
   
-
-  
 }
+
+
+
+
+
+
 function update(){
 
       let confirmation = confirm("Are you sure you want to remove this note. No content will be saved")

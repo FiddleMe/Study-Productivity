@@ -2,16 +2,151 @@
 <html>
 <head>
 <title>Block Site</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="../mainpage.css">
+
+    <style>
+        
+        .banner-image {
+        background-image: url('../banner-img.jpg');
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-size: cover;
+        background-position: 100%;
+        background-repeat: no-repeat;
+        }
+        .navbar-brand{
+        font-size:large;
+        }
+        .dropdown {
+        position: relative;
+        display: inline-block;
+        }
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        padding: 12px 16px;
+        z-index: 1;
+        }
+        .dropdown:hover .dropdown-content {
+        display: block;
+        }
+
+        .rainbow:hover{
+        background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
+        animation: slidebg 5s linear infinite;
+        color: white
+        }
+
+        .rainbow{
+        background-color: #343A40;
+        border-radius: 4px;  
+        color: #fff;
+        cursor: pointer;
+        padding: 8px 16px; 
+        }
+        
+    </style>
 </head>
+
 <body>
 
-<h1>Block Site</h1>
+    <nav class="navbar navbar-expand-md bs-side-navbar fixed-top navbar-dark">
+        <a class="navbar-brand" href="#">LofiStudy</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-<textarea id="textarea" rows="10" cols="30" spellcheck="false"></textarea>
-<br>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Add Friends</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Block Settings<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">LeaderBoard</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <button id="auth">Connect to Spotify</button>
+                  <script src="js/Spotify api/spotify_auth.js"></script>
+                  <br />
 
-<button id="save">Save</button>
-<strong>Enabled?</strong><input id="checkbox" type="checkbox">
+                  <br />
+                  <button id="back">back</button>
+                  <button id="togglePlay">Start/Stop</button>
+                  <button id="next">next</button> -->
+                  <!--<div class="dropdown">
+                    <button class="dropbtn">List of Songs</button>
+
+                    <div class="dropdown-content">
+                      <ul id="playlists">
+                        
+                      </ul>
+                    </div>
+                  </div>
+                  <script src="js/Spotify api/playback_controls.js"></script>-->
+
+                  <!-- <div class="dropdown">
+                    <span>Playlist</span>
+                    <div class="dropdown-content">
+                    <ul id="playlists"></ul>
+                    </div>
+                  </div>
+                  <script src="js/Spotify api/playback_controls.js"></script>
+
+              </li>                
+              
+            </ul>
+            <br><br><br>
+            <img  class="specialGif" src="possiblegif1.gif" alt="gifUsed" width="100" height="100"> -->
+             <!--In case we need buttons
+          <form class="form-inline my-3 my-lg-0">
+            <button class="btn btn-outline-light" type="submit">Start Session</button>
+          </form>  -->
+        
+    </div>
+  </nav>
+
+
+<div class="banner-image  vh-100  d-flex justify-content-center align-content-center">
+    <div class="container p-5 gap-2 col-lg-8 mx-auto">
+        <div class="text-center">
+            <h1>Block Site</h1>
+            <!-- <textarea id="textarea" rows="10" cols="30" spellcheck="false"></textarea> -->
+            
+                <div class="form-floating m-3 p-2">
+                    <textarea class="form-control" id="textarea" placeholder="Enter your distracting sites here" id="floatingTextarea2" style="height: 400px"></textarea>
+                    <label for="floatingTextarea2">Enter your distracting sites here</label>
+                </div>
+                <br>
+                  
+            <div class="d-grid">
+                <button id="save" class="btn rainbow rainbow:hover">Save</button>
+            </div>
+            <br>
+            <!-- <strong>Enabled?</strong><input id="checkbox" type="checkbox"> -->
+        </div>
+
+        <div class="container d-flex justify-content-center">
+            <div class="form-check form-switch content text-center">
+                <label class="form-check-label" for="checkbox">Enabled?</label>
+                <input class="form-check-input" type="checkbox" id="checkbox">
+            </div>
+        </div>
+
+    </div>
+</div>
+
 
 <script src="options.js"></script>
 </body>
