@@ -15,14 +15,12 @@
 <style>
 *{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* change this to white */
-    color: black;
+
 }
 
 </style>
 
 <body>
-
 <h2 class="text-warning">Analytics</h1>
 <span id="app1">
 <div>
@@ -47,27 +45,7 @@
         </tr>   
     </tbody>
 </table>
-<div>
-    <canvas id="myChart2" style="position: relative; height:40vh; width:80vw"></canvas>
-</div>
-<table class="table" border='1'>
-    <thead>
-        <tr>
-            <th scope="col">Friends</th>
-            <th scope="col">Study Minutes</th>
-            <th scope="col">Profile</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr v-for="friend in series2"> 
-            <td>{{friend.name}}</td> 
-            <td>{{friend.study}} minutes</td> 
-            <!-- tooltips are triggered when hovering over -->
-            <td><a href='#' data-bs-toggle="tooltip" data-bs-placement="right" title="Under Construction">View me!</a>
-            </td>
-        </tr>   
-    </tbody>
-</table>
+
 <form>
     <div class="form-group-inline justify-content-center">
         <div>
@@ -101,13 +79,6 @@
 
                 // retrieve from database 
                 series: [
-                    {name: 'Jessica', study: 90, profile: ""},
-                    {name: 'Chaeyoung', study: 100, profile: ""},
-                    {name: 'Sunny', study: 45, profile: ""},
-                    {name: 'Lisa', study:80, profile: ""},
-                ],
-                series2: [
-                    {name: 'Me', study: 110, profile: ""},
                     {name: 'Jessica', study: 90, profile: ""},
                     {name: 'Chaeyoung', study: 100, profile: ""},
                     {name: 'Sunny', study: 45, profile: ""},
@@ -178,10 +149,9 @@ var config = {
     type: 'bar',
     data: data_things,
     options: {
-        
+
     }
 };
-
 </script>
 <script>
 var myChart = new Chart(
@@ -190,37 +160,6 @@ var myChart = new Chart(
 );
 </script>
 
-<!-- hardcode implementation for reference -->
-<script>
-
-var labels2=["Me", "Jessica", "Chaeyoung", "Sunny", "Lisa"];
-var data_numbers2=[110,90,100,45,80];
-
-var data_things2 = {
-labels: labels2,
-datasets: [{
-label: 'Time spent being productive',
-// pink color
-backgroundColor: 'rgb(255,148,224)',
-borderColor: 'rgb(255,148,224)',
-// take in input of array
-data: data_numbers2,
-}]
-};
-var config2 = {
-    type: 'bar',
-    data: data_things2,
-    options: {
-        
-    }
-};
-</script>
-<script>
-    var myChart2 = new Chart(
-        document.getElementById('myChart2'),
-        config2
-    );
-</script>
 
 </body>
 </html>
