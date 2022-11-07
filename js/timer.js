@@ -6,14 +6,14 @@ function displayTime(){
     display_countdown_timer(document.getElementById('hours').value, document.getElementById('minutes').value)
 }
 
-function endTime(){
-    clearInterval(x);
-    isDone = true
-    document.getElementById("timer").innerHTML = "Start Again?";
-    document.getElementById("progressBar").innerHTML = ''
-    document.getElementById('input1').style.display = 'block'
-    document.getElementById('input2').style.display = 'block'
-}
+// function endTime(){
+//     clearInterval(x);
+//     isDone = true
+//     document.getElementById("timer").innerHTML = "Start Again?";
+//     document.getElementById("progressBar").innerHTML = ''
+//     document.getElementById('input1').style.display = 'block'
+//     document.getElementById('input2').style.display = 'block'
+// }
 
 function display_countdown_timer(hours,minutes){
     var time = (hours * 60 * 60 + minutes * 60) * 1000
@@ -37,6 +37,8 @@ function display_countdown_timer(hours,minutes){
 
     document.getElementById('input1').style.display = 'none'
     document.getElementById('input2').style.display = 'none'
+    // console.log( document.getElementById('input1').style.display)
+    // document.getElementById('input2').innerHTML = ''
     // buttonAct.removeEventListener('click', displayTime)
     // buttonAct.addEventListener('click', endTime())
 
@@ -72,8 +74,13 @@ function display_countdown_timer(hours,minutes){
             isDone = true
             document.getElementById("timer").innerHTML = "Start Again?";
             document.getElementById("progressBar").innerHTML = ''
-            document.getElementById('input1').style.display = 'block'
-            document.getElementById('input2').style.display = 'block'
+            document.getElementById('input1').style.display = ''
+            document.getElementById('input2').style.display = ''
+
+            // document.getElementById('input1').innerHTML = `<span class="input-group-text" id="basic-addon1">Hours</span>
+            // <input type="text" class="form-control" id="hours" name="hours" value="" aria-label="Username" aria-describedby="basic-addon1">`
+            // document.getElementById('input2').innerHTML = `<span class="input-group-text" id="basic-addon1">Minutes</span>
+            // <input type="text" class="form-control" id="minutes" name="minutes" value="" aria-label="Username" aria-describedby="basic-addon1">`
         }
 
         else{
