@@ -6,13 +6,13 @@ var index = 0;
 
 window.onload = document.querySelector("#user_input").select();
 
-document.querySelector("#add_note").addEventListener("click", () => {
-  document.querySelector("#modal").style.display = "block";
+document.querySelector("#sticky_add_note").addEventListener("click", () => {
+  document.querySelector("#sticky_modal").style.display = "block";
 });
 
-document.querySelector("#hide").addEventListener("click", () => {
+document.querySelector("#hide_sticky").addEventListener("click", () => {
   document.getElementById("user_input").value = "";
-  document.querySelector("#modal").style.display = "none";
+  document.querySelector("#sticky_modal").style.display = "none";
 });
 
 document.querySelector("#user_input").addEventListener('keydown', (event) => {
@@ -21,7 +21,7 @@ document.querySelector("#user_input").addEventListener('keydown', (event) => {
     createStickyNote(text.value);
     setTimeout(()=>{
       document.getElementById("user_input").value = "";
-      document.querySelector("#modal").style.display = "none";
+      document.querySelector("#sticky_modal").style.display = "none";
     },250);
     
   }
@@ -31,7 +31,7 @@ createStickyNote = (text) => {
   let mainNote = document.createElement("div");
   let note = document.createElement("div");
   let details = document.createElement("div");
-  let noteText = document.createElement("h1");
+  let noteText = document.createElement("span");
   let closeButton = document.createElement("i");
   
   closeButton.className = "closeButton far fa-times-circle";
@@ -39,16 +39,16 @@ createStickyNote = (text) => {
   note.className = "draggable";
   details.className = "details";
   noteText.textContent = text;
-  closeButton.setAttribute("style", 'font-size: 1.4rem;color: gray;cursor: pointer;  transition: 1s ease-in-out; position:absolute; top: 20px; right: 20px');
+  closeButton.setAttribute("style", 'font-size: 1.4rem;color: gray;cursor: pointer;  transition: 1s ease-in-out; position:absolute; top: 10px; right: 10px');
   details.appendChild(noteText);
   note.appendChild(details);
   note.appendChild(closeButton);
   if(index > random_colors.length - 1)
     index = 0;
   
-  note.setAttribute("style", `margin: 10px; background-color:${random_colors[index++]}; position: relative;`);
+  note.setAttribute("style", `margin: 5px; background-color:${random_colors[index++]}; position: relative;`);
   
-  document.querySelector("#all_notes").appendChild(note);
+  document.querySelector("#sticky_all_notes").appendChild(note);
   let buttons = document.getElementsByClassName("closeButton");
   setTimeout(()=>{
 
