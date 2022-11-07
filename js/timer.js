@@ -83,13 +83,17 @@ function display_countdown_timer(hours,minutes){
         if (time == original_time/2){
             isHalf = true
         }
-
-        if (isHalf){
+        if(!isHalf && !isDone){
+            document.getElementById('gif_now').innerHTML = '<img src="gifs/gif2.gif" id="gif_now" style="margin-top: 7px; height:50px; width: 150px">'
+        }
+        else if (isHalf && !isDone){
+            document.getElementById('gif_now').innerHTML = '<img src="gifs/gif3.gif" id="gif_now" style="margin-top: 7px; height:50px; width: 150px">'
             alert("You're halfway there! Keep Going!")
             isHalf = false
         }
 
-        if(isDone){
+        else if(isDone && !isHalf){
+            document.getElementById('gif_now').innerHTML = '<img src="gifs/gif4.gif" id="gif_now" style="margin-top: 7px; height:50px; width: 150px">'
             alert("Congratulations! You have completed your session!")
             
         }
