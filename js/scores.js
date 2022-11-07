@@ -1,10 +1,12 @@
-//Map past_scores = {date: score, date:score, ...}
-
+import { getFirestore, doc, arrayUnion, setDoc, getDoc, collection, addDoc, updateDoc, deleteDoc,deleteField } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
+const db = getFirestore();
 
 //date = "day/month/year"
 //score = int minutes
 
+
 //change Date() object into string"day/month/year"
+
 function formatDate(date){
     var formatted_date = date.getDate().toString()+"/"+date.getMonth().toString()+"/"+date.getFullYear().toString();
     return formatted_date;
@@ -17,7 +19,7 @@ function get_time(){
     var d = new Date();
     var time = d.getTime();
     console.log(d,time);
-    return time
+    return time;
 }
 //     var score = (end - start) / 60000 ;
 //         console.log(score);
@@ -30,7 +32,7 @@ async function add_score(score, userId){
 
     const docSnap = await getDoc(ref);
         
-    var curr_score = docSnap.data().TotalScore;
+    var curr_score = docSnap.data().TotalTime;
         console.log(curr_score);
     score += curr_score;
         console.log(score);
@@ -46,7 +48,7 @@ async function add_score(score, userId){
     })
     
     //update PastScores from db
-    //i think this doesnt work yet, refer to add custom objects to firestore
+    
     var past_scores = docSnap.data().PastScores;
     
     var today = formatDate(new Date());
@@ -74,7 +76,7 @@ async function add_score(score, userId){
         console.log(error);
     })
 
-}
+};
 
 
 function display_stats(past_scores){
@@ -99,12 +101,7 @@ function display_stats(past_scores){
 }
 
 //TESTS
-var test_data = new Map([
-    ["16/9/2022", 500],
-    ["15/9/2022", 300],
-    ["2/9/2022", 300],
-    ["5/9/2022", 300],
-    ["17/9/2022", 200]
-  ]);
-display_stats(test_data);
-update_past_scores(2401, test_data);  
+
+//display_stats(test_data);
+
+add_score(100, localStorage.getItem("uid"));

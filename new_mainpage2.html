@@ -92,7 +92,7 @@
         margin: 50px;
         width: 120px;
       }
-      #signup{
+      #signupoption{
         margin: 20px;
         color:white;
       }
@@ -160,6 +160,41 @@
     button{
       font-size: 13px;
     }
+    #musicbar{
+      position: absolute;
+      bottom:10px;
+    
+      
+    }
+    .container{
+      display:none;
+      justify-content: center;
+      
+    }
+    .playpause {
+      padding: 20px;
+      border-radius: 50%;
+      background: transparent;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+    }
+
+    .playpause:hover {
+      background: #464646;
+    }
+
+    .playpause .button {
+      width: 30px;
+      height: 30px;
+      background: #f0f0f0;
+      transition: inherit;
+      clip-path: polygon(0 0, 50% 25%, 50% 75%, 50% 75%, 50% 25%, 100% 50%, 100% 50%, 0 100%);
+    }
+
+    .playpause.playing .button {
+      clip-path: polygon(0 0, 40% 0, 40% 100%, 60% 100%, 60% 0, 100% 0, 100% 100%, 0 100%);
+    }
+    
   /*ENDS: Styling for backgrounf and login buttons*/
   </style>
 
@@ -203,7 +238,7 @@
                   <li class="nav-item">
                     <!-- <a class="nav-link text-light" aria-current="page" href="#">LeaderBoard</a> -->
                     <button  class="glow-on-hover" style="margin: 5px;">
-                      <a class="nav-link text-light" aria-current="page" href="#">LeaderBoard</a>
+                      <a class="nav-link text-light" aria-current="page" href="friendly.html">LeaderBoard</a>
                     </button>
                     
                   </li>
@@ -237,17 +272,9 @@
                    
               
                   <li><button id="auth" class="glow-on-hover" style="margin: 5px;">Connect to Spotify</button></li>
-                  <script src="js/Spotify api/spotify_auth.js"></script>
-                  <li><button id="back" class="glow-on-hover" style="margin: 5px;">Back</button></li>
-                  <li><button id="togglePlay" class="glow-on-hover" style="margin: 5px;">Start/Stop</button></li>
-                  <li><button id="next" class="glow-on-hover" style="margin: 5px;">next</button></li>
-                  <li><div class="dropdown">
-                    <button id="playlist_button" class="glow-on-hover" style="margin: 5px;">Playlist</button>
-                    <div class="dropdown-content">
-                      <ul id="playlists"></ul>
-                    </div>
-                  </div></li>
-                  <li><button id="getstarted" class="glow-on-hover" style="margin: 5px;" onclick="displaygetStarted()">Login</button></li>
+                  
+                  <li><button id="loginbutton" class="glow-on-hover" style="margin: 5px;" onclick="displaygetStarted()">Login</button></li>
+                  <li id="logoutlist" style="display:none;"><button id="logout" class="glow-on-hover" style="margin: 5px;">Logout</button></li>
                 </ul>
                 <script src="js/Spotify api/playback_controls.js"></script>  
               </div>
@@ -262,23 +289,26 @@
        <div class="modal" id="loginpage">
          <div class="inner_modal">
             <i class="far fa-times-circle" id="hide"></i>
-           <input type="text" class="username" placeholder="Username">
-           <input type="password" class="password" placeholder="Password" >
-           <button class="btn btn-primary">Login</button>
-           <div id="signup">
+           <input type="text" class="email" placeholder="email" id="email">
+           <input type="password" class="password" placeholder="Password" id="password" >
+           <button class="btn btn-primary" id="login">Login</button>
+           <div id="signupoption">
              Don't have an account? <button class="btn btn-outline-primary"onclick="displaySignup()">Sign up now!</button>
            </div>
          </div>
        </div>
        <div class="modal" id="signuppage">
          <div class="inner_modal">
-           <i class="far fa-times-circle" id="hide_sign"></i>
-           <input type="email" id="email" placeholder="Email">
-           <input type="text" id="username" placeholder="Username">
-           <input type="password" id="signupPassword" placeholder="Password" >
-           <input type="password" id="confirm" placeholder="Password" >
-           <button class="btn btn-primary">Sign Up</button>
-           <div id="signup">
+           <i class="far fa-times-circle" id="hide_sign" ></i>
+           <label>Email : </label>   
+            <input id="signupemail" type="text" placeholder="Enter Email" name="email" required>
+            
+            <input id="username" type="text" placeholder="Enter Username" name="username" required>
+          
+            <input id="signupPassword" type="password" placeholder="Enter Password" name="password" required>
+            <input type="password" id="confirm" placeholder="Confirm password" name="confirms" required>  
+            <button class="btn btn-primary" id="signupbtn">Signup</button> 
+           <div>
             <button class="btn btn-primary" onclick="displaygetStarted()">Back to login!</button>
            </div>
          </div>
@@ -291,11 +321,11 @@
   
      <!-- Banner Image  -->
     <!--editted: w-100 removed-->
-    <div class="banner-image  vh-100  d-flex justify-content-center">
+    <!-- <div class="banner-image  vh-100  d-flex justify-content-center">
       <div class="content text-center">
-        <div class="content text-center container-fluid">
+        <div class="content text-center container-fluid"> -->
           <!-- <h1 class="p-3">Hello</h1> -->
-          <div class="input-group mx-auto my-5">
+          <!-- <div class="input-group mx-auto my-5">
             <span class="input-group-text" id="basic-addon1">Hours</span>
             <input type="text" class="form-control" id="hours" name="hours" value="" aria-label="Username" aria-describedby="basic-addon1">
           </div>
@@ -309,11 +339,10 @@
   
           <h3 id="timer" class="text-secondary"></h3>
   
-          <div id="progressBar">
-          </div>
+          <div id="progressBar"></div>
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- Main Content Area: To be replaced with sticky notes if it exceeds the first picture -->
     <!--<div class="container my-5 d-grid gap-5">
       <div class="p-5 border">
@@ -371,21 +400,44 @@
       });
     </script>-->
 
-
+  <!-- music bar -->
+<div class="container">
+    <div id="musicbar">'
+      <div class="playpause">
+        <div id="togglePlay" class="button"></div>
+      </div>
+        <!-- <button id="back" class="glow-on-hover" style="margin: 5px;">Back</button>
+        <button id="togglePlay" class="glow-on-hover" style="margin: 5px;">Start/Stop</button>
+        <button id="next" class="glow-on-hover" style="margin: 5px;">next</button>
+        
+        <div class="dropdown">
+          <button id="playlist_button" class="glow-on-hover" style="margin: 5px;">Playlist</button>
+          <div class="dropdown-content">
+            <ul id="playlists"></ul>
+          </div>
+        </div> -->
+    </div>
+</div>
+                
 
   <!--Script of: Login, signup-->
     <script>
+      console.log(document.getElementById("signupbtn"))
       function displaygetStarted(){
-        document.querySelector("#getstarted").style.display = "none";
+        document.querySelector("#loginbutton").style.display = "none";
         document.querySelector("#signuppage").style.display = "none";
         document.querySelector("#loginpage").style.display = "block";
       }
       document.querySelector("#hide").addEventListener("click", () => {
-        document.querySelector("#getstarted").style.display = "block";
+        document.querySelector("#loginbutton").style.display = "block";
         document.querySelector("#loginpage").style.display = "none";
       });
+      document.querySelector("#hide_sign").addEventListener("click", () => {
+        document.querySelector("#loginbutton").style.display = "block";
+        document.querySelector("#signuppage").style.display = "none";
+      });
     function displaySignup(){
-      document.querySelector("#getstarted").style.display = "none";
+      document.querySelector("#loginbutton").style.display = "none";
       document.querySelector("#loginpage").style.display = "none";
       document.querySelector("#signuppage").style.display = "block";
       document.querySelector("#hide_sign").addEventListener("click", () => {
@@ -393,14 +445,20 @@
       document.querySelector("#signuppage").style.display = "none";
       })
     } 
+    const playpause = document.querySelector('.playpause');
+
+    playpause.addEventListener('click', () => {
+      playpause.classList.toggle('playing');
+    });
     </script>
   <!--ENDS: Login, signup-->
-
-
+  <script src="js/Spotify api/spotify_auth.js"></script>
+  <script src="./js/login.js" type="module"></script>
   <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-  <script src="timer/timer.js"></script>
+  <!-- <script src="timer/timer.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <!--https://codingyaar.com/bootstrap-navbar-hover-background-color/-->
 </body>
 </html>
+  

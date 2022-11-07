@@ -32,20 +32,42 @@ onAuthStateChanged(auth, (user) => {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/firebase.User
       const uid = user.uid;
-   
-
+      console.log(uid)
+      localStorage.setItem("uid",uid);
+      document.getElementById("footer").style.display = "none";
+      document.getElementById("logoutlist").style.display ="block"
+      document.getElementById("loginpage").style.display = "none" 
+      document.getElementsByClassName("container")[0].style.display = "flex" 
+      // var btn = document.getElementById("loginbutton");
+      // btn.setAttribute("onClick", "");
+      // btn.setAttribute("id","logout")
+      // btn.innerText = "Logout"
+      // console.log(btn)
+      // 
+      // document.querySelector("#loginpage").style.display = "none  ";
+      
       // ...
     } else {
       // User is signed out
       // ...
+      
+      
+      // var btn = document.getElementById("loginbutton");
+      // btn.setAttribute("onClick", "displaygetStarted()");
+      // btn.setAttribute("id","loginbutton")
+      // btn.innerText = "Login"
+      // console.log(btn)
+      
+
+      
     }
 });
 
 function login(){
     
-    var email = document.getElementById("loginName").value;
-    console.log(email);
-    var password = document.getElementById("loginPassword").value;
+    var email = document.getElementById("email").value;
+    
+    var password = document.getElementById("password").value;
     // console.log(email)
     // console.log(password)
     if(email != "" && password != ""){
@@ -55,7 +77,8 @@ function login(){
             // Signed in 
             const user = userCredential.user;
             console.log("logged in");
-            window.location.replace("./sendFriend.html");
+            alert("logged in!")
+           
             // ...
         })
         .catch((error) => {
@@ -70,6 +93,9 @@ function login(){
     }
     
   }
+  document.getElementById("logout").addEventListener("click", logout);
+  // console.log(document.getElementById("signupbtn"));
+  document.getElementById("signupbtn").addEventListener("click", signup);
   document.getElementById("login").addEventListener("click", login);
 
   //add new document to database
@@ -113,7 +139,7 @@ function login(){
     })
     .then(()=>{
       alert("updated total successfully")
-      window.location.replace("./sendFriend.html");
+    
     })
     .catch((error)=>{
       alert("Unsuccessfuly")
@@ -123,10 +149,14 @@ function login(){
   //sign up function
   function signup(){
     var friends = [];
-    var email = document.getElementById("email").value;
+    var email = document.getElementById("signupemail").value;
     var password = document.getElementById("signupPassword").value;
     var confirm = document.getElementById("confirm").value;
     var username = document.getElementById("username").value;
+    console.log(email)
+    console.log(password)
+    console.log(confirm)
+    console.log(username)
     if(confirm != password){
       return
     }
@@ -158,10 +188,12 @@ function login(){
     event.preventDefault();
     auth.signOut().then(() => {
        console.log("user signed out")
+       document.getElementById("footer").style.display = "block";
+       document.getElementById("logoutlist").style.display ="none"
+       document.getElementsByClassName("container")[0].style.display = "none" 
+       document.getElementById("loginbutton").style.display = "block"
     })
   }
+ 
 
-  document.getElementById("signup").addEventListener("click", signup);
-  document.getElementById("test").addEventListener("click", addDocument);
-  document.getElementById("logout").addEventListener("click", logout);
   
