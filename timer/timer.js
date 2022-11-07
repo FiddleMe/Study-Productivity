@@ -20,6 +20,15 @@ function display_countdown_timer(hours,minutes){
     document.getElementById('save').style.display = 'none'
 
 
+    if (document.getElementById('hours').value == '' && document.getElementById('minutes').value == ''){
+        document.getElementById("timer").innerHTML = 'Enter your session duration'
+        return
+    }
+
+    if (isNaN(document.getElementById('hours').value) || isNaN(document.getElementById('minutes').value == '')){
+        document.getElementById("timer").innerHTML = 'Enter a valid duration'
+        return
+    }
     
 
 

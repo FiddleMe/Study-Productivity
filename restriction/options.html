@@ -125,8 +125,8 @@
             <!-- <textarea id="textarea" rows="10" cols="30" spellcheck="false"></textarea> -->
             
                 <div class="form-floating m-3 p-2">
-                    <textarea class="form-control" id="textarea" placeholder="Enter your distracting sites here" id="floatingTextarea2" style="height: 400px"></textarea>
-                    <label for="floatingTextarea2">Enter your distracting sites here</label>
+                    <textarea class="form-control" id="textarea" placeholder="Enter your distracting sites here, entering each website in a new line" style="height: 400px"></textarea>
+                    <label for="textarea">Enter your distracting sites here</label>
                 </div>
                 <br>
                   
@@ -138,11 +138,18 @@
         </div>
 
         <div class="container d-flex justify-content-center">
-            <div class="form-check form-switch content text-center">
-                <label class="form-check-label" for="checkbox">Enabled?</label>
-                <input class="form-check-input" type="checkbox" id="checkbox">
+            <div class="text-center m-3">
+                <h3 id="msg" class="text-white"></h3>
             </div>
         </div>
+
+
+          <table id="blocked">
+            <header class="bg-light">
+              <th class="text-white">List of Sites To Block</th>
+            </header>
+          </table>
+
 
     </div>
 </div>
