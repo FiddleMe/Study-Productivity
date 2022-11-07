@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Block Site</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="mainpage.css">
+
+    <style>
+<<<<<<< HEAD
+=======
+        
+        *{
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+      }
+      
+
+        body{
+            background-color: #67549A;
+        }
+<<<<<<< HEAD:restriction/options.html
+>>>>>>> 7e74575ac73010d3bc985e973207671cb98a2316
+=======
+
+
+        button{
+      font-size: 13px;
+      }
+      
+>>>>>>> 6bf4d1885c5207ee72a45585bce5a6582ce3b254:restriction/option2.html
+        .banner-image {
+        background-image: url('../banner-img.jpg');
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-size: cover;
+        background-position: 100%;
+        background-repeat: no-repeat;
+        }
+
+        .navbar-brand{
+        font-size:large;
+        }
+        .dropdown {
+        position: relative;
+        display: inline-block;
+        }
+        .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        padding: 12px 16px;
+        z-index: 1;
+        }
+        .dropdown:hover .dropdown-content {
+        display: block;
+        }
+
+        .bg-image{
+        background-image: url('../images/background.gif'); 
+        height: 100%; 
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        background-attachment: fixed;
+        }
+
+        .glow-on-hover {
+        width: 100px;
+        height: 50px;
+        border: none;
+        outline: none;
+        color: #fff;
+        background: #111;
+        cursor: pointer;
+        position: relative;
+        z-index: 0;
+        border-radius: 10px;
+        opacity: 80%;
+        }
+
+        .glow-on-hover:before {
+        content: '';
+        background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+        position: absolute;
+        top: -2px;
+        left:-2px;
+        background-size: 400%;
+        z-index: -1;
+        filter: blur(5px);
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        animation: glowing 20s linear infinite;
+        opacity: 0;
+        transition: opacity .3s ease-in-out;
+        border-radius: 10px;
+        }
+
+        .glow-on-hover:active {
+            color: #000
+        }
+
+        .glow-on-hover:active:after {
+            background: transparent;
+        }
+
+        .glow-on-hover:hover:before {
+            opacity: 1;
+        }
+
+        .glow-on-hover:after {
+            z-index: -1;
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #111;
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+
+    
+<div class="bg-image container-fluid">
+    <div>
+        <!-- <nav class="navbar navbar-expand-md bs-side-navbar fixed-top navbar-dark">
+            <a class="navbar-brand" href="#">LofiStudy</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Add Friends</a>
+                    </li>
+                    <li class="nav-item active">
+                      <a class="nav-link" href="#">Block Settings<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">LeaderBoard</a>
+                    </li> -->
+                    <!-- <li class="nav-item">
+                        <button id="auth">Connect to Spotify</button>
+                      <script src="js/Spotify api/spotify_auth.js"></script>
+                      <br />
+                      <br />
+                      <button id="back">back</button>
+                      <button id="togglePlay">Start/Stop</button>
+                      <button id="next">next</button> -->
+                      <!--<div class="dropdown">
+                        <button class="dropbtn">List of Songs</button>
+                        <div class="dropdown-content">
+                          <ul id="playlists">
+                            
+                          </ul>
+                        </div>
+                      </div>
+                      <script src="js/Spotify api/playback_controls.js"></script>-->
+    
+                      <!-- <div class="dropdown">
+                        <span>Playlist</span>
+                        <div class="dropdown-content">
+                        <ul id="playlists"></ul>
+                        </div>
+                      </div>
+                      <script src="js/Spotify api/playback_controls.js"></script>
+                  </li>                
+                  
+                </ul>
+                <br><br><br>
+                <img  class="specialGif" src="possiblegif1.gif" alt="gifUsed" width="100" height="100"> -->
+                 <!--In case we need buttons
+              <form class="form-inline my-3 my-lg-0">
+                <button class="btn btn-outline-light" type="submit">Start Session</button>
+              </form>  -->
+        <!-- </div>
+      </nav> -->
+      <!--NAVBAR-->
+      <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">GIFHERE</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Pricing</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav> -->
+      <nav class="navbar navbar-expand-lg ">
+              
+        <!-- <img src="images/possiblegif1.gif" alt="" id="possiblegif1"> -->
+      <div class="container-fluid">
+          <button class="navbar-toggler bg-dark navbar-dark"  type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+         
+      
+        
+        
+       
+          <div class="collapse navbar-collapse  " id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <!-- <a class="nav-link active text-light" aria-current="page" href="#">Home</a> -->
+                <button  class="glow-on-hover" style="margin: 5px;">
+                  <a class="nav-link  text-light" aria-current="page" href="#">Home</a>
+                </button>
+              </li>
+              <li class="nav-item">
+                <!-- <a class="nav-link text-light" aria-current="page" href="#">Add Friends</a> -->
+                <button  class="glow-on-hover" style="margin: 5px;">
+                  <a class="nav-link text-light" aria-current="page" href="#">Add Friends</a>
+                </button>
+              </li>
+              <li class="nav-item">
+                <!-- <a class="nav-link text-light" aria-current="page" href="#">Block Settings</a> -->
+                <button  class="glow-on-hover" style="margin: 5px;">
+                  <a class="nav-link text-light" aria-current="page" href="#">Settings</a>
+                </button>
+              </li>
+              <li class="nav-item">
+                <!-- <a class="nav-link text-light" aria-current="page" href="#">LeaderBoard</a> -->
+                <button  class="glow-on-hover" style="margin: 5px;">
+                  <a class="nav-link text-light" aria-current="page" href="friendly.html">LeaderBoard</a>
+                </button>
+                
+              </li>
+              <!-- <li class="nav-item">
+                  <button id="auth">Connect to Spotify</button>
+                  <script src="js/Spotify api/spotify_auth.js"></script>
+              </li>
+              <li class="nav-item">
+                  <button id="back">back</button>
+                  <button id="togglePlay">Start/Stop</button>
+                  <button id="next">next</button>
+              </li> -->
+              <!-- <div class="dropdown">
+                    <button class="dropbtn">List of Songs</button>
+    
+                    <div class="dropdown-content">
+                      <ul id="playlists">
+                        
+                      </ul>
+                    </div>
+                  </div>
+              <script src="js/Spotify api/playback_controls.js"></script> -->
+                <!--<li class="nav-item">
+                  <div class="dropdown">
+                    <span style="color: White">Playlist</span>
+                    <div class="dropdown-content">
+                      <ul id="playlists"></ul>
+                    </div>
+                  </div> 
+                </li>-->
+               
+          
+              <li><button id="auth" class="glow-on-hover" style="margin: 5px;">Connect to Spotify</button></li>
+              
+              <li><button id="loginbutton" class="glow-on-hover" style="margin: 5px;" onclick="displaygetStarted()">Login</button></li>
+              <li id="logoutlist" style="display:none;"><button id="logout" class="glow-on-hover" style="margin: 5px;">Logout</button></li>
+            </ul>
+            <script src="js/Spotify api/playback_controls.js"></script>  
+          </div>
+       
+        
+      </div>
+    </nav>
+    
+      <div class="vh-100 d-flex justify-content-center align-content-center">
+            <div class="container p-5">
+                <div class="text-center">
+                    <div class="p-3 rounded mb-4" style="background-color: #67549A;">
+                        <h1 style="color: #EFBED5;">Block Site</h1>
+                    </div>
+
+                    <div class="row align-content-top">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-floating">
+                                <textarea class="form-control" id="textarea" placeholder="Enter your distracting sites here, entering each website in a new line" style="height: 600px"></textarea>
+                                <label for="textarea">Enter your distracting sites here, seperating each</label>
+                                <br>
+                                
+                            </div>
+                            
+                                
+                            
+                            <br>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6">
+                            <div id="blocked" class="container rounded" style="background-color: #BA639A; height: 600px">
+                                <table>
+                                    <header>
+                                    <td id="mySites" class="text-white p-2">Start Adding Sites to Block</td>
+                                    </header>
+                                </table>
+                            </div>
+
+                            <div id="warn" class="container justify-content-center rounded bg-warning" style="display:none">
+                                <div class="text-center m-3 p-3">
+                                    <h3 id="msg" class="text-dark"></h3>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    
+                    </div>
+                    <div class="d-grid justify-content-center">
+                        <button id="save" class="btn glow-on-hover">Save</button>
+                    </div>
+
+                    
+                    <!-- <textarea id="textarea" rows="10" cols="30" spellcheck="false"></textarea> -->
+                    
+                    
+                    <!-- <strong>Enabled?</strong><input id="checkbox" type="checkbox"> -->
+                </div>
+    
+
+    
+    
+                
+                
+    
+    
+            </div>
+        </div>
+    
+    </div>
+
+</div>
+
+
+
+
+
+<script src="options.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
