@@ -6,6 +6,15 @@ function displayTime(){
     display_countdown_timer(document.getElementById('hours').value, document.getElementById('minutes').value)
 }
 
+function endTime(){
+    clearInterval(x);
+    isDone = true
+    document.getElementById("timer").innerHTML = "Start Again?";
+    document.getElementById("progressBar").innerHTML = ''
+    document.getElementById('input1').style.display = 'block'
+    document.getElementById('input2').style.display = 'block'
+}
+
 function display_countdown_timer(hours,minutes){
     var time = (hours * 60 * 60 + minutes * 60) * 1000
     var initialTime = time
@@ -13,9 +22,26 @@ function display_countdown_timer(hours,minutes){
     var original_time = time
     var isHalf =  false
     var isDone = false
+    // const buttonAct = document.getElementById('save')
+
+    if (document.getElementById('hours').value == '' && document.getElementById('minutes').value == ''){
+        document.getElementById("timer").innerHTML = 'Enter your session duration to start'
+        return
+    }
+
+
+    if (isNaN(document.getElementById('hours').value) || isNaN(document.getElementById('minutes').value)){
+        document.getElementById("timer").innerHTML = 'Please enter a valid duration to start'
+        return
+    }
+
+    document.getElementById('input1').style.display = 'none'
+    document.getElementById('input2').style.display = 'none'
+    // buttonAct.removeEventListener('click', displayTime)
+    // buttonAct.addEventListener('click', endTime())
+
 
     
-
 
     var x = setInterval(function() {
         
@@ -46,6 +72,8 @@ function display_countdown_timer(hours,minutes){
             isDone = true
             document.getElementById("timer").innerHTML = "Start Again?";
             document.getElementById("progressBar").innerHTML = ''
+            document.getElementById('input1').style.display = 'block'
+            document.getElementById('input2').style.display = 'block'
         }
 
         else{
@@ -63,6 +91,7 @@ function display_countdown_timer(hours,minutes){
 
         if(isDone){
             alert("Congratulations! You have completed your session!")
+            
         }
 
         time = time - 1000;
