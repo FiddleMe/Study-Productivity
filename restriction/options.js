@@ -1,3 +1,9 @@
+function remove(i)
+{
+  document.getElementById(i).style.display= 'none'
+}
+
+
 const textarea = document.getElementById("textarea");
 const save = document.getElementById("save");
 const checkbox = document.getElementById("checkbox");
@@ -6,15 +12,15 @@ const checkbox = document.getElementById("checkbox");
 save.addEventListener("click", () => {
   
   if (textarea.value == ''){
-    document.getElementById('warn').style.display = 'block'
-    document.getElementById('msg').innerHTML = 'List of sites cannot be empty to continue'
+    document.getElementById('mySites').innerHTML = 'No sites were added as input was empty'
   }
 
 
   //added conditions for form validation: 2. if a non-website is entered
   else{
+    
     document.getElementById('warn').style.display = 'none'
-    document.getElementById('blocked').style.display = 'block'
+    document.getElementById('mySites').innerHTML = 'List of sites to block'
     var blocked = textarea.value.split("\n").map(s => s.trim()).filter(Boolean);
     console.log(blocked)
 
@@ -27,11 +33,20 @@ save.addEventListener("click", () => {
 
       else{
         let tr = document.createElement("tr")
-        let td = document.createElement("td")
+        let td1 = document.createElement("td")
+        let td2 = document.createElement("td")
+        let td3 = document.createElement("td")
         console.log(blocked[i])
-        td.innerHTML = `<p class="text-white">${blocked[i]}</p>`
+        
+        td3.innerHTML = ` `
+        td1.innerHTML = `<p class="text-white p-1 mr-3">${blocked[i]}</p>`
+        td2.innerHTML = `<button class="btn btn-light" onclick="remove(${blocked[i]})"> Delete Site </button>`
+      
+        console.log(tr.id)
         // td.className="text-white py-3"
-        tr.appendChild(td)
+        tr.appendChild(td1)
+        tr.appendChild(td3)
+        tr.appendChild(td2)
         document.getElementById('blocked').appendChild(tr)
       }
     }
