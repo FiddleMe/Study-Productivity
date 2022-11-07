@@ -92,7 +92,7 @@
         margin: 50px;
         width: 120px;
       }
-      #signup{
+      #signupoption{
         margin: 20px;
         color:white;
       }
@@ -163,8 +163,7 @@
     #musicbar{
       position: absolute;
       bottom:10px;
-      background-color: rgba(0, 0, 0, 0.35);  
-
+    
       
     }
     .container{
@@ -172,6 +171,30 @@
       justify-content: center;
       
     }
+    .playpause {
+      padding: 20px;
+      border-radius: 50%;
+      background: transparent;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+    }
+
+    .playpause:hover {
+      background: #464646;
+    }
+
+    .playpause .button {
+      width: 30px;
+      height: 30px;
+      background: #f0f0f0;
+      transition: inherit;
+      clip-path: polygon(0 0, 50% 25%, 50% 75%, 50% 75%, 50% 25%, 100% 50%, 100% 50%, 0 100%);
+    }
+
+    .playpause.playing .button {
+      clip-path: polygon(0 0, 40% 0, 40% 100%, 60% 100%, 60% 0, 100% 0, 100% 100%, 0 100%);
+    }
+    
   /*ENDS: Styling for backgrounf and login buttons*/
   </style>
 
@@ -379,8 +402,11 @@
 
   <!-- music bar -->
 <div class="container">
-    <div id="musicbar">
-        <button id="back" class="glow-on-hover" style="margin: 5px;">Back</button>
+    <div id="musicbar">'
+      <div class="playpause">
+        <div class="button"></div>
+      </div>
+        <!-- <button id="back" class="glow-on-hover" style="margin: 5px;">Back</button>
         <button id="togglePlay" class="glow-on-hover" style="margin: 5px;">Start/Stop</button>
         <button id="next" class="glow-on-hover" style="margin: 5px;">next</button>
         
@@ -389,7 +415,7 @@
           <div class="dropdown-content">
             <ul id="playlists"></ul>
           </div>
-        </div>
+        </div> -->
     </div>
 </div>
                 
@@ -419,6 +445,11 @@
       document.querySelector("#signuppage").style.display = "none";
       })
     } 
+    const playpause = document.querySelector('.playpause');
+
+    playpause.addEventListener('click', () => {
+      playpause.classList.toggle('playing');
+    });
     </script>
   <!--ENDS: Login, signup-->
   <script src="js/Spotify api/spotify_auth.js"></script>
