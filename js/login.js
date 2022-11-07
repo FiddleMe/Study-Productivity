@@ -33,6 +33,7 @@ onAuthStateChanged(auth, (user) => {
       // https://firebase.google.com/docs/reference/js/firebase.User
       const uid = user.uid;
       console.log(uid)
+      localStorage.setItem("uid",uid);
       document.getElementById("footer").style.display = "none";
       document.getElementById("logoutlist").style.display ="block"
       document.getElementById("loginpage").style.display = "none" 
