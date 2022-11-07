@@ -163,7 +163,10 @@
     #musicbar{
       position: absolute;
       bottom:10px;
-    
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: center;
+      align-items: center;
       
     }
     .container{
@@ -194,6 +197,7 @@
     .playpause.playing .button {
       clip-path: polygon(0 0, 40% 0, 40% 100%, 60% 100%, 60% 0, 100% 0, 100% 100%, 0 100%);
     }
+  
     
   /*ENDS: Styling for backgrounf and login buttons*/
   </style>
@@ -369,9 +373,12 @@
   <!-- music bar -->
 <div class="container">
     <div id="musicbar">'
+      
       <div class="playpause">
         <div id="togglePlay" class="button"></div>
       </div>
+      
+      
         <!-- <button id="back" class="glow-on-hover" style="margin: 5px;">Back</button>
         <button id="togglePlay" class="glow-on-hover" style="margin: 5px;">Start/Stop</button>
         <button id="next" class="glow-on-hover" style="margin: 5px;">next</button>
