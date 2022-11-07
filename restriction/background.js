@@ -9,6 +9,28 @@ const RESOLUTIONS = [
   CLOSE_TAB,
   SHOW_BLOCKED_INFO_PAGE,
 ];
+// var port = chrome.runtime.connect();
+// window.addEventListener("message", function(event) {
+//   // We only accept messages from ourselves
+//   if (event.source != window)
+//     return;
+
+//   if (event.data.type && (event.data.type == "FROM_PAGE")) {
+//     console.log("Content script received: " + event.data.text);
+//     // chrome.runtime.sendMessage("showOptions");
+//       port.postMessage(event.data.text);
+//   }
+// }, false);
+// chrome.runtime.onMessage.addListener((request) => {
+//   if (request === "showOptions") {
+//     chrome.runtime.openOptionsPage();
+//   }
+// });
+chrome.runtime.onMessageExternal.addListener(request => {
+  if(request ==="showOptions"){
+    chrome.runtime.openOptionsPage();
+  }
+});
 
 chrome.runtime.onInstalled.addListener(function () {
   chrome.storage.local.get(["enabled", "blocked", "resolution"], function (local) {

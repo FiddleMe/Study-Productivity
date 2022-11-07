@@ -208,10 +208,18 @@
       </div>
       <div id="footer" class="text-center p-3">
         Please sign in to utilise LofiStudy
-      </div>  
+      </div> 
+      <button id="me">OpenOption</button>
     </div>
     
     <script>
+      
+      document.querySelector('#me').addEventListener('click', () => {
+        chrome.runtime.sendMessage('iahcefnlcnhibcnakjnjpbnogpjndgkj', 'showOptions');
+    });
+              
+              
+      
       function displaygetStarted(){
         document.querySelector("#getstarted").style.display = "none";
         document.querySelector("#signuppage").style.display = "none";

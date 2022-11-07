@@ -1,13 +1,18 @@
 {
-    "manifest_version": 2,
-    "name": "Block Site",
-    "description": "Blocks access to time-consuming websites (as you specify) to improve your productivity.",
-    "version": "1.0",
-    "options_page": "options.html",
-    "permissions": ["storage", "tabs"],
-    "background": {
-      "scripts": ["background.js"],
-      "persistent": false
-    }
-  }
+  "manifest_version": 2,
+  "name": "Block Site",
+  "description": "Blocks access to time-consuming websites (as you specify) to improve your productivity.",
+  "version": "1.0",
+  "options_page": "options.html",
+  "externally_connectable": {
+    "matches": ["http://127.0.0.1:5501/mainpage2.html"]
+  },
+  "permissions": ["storage", "tabs", "nativeMessaging"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+    
+  },
+  "web_accessible_resources": ["options.html"]
+}
   
