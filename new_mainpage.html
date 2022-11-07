@@ -132,21 +132,27 @@
         <div class="content text-center container-fluid">
           <!-- <h1 class="p-3">Hello</h1> -->
           
-          <div class="input-group mx-auto my-5 col-lg-8">
+          <div id='input1' class="input-group mx-auto my-5 col-lg-8">
             <span class="input-group-text" id="basic-addon1">Hours</span>
             <input type="text" class="form-control" id="hours" name="hours" value="" aria-label="Username" aria-describedby="basic-addon1">
           </div>
 
-          <div class="input-group mx-auto my-4 col-lg-8  d-flex justify-content-center">
+          <div id='input2' class="input-group mx-auto my-4 col-lg-8">
             <span class="input-group-text" id="basic-addon1">Minutes</span>
             <input type="text" class="form-control" id="minutes" name="minutes" value="" aria-label="Username" aria-describedby="basic-addon1">
           </div>
 
-          <div id="progressBar" class="mb-1 col-lg-8 text-center mx-auto"></div>
-          <h3 id="timer" class="text-secondary"></h3>
+          <div id="progressBar" class="my-5"></div>
+          <h3 id="timer" class="text-white mb-1"></h3>
   
+<<<<<<< Updated upstream:new_mainpage.html
         <div class="d-grid">
             <button id="save" id="start" onclick="displayTime()" class="btn rainbow rainbow:hover mb-3">Start Session</button>
+=======
+        <div class="d-grid my-2">
+            <button id="start" onclick="displayTime(document.getElementById('hours').value, document.getElementById('minutes').value)" class="btn rainbow rainbow:hover mb-3">Start Session</button>
+            <button id="end" onclick="displayTime(document.getElementById('hours').value, document.getElementById('minutes').value)" class="btn btn-danger mb-3">End Session</button>
+>>>>>>> Stashed changes:mainpage.html
         </div>
 
         <div class="container col-lg-8 mx-auto">
