@@ -28,7 +28,8 @@ const vueapp = Vue.createApp({
       return {
         friendsreq: [],
         names: [],
-        friendlist: []
+        friendlist: [],
+        currentuser: ""
       }
     },
     methods: {
@@ -48,6 +49,8 @@ const vueapp = Vue.createApp({
                   const docSnap = await getDoc(ref);
                   if (docSnap.exists()) {
                     console.log("Document data:", docSnap.data());
+                    var username = docSnap.data().Username;
+                    this.currentuser = username;
                     
                     var friends = docSnap.data().FriendRequests                    ;
                     this.friendlist =  friends;
@@ -236,7 +239,9 @@ const vueapp = Vue.createApp({
                 const unsubscribe = onSnapshot(q, (querySnapshot) => {
                     querySnapshot.docChanges().forEach((change) => {
                         if(change.type === "added"){
+                            console.log(change.doc.data())
                             friends.push(change.doc.data().FriendRequests);
+                          
                             for(const v of friends){
                                 for(const a of v){
                                     for (const [key, value] of Object.entries(a)) {
@@ -257,6 +262,7 @@ const vueapp = Vue.createApp({
               // ...
             }
         });
+        console.log(this.friendsreq)
     }
 });
 const vm = vueapp.mount("#displayfriends");
