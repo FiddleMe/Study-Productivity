@@ -82,6 +82,75 @@
     <a href ="#"><button type="button" class="btn btn-primary btn-block" @click="addfriend()">Add Friends</button></a>
 </div>
 </span>
+
+
+
+
+<script>
+    
+    const vm = Vue.createApp({
+        data() {
+            return {
+
+                // retrieve from database 
+                
+                series: [
+                    {name: 'Me', study: 110, profile: ""},
+                    {name: 'Jessica', study: 90, profile: ""},
+                    {name: 'Chaeyoung', study: 100, profile: ""},
+                    {name: 'Sunny', study: 45, profile: ""},
+                    {name: 'Lisa', study:80, profile: ""},
+                ],
+                series2: [
+                    {name: 'Me', study: 110, profile: ""},
+                    {name: 'Jessica', study: 90, profile: ""},
+                    {name: 'Chaeyoung', study: 100, profile: ""},
+                    {name: 'Sunny', study: 45, profile: ""},
+                    {name: 'Lisa', study:80, profile: ""},
+                ],
+                friendname:""
+            }
+        },
+        methods: { 
+            
+            addfriend() { 
+                var notification = document.getElementById("notification");
+                    if( notification ) {
+                        notification.remove();
+                    }
+                if (this.friendname==""){
+                    var main_container_div = document.getElementById("warningbox");
+                    var div = document.createElement("div");
+                    var text = document.createTextNode("You can skip for now if you don't have anyone in mind :)");
+                    div.appendChild(text);
+                    div.setAttribute("id", "notification");
+                    div.setAttribute("class", "alert alert-info");
+                    div.setAttribute("role", "alert");
+                    div.setAttribute("style", "margin-top: 20px")
+                    main_container_div.appendChild(div);
+                    return 
+                }
+                else{
+                // study_time is a placeholder of number to be retrieved from database
+                study_time=Math.floor(Math.random() * 100);
+                new_friend=this.friendname;
+                console.log(localStorage.getItem("uid"));
+                this.friendname="";
+                return this.series.push({ name: new_friend , study: study_time, profile:""});
+                }
+            },
+            
+        
+        async created(){
+            this.series = await display_stats(localStorage.getItem("uid"));
+            }
+          
+        }
+    }
+
+    ).mount('#app1')
+</script>
+
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
@@ -109,138 +178,160 @@
     const analytics = getAnalytics(app);
     const auth = getAuth();
     const db = getFirestore();
-</script>
 
-<script type="module" src="js/scores.js"></script>
+    function formatDate(date){
+    var formatted_date = date.getDate().toString()+"/"+date.getMonth().toString()+"/"+date.getFullYear().toString();
+    return formatted_date;
+    }
 
-<script>
+
+    //get time in miliseconds 
+    //do on session start and end:
+    function get_time(){
+        var d = new Date();
+        var time = d.getTime();
+        console.log(d,time);
+        return time;
+    }
+    //     var score = (end - start) / 60000 ;
+    //         console.log(score);
+    //On session end, update score, whereby score = time spent in session (minutes):
+
+    //update score to database after session ends
     
-    const vm = Vue.createApp({
-        data() {
-            return {
 
-                // retrieve from database 
-                series: [
-                    {name: 'Jessica', study: 90, profile: ""},
-                    {name: 'Chaeyoung', study: 100, profile: ""},
-                    {name: 'Sunny', study: 45, profile: ""},
-                    {name: 'Lisa', study:80, profile: ""},
-                ],
-                series2: [
-                    {name: 'Me', study: 110, profile: ""},
-                    {name: 'Jessica', study: 90, profile: ""},
-                    {name: 'Chaeyoung', study: 100, profile: ""},
-                    {name: 'Sunny', study: 45, profile: ""},
-                    {name: 'Lisa', study:80, profile: ""},
-                ],
-                friendname:""
+    async function display_stats(uid){
+
+        var ref = doc(db, "Users", uid);
+        const docSnap = await getDoc(ref);
+        var past_scores = docSnap.data().PastScores;
+
+        const past7Days = [...Array(7).keys()].map(index => {
+            const date = new Date();
+            date.setDate(date.getDate() - (index + 1));
+            var formatted_date = formatDate(date);
+            return formatted_date;
+            });
+        var scores_data = []
+        for (var day of past7Days){
+            //display days
+            console.log(day)
+            
+            if (day in past_scores){
+                //display scores if available
+                scores_data.push({"name":day, "study":past_scores[day]});
             }
-        },
-        methods: { 
-            
-                addfriend() { 
-                    var notification = document.getElementById("notification");
-                        if( notification ) {
-                            notification.remove();
-                        }
-                    if (this.friendname==""){
-                        var main_container_div = document.getElementById("warningbox");
-                        var div = document.createElement("div");
-                        var text = document.createTextNode("You can skip for now if you don't have anyone in mind :)");
-                        div.appendChild(text);
-                        div.setAttribute("id", "notification");
-                        div.setAttribute("class", "alert alert-info");
-                        div.setAttribute("role", "alert");
-                        div.setAttribute("style", "margin-top: 20px")
-                        main_container_div.appendChild(div);
-                        return 
-                    }
-                    else{
-                    // study_time is a placeholder of number to be retrieved from database
-                    study_time=Math.floor(Math.random() * 100);
-                    new_friend=this.friendname;
-                    console.log(localStorage.getItem("uid"));
-                    this.friendname="";
-                    return this.series.push({ name: new_friend , study: study_time, profile:""});
-                }
-            } 
-            },
-    }
-
-    ).mount('#app1')
-</script>
-<script >
-    var labels = [];
-    var obj_check1=vm.$data.series.length;
-    for (let i = 0; i < obj_check1; i++) {
-        labels.push( vm.$data.series[i].name);
-    }
-
-    var data_numbers = [];
-    var obj_check2=vm.$data.series.length;
-    for (let i = 0; i < obj_check2; i++) {
-        data_numbers.push( vm.$data.series[i].study);
-    }
-
-    var data_things = {
-        labels: labels,
-        datasets: [{
-        label: 'Time spent being productive',
-        // pink color
-        backgroundColor: 'rgb(255,148,224)',
-        borderColor: 'rgb(255,148,224)',
-        // take in input of array
-        data: data_numbers,
+            else{
+                scores_data.push({"name":day, "study":past_scores[day]});
+                console.log(`data unavailble on ${day}`)
+            }
     
-        }]
-    };
-
-    var config = {
-        type: 'bar',
-        data: data_things,
-        options: {
-            
         }
-    };
+        
+        console.log(scores_data)// Data for past 7 days
+
+        
+        var data_labels = [];
+        
+        var data_numbers = [];
+        for (var obj of scores_data){
+            data_numbers.push(obj.study)
+        }
+        for (var obj of scores_data){
+            data_labels.push(obj.name)
+        }
+
+
+        var data_things = {
+            labels: data_labels,
+            datasets: [{
+            label: 'Time spent being productive',
+            // pink color
+            backgroundColor: 'rgb(255,148,224)',
+            borderColor: 'rgb(255,148,224)',
+            // take in input of array
+            data: data_numbers,
+        
+            }]
+        };
+        var config = {
+            type: 'bar',
+            data: data_things,
+            options: {
+                
+            }
+        };
+        var myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+
+        // Data for friend's scores
+        var friends = docSnap.data().FriendsRequests;
+        console.log(friends);
+        var names = []
+        var totaltimes = []
+        for (var friend of friends){
+            // console.log(Object.values(friend)[0]);
+            if (Object.values(friend)[0] == true){
+                
+                var ref = doc(db, "Users", Object.keys(friend)[0]);
+                const docSnap = await getDoc(ref);
+                names.push( docSnap.data().Username);
+                totaltimes.push(docSnap.data().TotalTime);
+            }
+            else{
+                console.log("friend not yet accepted req")
+            }
+        }
+
+        
+        var data_things2 = {
+            labels: names,
+            datasets: [{
+            label: 'Time spent being productive',
+            // pink color
+            backgroundColor: 'rgb(255,148,224)',
+            borderColor: 'rgb(255,148,224)',
+            // take in input of array
+            data: totaltimes,
+            }]
+        };
+        var config2 = {
+            type: 'bar',
+            data: data_things2,
+            options: {
+                
+            }
+        };
+        var myChart2 = new Chart(
+            document.getElementById('myChart2'),
+            config2
+        );  
+
+    }
+    display_stats(localStorage.getItem("uid"));
+
+</script>
+
+
+<script>
+
+
+
+    
+
+    
     
 </script>
 <script>
-    var myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-    );
+    
 </script>
 
 <!-- hardcode implementation for reference -->
 <script>
 
-    var labels2=["Me", "Jessica", "Chaeyoung", "Sunny", "Lisa"];
-    var data_numbers2=[110,90,100,45,80];
-
-    var data_things2 = {
-        labels: labels2,
-        datasets: [{
-        label: 'Time spent being productive',
-        // pink color
-        backgroundColor: 'rgb(255,148,224)',
-        borderColor: 'rgb(255,148,224)',
-        // take in input of array
-        data: data_numbers2,
-        }]
-    };
-    var config2 = {
-        type: 'bar',
-        data: data_things2,
-        options: {
-            
-        }
-    };
-</script>
-<script>
-    var myChart2 = new Chart(
-        document.getElementById('myChart2'),
-        config2
-    );
+    
 </script>
 
 </body>

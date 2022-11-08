@@ -27,8 +27,10 @@ const vueapp = Vue.createApp({
     data() {
       return {
         friendsreq: [],
+        interfriend: [],
         names: [],
-        friendlist: []
+        friendlist: [],
+        currentuser: ""
       }
     },
     methods: {
@@ -44,14 +46,39 @@ const vueapp = Vue.createApp({
                   // User is signed in, see docs for a list of available properties
                   // https://firebase.google.com/docs/reference/js/firebase.User
                   const uid = user.uid;
+                  var resultArr = Array();
                   var ref = doc(db, "Users",uid);   
                   const docSnap = await getDoc(ref);
                   if (docSnap.exists()) {
-                    console.log("Document data:", docSnap.data());
-                    
+                    var username = docSnap.data().Username;
+                    this.currentuser = username;
+                    let interFriend = Array()
                     var friends = docSnap.data().FriendRequests                    ;
-                    this.friendlist =  friends;
-                    console.log(friends);
+                    for(const [key, value] of Object.entries(friends)){               
+                        for(const [friend, bool] of Object.entries(value)){
+                            if(bool == true){
+                                interFriend.push(friend);
+                            }
+                        }
+                    }
+                    const docref = doc(db, "TotalUsers", "Users");
+                    const docSnap2 = await getDoc(docref);
+                    if(docSnap2.exists()){
+                        var nArr = [];
+                        let userArr = docSnap2.data().users;
+                        for(var elem of interFriend){
+                            for (var vals of userArr) {
+                                for(var[k,v] of Object.entries(vals)){
+                                    if(v == elem){      
+                                        nArr.push(k);
+                                    }
+                                }
+                            }
+                        }
+                        this.friendlist = nArr
+                    }
+
+                    //
                   } else {
                     // doc.data() will be undefined in this case
                     console.log("No such document!");
@@ -129,19 +156,14 @@ const vueapp = Vue.createApp({
             if (docSnap.exists()) {
                 var namesArr = [];
                 var userArr = docSnap.data().users;
-    
                 for(var elem of result){
-         
                     for (var vals of userArr) {
-             
                         for(const[key, value] of Object.entries(vals)){
-                            if(`${value}` == elem){
-                              
+                            if(`${value}` == elem){      
                                 let id = `${value}`
                                 let inter = {
                                     [key]: id
                                 }
-                               
                                 namesArr.push(inter);
                             }
                         }
@@ -235,7 +257,9 @@ const vueapp = Vue.createApp({
                 const unsubscribe = onSnapshot(q, (querySnapshot) => {
                     querySnapshot.docChanges().forEach((change) => {
                         if(change.type === "added"){
+                           
                             friends.push(change.doc.data().FriendRequests);
+                          
                             for(const v of friends){
                                 for(const a of v){
                                     for (const [key, value] of Object.entries(a)) {
