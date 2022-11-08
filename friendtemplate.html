@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LoFiStudy</title>
-    <link rel="stylesheet" href="glow.css">
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://unpkg.com/vue@next"></script>
+
 </head>
 <style>
 *{
@@ -18,40 +18,7 @@ body{
     background: #eaeaea;
     margin-top:40px;
 }
-.rainbow-box {
-    /* https://stackoverflow.com/questions/56418763/creating-the-perfect-rainbow-gradient-in-css */
-    height: 50px;
-    border-radius: 5px;
-    color: white;
-    text-align: center;
-    background: linear-gradient(
-        90deg,
-        rgba(255, 0, 0, 1) 0%,
-        rgba(255, 154, 0, 1) 10%,
-        rgba(208, 222, 33, 1) 20%,
-        rgba(79, 220, 74, 1) 30%,
-        rgba(63, 218, 216, 1) 40%,
-        rgba(47, 201, 226, 1) 50%,
-        rgba(28, 127, 238, 1) 60%,
-        rgba(95, 21, 242, 1) 70%,
-        rgba(186, 12, 248, 1) 80%,
-        rgba(251, 7, 217, 1) 90%,
-        rgba(255, 0, 0, 1) 100%
-    );
-}
-.rainbow:hover{
-      background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
-      animation: slidebg 5s linear infinite;
-      color: white
-      }
 
-      .rainbow{
-      background-color: #343A40;
-      border-radius: 4px;  
-      color: #fff;
-      cursor: pointer;
-      padding: 8px 16px;  
-      }
 .profile-header {
     position: relative;
     overflow: hidden;
@@ -75,23 +42,8 @@ body{
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0, rgba(0, 0, 0, 0.85) 100%);
 }
 .profile-header .profile-header-content,
-.profile-header .profile-header-tab,
-.profile-header-img,
-body .fc-icon {
+.profile-header-img {
     position: relative;
-}
-.profile-header .profile-header-tab {
-    background: #fff;
-    list-style-type: none;
-    margin: -1.25rem 0 0;
-    padding: 0 0 0 8.75rem;
-    border-bottom: 1px solid #c8c7cc;
-    white-space: nowrap;
-}
-
-.profile-header .profile-header-tab > li.active > a,
-.profile-header .profile-header-tab > li > a.active {
-    color: #007aff;
 }
 .profile-header .profile-header-content:after,
 .profile-header .profile-header-content:before {
@@ -103,11 +55,6 @@ body .fc-icon {
 .profile-header .profile-header-content {
     color: #fff;
     padding: 1.25rem;
-}
-body .fc th a,
-body .fc-ltr .fc-basic-view .fc-day-top .fc-day-number,
-body .fc-widget-header a {
-    color: #000;
 }
 .profile-header-img {
     float: left;
@@ -141,9 +88,6 @@ body .fc-widget-header a {
         margin-left: 6.5625rem;
         padding-bottom: 0.9375rem;
     }
-    .profile-header .profile-header-tab {
-        padding-left: 0;
-    }
 }
 @media (max-width: 767px) {
     .profile-header .profile-header-cover {
@@ -161,11 +105,6 @@ body .fc-widget-header a {
     .profile-header-info h4 {
         margin: 0 0 0.3125rem;
     }
-    .profile-header .profile-header-tab {
-        white-space: nowrap;
-        overflow: scroll;
-        padding: 0;
-    }
 
     .friend-list > li {
         float: none;
@@ -173,39 +112,14 @@ body .fc-widget-header a {
     }
 }
 
-.friend-list,
-.img-grid-list {
+.friend-list {
     margin: -1px;
     list-style-type: none;
 }
 
-.coming-soon-cover img,
-.email-detail-attachment .email-attachment .document-file img,
-.email-sender-img img,
 .friend-list .friend-img img,
 .profile-header-img img {
     max-width: 100%;
-}
-.table.table-profile th {
-    border: none;
-    color: #000;
-    padding-bottom: 0.3125rem;
-    padding-top: 0;
-}
-.table.table-profile td {
-    border-color: #c8c7cc;
-}
-.table.table-profile tbody + thead > tr > th {
-    padding-top: 1.5625rem;
-}
-.table.table-profile .field {
-    color: #666;
-    font-weight: 600;
-    width: 25%;
-    text-align: right;
-}
-.table.table-profile .value {
-    font-weight: 500;
 }
 
 .friend-list {
@@ -252,7 +166,8 @@ body .fc-widget-header a {
 </style>
 
 <body>
-    <div class="container" id="displayfriends">
+    
+    <div class="container">
         <div id="content" class="content p-0">
             <div class="profile-header">
                 <div class="profile-header-cover"></div>
@@ -275,8 +190,8 @@ body .fc-widget-header a {
             <div class="profile-container p-0">     
             <label style="margin-top: 20px"><b>Send a friend request today!</b></label>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="frienduser" placeholder="Friend's username" >
-                    <button class="btn btn-outline-primary btn rainbow rainbow:hover" type="button" v-on:click="sendFriendRequest">Send!</button>
+                    <input type="text" class="form-control" id="maybefriend" placeholder="Friend's username" >
+                    <a href ="#"><button class="glow-hover" type="button" onclick="load()">Send!</button></a>
                 </div>
                 <div id="dosomething"></div>
             </div>
@@ -285,12 +200,58 @@ body .fc-widget-header a {
                         <div class="tab-content p-0">
         
                             <div class="tab-pane fade active show" id="profile-friends">
-                                <div class="m-b-10"><b>Friend List (4)</b></div>
+                                <div class="m-b-10"><b>Friend Requests (3)</b></div>
         
                                 <ul class="friend-list clearfix">
                                     <li>
                                         <a href="#">
-                                            
+                                            <div class="friend-img img-list"><img src="https://images.generated.photos/LYhunV48Y29CNnbLqsFOOeKi5lNfHypXvlcVUyOxVls/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MjEwMDI3LmpwZw.jpg" alt="" /></div>
+                                            <div class="friend-info">
+                                                <h4>CK Lim</h4>
+                                                <p>1 friend</p>
+                                                <button type='button' class='btn btn-success' id="accept" onClick="document.getElementById('reject').setAttribute('disabled',true);">Approve</button> | <button type='button' class='btn btn-danger' id="reject" onClick="document.getElementById('accept').setAttribute('disabled',true);">Reject</button>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#">
+                                            <div class="friend-img"><img src="https://images.generated.photos/Ks8dZ1KXqRSjpvHGmuUezhLUYr483SWoz9SjFcE4j28/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTMwNTY1LmpwZw.jpg" alt="" /></div>
+                                            <div class="friend-info">
+                                                <h4>Bentley</h4>
+                                                <p>10,001 friends</p>
+                                                <button type='button' class='btn btn-success' id="accept2" onClick="document.getElementById('reject2').setAttribute('disabled',true);">Approve</button> | <button type='button' class='btn btn-danger' id="reject2" onClick="document.getElementById('accept2').setAttribute('disabled',true);">Reject</button>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="friend-img"><img src="https://images.generated.photos/CW-fnwHSrr8nfKiva8lnzvAGI8sXd4Rw_1fYeLbuYlY/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NjM5MjY2LmpwZw.jpg" alt="" /></div>
+                                            <div class="friend-info">
+                                                <h4>Bern</h4>
+                                                <p>487 friends</p>
+                                                <button type='button' class='btn btn-success' id="accept3" onClick="setTimeout(document.getElementById('reject3').setAttribute('disabled',true),1000);">Approve</button> | <button type='button' class='btn btn-danger' id="reject3" onClick="document.getElementById('accept3').setAttribute('disabled',true);document.getElementById('friendlist2').lastElementChild.appendChild(document.getElementById(accept3));">Reject</button>
+
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-container">
+                <div class="row row-space-20">
+                        <div class="tab-content p-0">
+        
+                            <div class="tab-pane fade active show" id="profile-friends">
+                                <div class="m-b-10"><b>Friend List (4)</b></div>
+        
+                                <ul class="friend-list clearfix2" id="friendlist2">
+                                    <li>
+                                        <a href="#">
+                                            <div class="friend-img img-list"><img src="https://i.scdn.co/image/ab6761610000e5eb8543b9b2b5d153d37c46606d" /></div>
                                             <div class="friend-info">
                                                 <h4>Lisa</h4>
                                                 <p>4,000 friends</p>
@@ -300,7 +261,7 @@ body .fc-widget-header a {
                                     </li>
                                     <li>
                                         <a href="#">
-                                           
+                                            <div class="friend-img"><img src="https://images.generated.photos/W0fvc_o57L--J57JW15FiI2VROg5xrNJ3J723coBUGg/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MzQzMzY4LmpwZw.jpg"/></div>
                                             <div class="friend-info">
                                                 <h4>Chaeyoung</h4>
                                                 <p>4 friends</p>
@@ -309,7 +270,7 @@ body .fc-widget-header a {
                                     </li>
                                     <li>
                                         <a href="#">
-                                           
+                                            <div class="friend-img"><img src="https://images.generated.photos/JNMJbvHFFi9EW_Qft2yChqZDiptOYjxICdXgdEmsvFU/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NzcwMDcxLmpwZw.jpg"/></div>
                                             <div class="friend-info">
                                                 <h4>Sunny</h4>
                                                 <p>2 friends</p>
@@ -318,7 +279,7 @@ body .fc-widget-header a {
                                     </li>
                                     <li>
                                         <a href="#">
-                                           
+                                            <div class="friend-img"><img src="https://m.media-amazon.com/images/M/MV5BNjZiY2RhMzctMDc5Mi00ZmFiLTgzNjctM2E4YTFiMzk0Y2RiXkEyXkFqcGdeQXVyNDY5MjMyNTg@._V1_.jpg"/></div>
                                             <div class="friend-info">
                                                 <h4>Jessica</h4>
                                                 <p>12,000 friends</p>
@@ -329,10 +290,9 @@ body .fc-widget-header a {
                             
                         </div>
                     </div>
-        
-
                 </div>
             </div>
+            
         </div>
         </div>
 <script>
@@ -374,8 +334,14 @@ body .fc-widget-header a {
     
     }
     }
+    function myGreeting() {
+    document.getElementById("demo").innerHTML = "Happy Birthday!"
+    }
+
+    function myStopFunction() {
+    clearTimeout(myTimeout);
+    }
 </script>
-<script src="./js/displayfriendsrequests.js" type="module"></script>
 
 </body>
 </html>
