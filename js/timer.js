@@ -14,7 +14,21 @@ function displayTime(){
 //     document.getElementById('input1').style.display = 'block'
 //     document.getElementById('input2').style.display = 'block'
 // }
-
+function endTime(){
+    clearInterval(x);
+    document.getElementById("timer").innerHTML = "Start Again?";
+    document.getElementById('save').style.display = ''
+    document.getElementById('end').style.display = 'none'
+    document.getElementById('bar').style.display = 'none'
+    // document.getElementById("progressBar").innerHTML = 'none'
+    document.getElementById('input1').style.display = ''
+    document.getElementById('input2').style.display = ''
+    // isDone = true
+    // document.getElementById("timer").innerHTML = "Start Again?";
+    // document.getElementById("progressBar").innerHTML = ''
+    // document.getElementById('input1').style.display = ''
+    // document.getElementById('input2').style.display = ''
+}
 function display_countdown_timer(hours,minutes){
     var time = (hours * 60 * 60 + minutes * 60) * 1000
     var initialTime = time
