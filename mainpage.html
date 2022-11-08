@@ -218,9 +218,8 @@
 
 
         <div class="container-fluid m-1 p-5">
-
-        <div id="bar" class="container-fluid m-1 p-5" style="display:none">
           <div id="progressBar" class="mb-1 mx-auto"></div>
+          
         </div>
 
 
@@ -229,30 +228,10 @@
           <!-- <h3 id="timer" class="text-white mt-1"></h3><br><br> -->
           <!-- <button id="save" onclick="displayTime()" class="btn glow-on-hover mb-3" style="font-size:13px">Start Session</button> -->
         <!-- </div>
-        <div class="container-fluid d-flex justify-content-center">
-          <h3 id="timer" class="text-white"></h3>
-        </div>
 
         <div class="container-fluid d-flex justify-content-center">
           <button id="save" onclick="displayTime()" class="btn glow-on-hover mb-3" style="font-size:13px">Start Session</button>
-
-          <button id="end" onclick="endTime()" class="btn btn-danger mb-3" style="display:none" style="font-size:13px">End Session</button>
         </div>
-
-
-        <!--Sticky notes-->
-      <div id="sticky_modal">
-        <div id="sticky_inner_modal">
-          <textarea placeholder="Note..." id="user_input" maxlength="1000"></textarea>
-          <i class="far fa-times-circle" id="hide_sticky"></i>
-        </div>
-      </div>
-        
-        <section>
-          <div class="container-fluid" id="fills">
-            <div id="sticky_all_notes"></div>
-          </div>
-        </section>
 
         <div class="container col-lg-8 mx-auto">
           <div id="modal">
@@ -295,7 +274,19 @@
     </div>
 </div>
 
-
+<!--Sticky notes-->
+<div id="sticky_modal">
+  <div id="sticky_inner_modal">
+    <textarea placeholder="Note..." id="user_input" maxlength="1000"></textarea>
+    <i class="far fa-times-circle" id="hide_sticky"></i>
+  </div>
+</div>
+  
+  <section>
+    <div class="container-fluid" id="fills">
+      <div id="sticky_all_notes"></div>
+    </div>
+  </section>
 <script>
     var myElement = document.getElementById('sticky_all_notes');
     if(window.addEventListener) {
@@ -375,7 +366,16 @@
   <!--ENDS: Login, signup-->
 <script src="./js/stickynotes.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
-<script src="js/Spotify api/spotify_auth.js"></script>
+  <script src="js/Spotify api/spotify_auth.js"></script>
+  <script src="./js/login.js" type="module"></script>
+  <script src="js/timer.js"></script>
+  <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <!-- <script src="timer/timer.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!--https://codingyaar.com/bootstrap-navbar-hover-background-color/-->
+</body>
+</html> src="js/Spotify api/spotify_auth.js"></script>
 <script src="./js/login.js" type="module"></script>
 <script src="js/timer.js"></script>
 <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
