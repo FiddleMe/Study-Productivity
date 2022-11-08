@@ -228,7 +228,9 @@
     
         }
         
-        console.log(scores_data)
+        console.log(scores_data)// Data for past 7 days
+
+        
         var data_labels = [];
         
         var data_numbers = [];
@@ -239,8 +241,6 @@
             data_labels.push(obj.name)
         }
 
-        console.log(data_numbers);
-        console.log(data_labels);
 
         var data_things = {
             labels: data_labels,
@@ -266,6 +266,49 @@
             config
         );
 
+        // Data for friend's scores
+        var friends = docSnap.data().FriendsRequests;
+        console.log(friends);
+        var names = []
+        var totaltimes = []
+        for (var friend of friends){
+            // console.log(Object.values(friend)[0]);
+            if (Object.values(friend)[0] == true){
+                
+                var ref = doc(db, "Users", Object.keys(friend)[0]);
+                const docSnap = await getDoc(ref);
+                names.push( docSnap.data().Username);
+                totaltimes.push(docSnap.data().TotalTime);
+            }
+            else{
+                console.log("friend not yet accepted req")
+            }
+        }
+
+        
+        var data_things2 = {
+            labels: names,
+            datasets: [{
+            label: 'Time spent being productive',
+            // pink color
+            backgroundColor: 'rgb(255,148,224)',
+            borderColor: 'rgb(255,148,224)',
+            // take in input of array
+            data: totaltimes,
+            }]
+        };
+        var config2 = {
+            type: 'bar',
+            data: data_things2,
+            options: {
+                
+            }
+        };
+        var myChart2 = new Chart(
+            document.getElementById('myChart2'),
+            config2
+        );  
+
     }
     display_stats(localStorage.getItem("uid"));
 
@@ -288,31 +331,7 @@
 <!-- hardcode implementation for reference -->
 <script>
 
-    var labels2=["Me", "Jessica", "Chaeyoung", "Sunny", "Lisa"];
-    var data_numbers2=[110,90,100,45,80];
-
-    var data_things2 = {
-        labels: labels2,
-        datasets: [{
-        label: 'Time spent being productive',
-        // pink color
-        backgroundColor: 'rgb(255,148,224)',
-        borderColor: 'rgb(255,148,224)',
-        // take in input of array
-        data: data_numbers2,
-        }]
-    };
-    var config2 = {
-        type: 'bar',
-        data: data_things2,
-        options: {
-            
-        }
-    };
-    var myChart2 = new Chart(
-        document.getElementById('myChart2'),
-        config2
-    );
+    
 </script>
 
 </body>
