@@ -91,16 +91,16 @@ function display_countdown_timer(hours,minutes){
             isHalf = true
         }
         if(!isHalf && !isDone){
-            document.getElementById('gif_now').innerHTML = '<img src="gifs/gif2.gif" id="gif_now" style="margin-top: 7px; height:50px; width: 150px">'
+            document.getElementById('gif_now').setAttribute("src",'gifs/gif2.gif' ) 
         }
         else if (isHalf && !isDone){
-            document.getElementById('gif_now').innerHTML = '<img src="gifs/gif3.gif" id="gif_now" style="margin-top: 7px; height:50px; width: 150px">'
+            document.getElementById('gif_now').setAttribute("src", "gifs/gif3.gif") 
             alert("You're halfway there! Keep Going!")
             isHalf = false
         }
 
         else if(isDone && !isHalf){
-            document.getElementById('gif_now').innerHTML = '<img src="gifs/gif4.gif" id="gif_now" style="margin-top: 7px; height:50px; width: 150px">'
+            document.getElementById('gif_now').setAttribute("src", "gifs/gif4.gif") 
             alert("Congratulations! You have completed your session!")
             
         }
