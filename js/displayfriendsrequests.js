@@ -224,6 +224,7 @@ const vueapp = Vue.createApp({
         
     created() { 
         this.displayFriends();
+        console.log("hi")
         var friends = []
         var result = []
         onAuthStateChanged(auth, (user) => {
