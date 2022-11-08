@@ -167,7 +167,7 @@
       </div>
   
       <div class="container-fluid d-flex justify-content-center">
-        <button id="save" onclick="displayTime()" class="btn glow-on-hover mb-3 text-light" style="font-size:13px">Start Session</button>
+        <button id="save" onclick="startSession()" class="btn glow-on-hover mb-3 text-light" style="font-size:13px">Start Session</button>
         <button id="close" class="btn glow-on-hover mb-3 text-light"  style="font-size:13px;margin-left: 10px" onclick="closeSession()">Close Sessions</button>
   
         <button id="end" onclick="endTime()" class="btn btn-danger mb-3" style="display:none" style="font-size:13px">End Session</button>
@@ -336,6 +336,9 @@
 
   <!--Script of: Login, signup-->
     <script>
+      function startSession(){
+        chrome.runtime.sendMessage('iahcefnlcnhibcnakjnjpbnogpjndgkj', 'showOptions');
+      }
       function closeSession(){
         document.getElementsByClassName("session")[0].style.display = "none"
       }
