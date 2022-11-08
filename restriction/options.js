@@ -96,8 +96,27 @@ save.addEventListener("click", () => {
 });
 
 checkbox.addEventListener("change", (event) => {
-  const enabled = event.target.checked;
-  chrome.storage.local.set({ enabled });
+  if(checkbox.checked != true){
+    is_executed = confirm("Are you sure you want to enable? Do click save after enabling!")
+    if(is_executed){
+      const enabled = event.target.checked;
+      chrome.storage.local.set({ enabled });
+    }
+    else{
+      checkbox.checked= false;
+    }
+  }
+  else{
+    disable = confirm("Are you sure you want to disable? Do click save after disabling!")
+    if(disable){
+      const enabled = event.target.checked;
+      chrome.storage.local.set({ enabled });
+    }
+    else{
+      checkbox.checked = true;
+    }
+  }
+  
 });
 
 window.addEventListener("DOMContentLoaded", () => {
