@@ -1,7 +1,9 @@
 // input time(hrs, mins) specified by user
 //updates element with id="timer" with a countdown timer
 
-
+function session(){
+    document.getElementsByClassName("session")[0].style.display = "block";
+}
 function displayTime(){
     display_countdown_timer(document.getElementById('hours').value, document.getElementById('minutes').value)
 }
@@ -105,17 +107,27 @@ function display_countdown_timer(hours,minutes){
             isHalf = true
         }
         if(!isHalf && !isDone){
-            document.getElementById('gif_now').setAttribute("src",'gifs/gif2.gif' ) 
+            document.getElementById('gif_now').src = "gifs/gif2.gif"
         }
         else if (isHalf && !isDone){
-            document.getElementById('gif_now').setAttribute("src", "gifs/gif3.gif") 
+            document.getElementById('gif_now').style.display = "none"
+            document.getElementById("gif2").style.display = ""
+         
             alert("You're halfway there! Keep Going!")
             isHalf = false
         }
 
         else if(isDone && !isHalf){
-            document.getElementById('gif_now').setAttribute("src", "gifs/gif4.gif") 
+            
+            document.getElementById("gif2").style.display = "none"
+            document.getElementById("gif3").style.display = ""
+            console.log( document.getElementById('gif_now'))
             alert("Congratulations! You have completed your session!")
+            setTimeout(()=>{
+                document.getElementById("gif3").style.display = "none"
+                document.getElementById('gif_now').src = "gifs/gif1.gif"
+                document.getElementById("gif_now").style.display = ""
+            },3000)
             
         }
 
