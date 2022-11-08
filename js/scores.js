@@ -1,5 +1,3 @@
-import { getFirestore, doc, arrayUnion, setDoc, getDoc, collection, addDoc, updateDoc, deleteDoc,deleteField } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
-const db = getFirestore();
 
 //date = "day/month/year"
 //score = int minutes
@@ -34,14 +32,15 @@ async function add_score(score, userId){
         
     var curr_score = docSnap.data().TotalTime;
         console.log(curr_score);
-    score += curr_score;
-        console.log(score);
+    curr_score += score;
+        console.log("Total time")
+        console.log(curr_score);
     var data = {
-        TotalScore: score
+        TotalTime: curr_score
     }
     updateDoc(ref, data)
     .then(ref => {
-        console.log("score updated");
+        console.log("Total time updated");
     })
     .catch(error => {
         console.log(error);
@@ -52,16 +51,16 @@ async function add_score(score, userId){
     var past_scores = docSnap.data().PastScores;
     
     var today = formatDate(new Date());
-
-    if (past_scores.has(today)){
+    console.log("Past Scores")
+    if (today in past_scores){
         //If date already present, add score to present score
-        past_scores.set(today, past_scores.get(today) + score)
+        past_scores[today] = past_scores[today] + score
         console.log(past_scores);
         }
     
     else {
         //Else add new entry to past scores
-        past_scores.set(today, score);
+        past_scores[today] = score;
         console.log(past_scores);
     }
 
@@ -70,7 +69,8 @@ async function add_score(score, userId){
     }
     updateDoc(ref, data)
     .then(ref => {
-        console.log("score updated");
+        console.log("past scores updated");
+
     })
     .catch(error => {
         console.log(error);
@@ -79,29 +79,39 @@ async function add_score(score, userId){
 };
 
 
-function display_stats(past_scores){
+async function display_stats(uid){
+
+    var ref = doc(db, "Users", uid);
+    const docSnap = await getDoc(ref);
+    var past_scores = docSnap.data().PastScores;
+
     const past7Days = [...Array(7).keys()].map(index => {
         const date = new Date();
         date.setDate(date.getDate() - (index + 1));
         var formatted_date = formatDate(date);
         return formatted_date;
         });
-    for (day of past7Days){
+    var data = []
+    for (var day of past7Days){
         //display days
         console.log(day)
-        if (past_scores.has(day)){
+        
+        if (day in past_scores){
             //display scores if available
-            console.log(past_scores.get(day));
+            data.push({"name":day, "study":past_scores[day]});
         }
         else{
-            console.log(0);
+            console.log(`data unavailble on ${day}`)
         }
-
+        
     }
+    console.log(data)
+    return data;
 }
 
 //TESTS
 
 //display_stats(test_data);
 
-add_score(100, localStorage.getItem("uid"));
+//add_score(100, localStorage.getItem("uid"));
+
