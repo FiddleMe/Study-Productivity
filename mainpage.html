@@ -54,8 +54,8 @@
                   </li>
                   <li class="nav-item">
                     <!-- <a class="nav-link text-light" aria-current="page" href="#">Block Settings</a> -->
-                    <button  class="glow-on-hover" style="margin: 5px;">
-                      <a class="nav-link text-light" aria-current="page" href="#">Settings</a>
+                    <button  class="glow-on-hover" style="margin: 5px;" onclick="session()">
+                      <a class="nav-link text-light" aria-current="page" href="#">Sessions</a>
                     </button>
                   </li>
                   <li class="nav-item">
@@ -145,32 +145,34 @@
      <!-- Banner Image  -->
     <!--editted: w-100 removed-->
 
-    
-    <div id='input1' class="input-group mx-auto mt-5 px-5 col-lg-8">
-      <span class="input-group-text" id="basic-addon1">Hours</span>
-      <input type="text" class="form-control" id="hours" name="hours" value="" aria-label="Username" aria-describedby="basic-addon1">
+    <div class="session">
+      <div id='input1' class="input-group mx-auto mt-5 px-5 col-lg-8">
+        <span class="input-group-text" id="basic-addon1">Hours</span>
+        <input type="text" class="form-control" id="hours" name="hours" value="" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+  
+      <div id='input2' class="input-group mx-auto p-5 col-lg-8">
+        <span class="input-group-text" id="basic-addon1">Minutes</span>
+        <input type="text" class="form-control" id="minutes" name="minutes" value="" aria-label="Username" aria-describedby="basic-addon1">
+      </div>
+  
+      <div id="bar" class="container-fluid m-1 p-5" style="display:none">
+        <div id="progressBar" class="mb-1 mx-auto"></div>
+      </div>
+  
+      
+  
+      <div class="container-fluid d-flex justify-content-center">
+        <h3 id="timer" class="text-white"></h3>
+      </div>
+  
+      <div class="container-fluid d-flex justify-content-center">
+        <button id="save" onclick="displayTime()" class="btn glow-on-hover mb-3" style="font-size:13px">Start Session</button>
+  
+        <button id="end" onclick="endTime()" class="btn btn-danger mb-3" style="display:none" style="font-size:13px">End Session</button>
+      </div>
     </div>
-
-    <div id='input2' class="input-group mx-auto p-5 col-lg-8">
-      <span class="input-group-text" id="basic-addon1">Minutes</span>
-      <input type="text" class="form-control" id="minutes" name="minutes" value="" aria-label="Username" aria-describedby="basic-addon1">
-    </div>
-
-    <div id="bar" class="container-fluid m-1 p-5" style="display:none">
-      <div id="progressBar" class="mb-1 mx-auto"></div>
-    </div>
-
-    
-
-    <div class="container-fluid d-flex justify-content-center">
-      <h3 id="timer" class="text-white"></h3>
-    </div>
-
-    <div class="container-fluid d-flex justify-content-center">
-      <button id="save" onclick="displayTime()" class="btn glow-on-hover mb-3" style="font-size:13px">Start Session</button>
-
-      <button id="end" onclick="endTime()" class="btn btn-danger mb-3" style="display:none" style="font-size:13px">End Session</button>
-    </div>  
+      
         
           <!-- <h1 class="p-3">Hello</h1> -->
           
