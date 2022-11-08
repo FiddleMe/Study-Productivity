@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LoFiStudy</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://unpkg.com/vue@next"></script>
+
 </head>
 <style>
 *{
@@ -16,132 +18,7 @@ body{
     background: #eaeaea;
     margin-top:40px;
 }
-.rainbow-box {
-    /* https://stackoverflow.com/questions/56418763/creating-the-perfect-rainbow-gradient-in-css */
-    height: 50px;
-    border-radius: 5px;
-    color: white;
-    text-align: center;
-    background: linear-gradient(
-        90deg,
-        rgba(255, 0, 0, 1) 0%,
-        rgba(255, 154, 0, 1) 10%,
-        rgba(208, 222, 33, 1) 20%,
-        rgba(79, 220, 74, 1) 30%,
-        rgba(63, 218, 216, 1) 40%,
-        rgba(47, 201, 226, 1) 50%,
-        rgba(28, 127, 238, 1) 60%,
-        rgba(95, 21, 242, 1) 70%,
-        rgba(186, 12, 248, 1) 80%,
-        rgba(251, 7, 217, 1) 90%,
-        rgba(255, 0, 0, 1) 100%
-    );
-}
-.glow-on-hover {
-  width: 86px;
-  height: 48px;
-  border: none;
-  outline: none;
-  color: #fff;
-  background: #111;
-  cursor: pointer;
-  position: relative;
-  z-index: 0;
-  border-radius: 10px;
-  }
-  .glow-on-hover:before {
-  content: '';
-  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-  position: absolute;
-  top: -2px;
-  left:-2px;
-  background-size: 400%;
-  z-index: -1;
-  filter: blur(5px);
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  animation: glowing 20s linear infinite;
-  opacity: 0;
-  transition: opacity .3s ease-in-out;
 
-  }  
-  .glow-on-hover:active {
-  color: #000
-  } 
-
-  .glow-on-hover:active:after {
-  background: transparent;
-  }
-
-  .glow-on-hover:hover:before {
-  opacity: 1;
-  }
-
-  .glow-on-hover:after {
-    /* custom-ed for this page */
-  z-index: -1;
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #28a745!important;
-  left: 0;
-  top: 0;
-  border-radius: 5px;
-  }
-
-  .glow-on-hover2 {
-  width: 86px;
-  height: 48px;
-  border: none;
-  outline: none;
-  color: #fff;
-  background: #111;
-  cursor: pointer;
-  position: relative;
-  z-index: 0;
-  border-radius: 10px;
-  }
-  .glow-on-hover2:before {
-  content: '';
-  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-  position: absolute;
-  top: -2px;
-  left:-2px;
-  background-size: 400%;
-  z-index: -1;
-  filter: blur(5px);
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
-  animation: glowing 20s linear infinite;
-  opacity: 0;
-  transition: opacity .3s ease-in-out;
-
-  }  
-  .glow-on-hover2:active {
-  color: #000
-  } 
-
-  .glow-on-hover2:active:after {
-  background: transparent;
-  }
-
-  .glow-on-hover2:hover:before {
-  opacity: 1;
-  }
-
-  .glow-on-hover2:after {
-    /* custom-ed for this page */
-  z-index: -1;
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: #dc3545!important;
-  left: 0;
-  top: 0;
-  border-radius: 5px;
-  }
 .profile-header {
     position: relative;
     overflow: hidden;
@@ -165,23 +42,8 @@ body{
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.25) 0, rgba(0, 0, 0, 0.85) 100%);
 }
 .profile-header .profile-header-content,
-.profile-header .profile-header-tab,
-.profile-header-img,
-body .fc-icon {
+.profile-header-img {
     position: relative;
-}
-.profile-header .profile-header-tab {
-    background: #fff;
-    list-style-type: none;
-    margin: -1.25rem 0 0;
-    padding: 0 0 0 8.75rem;
-    border-bottom: 1px solid #c8c7cc;
-    white-space: nowrap;
-}
-
-.profile-header .profile-header-tab > li.active > a,
-.profile-header .profile-header-tab > li > a.active {
-    color: #007aff;
 }
 .profile-header .profile-header-content:after,
 .profile-header .profile-header-content:before {
@@ -193,11 +55,6 @@ body .fc-icon {
 .profile-header .profile-header-content {
     color: #fff;
     padding: 1.25rem;
-}
-body .fc th a,
-body .fc-ltr .fc-basic-view .fc-day-top .fc-day-number,
-body .fc-widget-header a {
-    color: #000;
 }
 .profile-header-img {
     float: left;
@@ -231,9 +88,6 @@ body .fc-widget-header a {
         margin-left: 6.5625rem;
         padding-bottom: 0.9375rem;
     }
-    .profile-header .profile-header-tab {
-        padding-left: 0;
-    }
 }
 @media (max-width: 767px) {
     .profile-header .profile-header-cover {
@@ -251,11 +105,6 @@ body .fc-widget-header a {
     .profile-header-info h4 {
         margin: 0 0 0.3125rem;
     }
-    .profile-header .profile-header-tab {
-        white-space: nowrap;
-        overflow: scroll;
-        padding: 0;
-    }
 
     .friend-list > li {
         float: none;
@@ -263,39 +112,14 @@ body .fc-widget-header a {
     }
 }
 
-.friend-list,
-.img-grid-list {
+.friend-list {
     margin: -1px;
     list-style-type: none;
 }
 
-.coming-soon-cover img,
-.email-detail-attachment .email-attachment .document-file img,
-.email-sender-img img,
 .friend-list .friend-img img,
 .profile-header-img img {
     max-width: 100%;
-}
-.table.table-profile th {
-    border: none;
-    color: #000;
-    padding-bottom: 0.3125rem;
-    padding-top: 0;
-}
-.table.table-profile td {
-    border-color: #c8c7cc;
-}
-.table.table-profile tbody + thead > tr > th {
-    padding-top: 1.5625rem;
-}
-.table.table-profile .field {
-    color: #666;
-    font-weight: 600;
-    width: 25%;
-    text-align: right;
-}
-.table.table-profile .value {
-    font-weight: 500;
 }
 
 .friend-list {
@@ -367,7 +191,7 @@ body .fc-widget-header a {
             <label style="margin-top: 20px"><b>Send a friend request today!</b></label>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" id="maybefriend" placeholder="Friend's username" >
-                    <a href ="#"><button class="glow-on-hover" type="button" onclick="load()">Send!</button></a>
+                    <a href ="#"><button class="glow-hover" type="button" onclick="load()">Send!</button></a>
                 </div>
                 <div id="dosomething"></div>
             </div>
@@ -385,8 +209,7 @@ body .fc-widget-header a {
                                             <div class="friend-info">
                                                 <h4>CK Lim</h4>
                                                 <p>1 friend</p>
-                                                <button type='button' class='glow-on-hover' id="accept" onClick="document.getElementById('reject').setAttribute('disabled',true);">Approve</button> | <button type='button' class='glow-on-hover2' id="reject" onClick="document.getElementById('accept').setAttribute('disabled',true);">Reject</button>
-                                            
+                                                <button type='button' class='btn btn-success' id="accept" onClick="document.getElementById('reject').setAttribute('disabled',true);">Approve</button> | <button type='button' class='btn btn-danger' id="reject" onClick="document.getElementById('accept').setAttribute('disabled',true);">Reject</button>
                                             </div>
                                         </a>
                                     </li>
@@ -397,7 +220,7 @@ body .fc-widget-header a {
                                             <div class="friend-info">
                                                 <h4>Bentley</h4>
                                                 <p>10,001 friends</p>
-                                                <button type='button' class='glow-on-hover' id="accept2" onClick="document.getElementById('reject2').setAttribute('disabled',true);">Approve</button> | <button type='button' class='glow-on-hover2' id="reject2" onClick="document.getElementById('accept2').setAttribute('disabled',true);">Reject</button>
+                                                <button type='button' class='btn btn-success' id="accept2" onClick="document.getElementById('reject2').setAttribute('disabled',true);">Approve</button> | <button type='button' class='btn btn-danger' id="reject2" onClick="document.getElementById('accept2').setAttribute('disabled',true);">Reject</button>
                                             </div>
                                         </a>
                                     </li>
@@ -407,7 +230,7 @@ body .fc-widget-header a {
                                             <div class="friend-info">
                                                 <h4>Bern</h4>
                                                 <p>487 friends</p>
-                                                <button type='button' class='glow-on-hover' id="accept3" onClick="setTimeout(document.getElementById('reject3').setAttribute('disabled',true),1000);">Approve</button> | <button type='button' class='glow-on-hover2' id="reject3" onClick="document.getElementById('accept3').setAttribute('disabled',true);">Reject</button>
+                                                <button type='button' class='btn btn-success' id="accept3" onClick="setTimeout(document.getElementById('reject3').setAttribute('disabled',true),1000);">Approve</button> | <button type='button' class='btn btn-danger' id="reject3" onClick="document.getElementById('accept3').setAttribute('disabled',true);document.getElementById('friendlist2').lastElementChild.appendChild(document.getElementById(accept3));">Reject</button>
 
                                             </div>
                                         </a>
@@ -425,7 +248,7 @@ body .fc-widget-header a {
                             <div class="tab-pane fade active show" id="profile-friends">
                                 <div class="m-b-10"><b>Friend List (4)</b></div>
         
-                                <ul class="friend-list clearfix2">
+                                <ul class="friend-list clearfix2" id="friendlist2">
                                     <li>
                                         <a href="#">
                                             <div class="friend-img img-list"><img src="https://i.scdn.co/image/ab6761610000e5eb8543b9b2b5d153d37c46606d" /></div>
