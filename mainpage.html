@@ -146,14 +146,14 @@
     <!--editted: w-100 removed-->
 
     <div class="session">
-      <div id='input1' class="input-group mx-auto mt-5 px-5 col-lg-8">
-        <span class="input-group-text" id="basic-addon1">Hours</span>
-        <input type="text" class="form-control" id="hours" name="hours" value="" aria-label="Username" aria-describedby="basic-addon1">
+      <div id='input1' class="input-group mx-auto mt-5 px-5 col-lg-8 w-50">
+        <span class="input-group-text bg-dark border-dark text-light" id="basic-addon1">Hours</span>
+        <input type="text" class="form-control bg-dark border-dark text-light" id="hours" name="hours" value="" aria-label="Username" aria-describedby="basic-addon1">
       </div>
   
-      <div id='input2' class="input-group mx-auto p-5 col-lg-8">
-        <span class="input-group-text" id="basic-addon1">Minutes</span>
-        <input type="text" class="form-control" id="minutes" name="minutes" value="" aria-label="Username" aria-describedby="basic-addon1">
+      <div id='input2' class="input-group mx-auto p-5 col-lg-8 w-50">
+        <span class="input-group-text bg-dark border-dark text-light" id="basic-addon1">Minutes</span>
+        <input type="text" class="form-control bg-dark border-dark text-light" id="minutes" name="minutes" value="" aria-label="Username" aria-describedby="basic-addon1">
       </div>
   
       <div id="bar" class="container-fluid m-1 p-5" style="display:none">
@@ -167,7 +167,8 @@
       </div>
   
       <div class="container-fluid d-flex justify-content-center">
-        <button id="save" onclick="displayTime()" class="btn glow-on-hover mb-3" style="font-size:13px">Start Session</button>
+        <button id="save" onclick="displayTime()" class="btn glow-on-hover mb-3 text-light" style="font-size:13px">Start Session</button>
+        <button id="close" class="btn glow-on-hover mb-3 text-light"  style="font-size:13px;margin-left: 10px" onclick="closeSession()">Close Sessions</button>
   
         <button id="end" onclick="endTime()" class="btn btn-danger mb-3" style="display:none" style="font-size:13px">End Session</button>
       </div>
@@ -335,6 +336,9 @@
 
   <!--Script of: Login, signup-->
     <script>
+      function closeSession(){
+        document.getElementsByClassName("session")[0].style.display = "none"
+      }
       function displaygetStarted(){
         document.querySelector("#loginbutton").style.display = "none";
         document.querySelector("#signuppage").style.display = "none";
@@ -375,14 +379,5 @@
 
   <!--https://codingyaar.com/bootstrap-navbar-hover-background-color/-->
 </body>
-</html> src="js/Spotify api/spotify_auth.js"></script>
-<script src="./js/login.js" type="module"></script>
-<script src="js/timer.js"></script>
-<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-<!-- <script src="timer/timer.js"></script> -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+</html> 
 
-  <!--https://codingyaar.com/bootstrap-navbar-hover-background-color/-->
-</body>
-</html>
-  
