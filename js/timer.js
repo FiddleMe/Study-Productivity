@@ -3,10 +3,36 @@
 
 var x;
 
+function session(){
+    document.getElementsByClassName("session")[0].style.display = "block";
+}
 function displayTime(){
     display_countdown_timer(document.getElementById('hours').value, document.getElementById('minutes').value)
 }
 
+// function endTime(){
+//     clearInterval(x);
+//     isDone = true
+//     document.getElementById("timer").innerHTML = "Start Again?";
+//     document.getElementById("progressBar").innerHTML = ''
+//     document.getElementById('input1').style.display = 'block'
+//     document.getElementById('input2').style.display = 'block'
+// }
+function endTime(){
+    clearInterval(x);
+    document.getElementById("timer").innerHTML = "Start Again?";
+    document.getElementById('save').style.display = ''
+    document.getElementById('end').style.display = 'none'
+    document.getElementById('bar').style.display = 'none'
+    // document.getElementById("progressBar").innerHTML = 'none'
+    document.getElementById('input1').style.display = ''
+    document.getElementById('input2').style.display = ''
+    // isDone = true
+    // document.getElementById("timer").innerHTML = "Start Again?";
+    // document.getElementById("progressBar").innerHTML = ''
+    // document.getElementById('input1').style.display = ''
+    // document.getElementById('input2').style.display = ''
+}
 function endTime(){
     clearInterval(x);
     document.getElementById("timer").innerHTML = "Start Again?";
@@ -105,17 +131,27 @@ function display_countdown_timer(hours,minutes){
         }
 
         if(!isHalf && !isDone){
-            document.getElementById('gif_now').innerHTML = '<img src="gifs/gif2.gif" id="gif_now" style="margin-top: 7px; height:50px; width: 150px">'
+            document.getElementById('gif_now').src = "gifs/gif2.gif"
         }
         else if (isHalf && !isDone){
-            document.getElementById('gif_now').innerHTML = '<img src="gifs/gif3.gif" id="gif_now" style="margin-top: 7px; height:50px; width: 150px">'
+            document.getElementById('gif_now').style.display = "none"
+            document.getElementById("gif2").style.display = ""
+         
             alert("You're halfway there! Keep Going!")
             isHalf = false
         }
 
         else if(isDone && !isHalf){
-            document.getElementById('gif_now').innerHTML = '<img src="gifs/gif4.gif" id="gif_now" style="margin-top: 7px; height:50px; width: 150px">'
+            
+            document.getElementById("gif2").style.display = "none"
+            document.getElementById("gif3").style.display = ""
+            console.log( document.getElementById('gif_now'))
             alert("Congratulations! You have completed your session!")
+            setTimeout(()=>{
+                document.getElementById("gif3").style.display = "none"
+                document.getElementById('gif_now').src = "gifs/gif1.gif"
+                document.getElementById("gif_now").style.display = ""
+            },3000)
             
         }
 

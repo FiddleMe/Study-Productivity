@@ -27,7 +27,8 @@ const vueapp = Vue.createApp({
     data() {
       return {
         friendsreq: [],
-        names: []
+        names: [],
+        friendlist: []
       }
     },
     methods: {
@@ -37,6 +38,33 @@ const vueapp = Vue.createApp({
                 window.location.replace("./login.html");
             })
         },
+        displayFriends(){
+            onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                  // User is signed in, see docs for a list of available properties
+                  // https://firebase.google.com/docs/reference/js/firebase.User
+                  const uid = user.uid;
+                  var ref = doc(db, "Users",uid);   
+                  const docSnap = await getDoc(ref);
+                  if (docSnap.exists()) {
+                    console.log("Document data:", docSnap.data());
+                    
+                    var friends = docSnap.data().FriendRequests                    ;
+                    this.friendlist =  friends;
+                    console.log(friends);
+                  } else {
+                    // doc.data() will be undefined in this case
+                    console.log("No such document!");
+                  }
+                  
+
+                  // ...
+                } else {
+                  // User is signed out
+                  // ...
+                }
+              });
+        }, 
         sendFriendRequest(){
             var getFriendUsername = document.getElementById("frienduser").value;
             const docRef = doc(db, "TotalUsers", "Users");
@@ -195,6 +223,8 @@ const vueapp = Vue.createApp({
     },
         
     created() { 
+        this.displayFriends();
+        console.log("hi")
         var friends = []
         var result = []
         onAuthStateChanged(auth, (user) => {

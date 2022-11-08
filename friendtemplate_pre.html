@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LoFiStudy</title>
+
+    <link rel="stylesheet" href="glow.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://unpkg.com/vue@next"></script>
 
@@ -165,78 +169,46 @@ body{
 }
 </style>
 
-<body>
-    
-    <div class="container">
+
+<body id="displayfriends">
+    <div class="container" >
         <div id="content" class="content p-0">
             <div class="profile-header">
                 <div class="profile-header-cover"></div>
                 <div class="profile-header-content">
-
                     <div class="profile-header-img mb-4">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Jessi_2017_%28derived%29.jpg/800px-Jessi_2017_%28derived%29.jpg" class="mb-4"/>
                     </div>
-        
                     <div class="profile-header-info">
                         <h4 class="m-t-sm">Jessie</h4>
                         <p class="m-b-sm">Feelin' Productive</p>
                     </div>
-                    
                 </div>
-        
-                
             </div>
-
+            <!---->
             <div class="profile-container p-0">     
-            <label style="margin-top: 20px"><b>Send a friend request today!</b></label>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" id="maybefriend" placeholder="Friend's username" >
-                    <a href ="#"><button class="glow-hover" type="button" onclick="load()">Send!</button></a>
-                </div>
-                <div id="dosomething"></div>
+                <label style="margin-top: 20px"><b>Send a friend request today!</b></label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="frienduser" placeholder="Friend's username" >
+                        <button class="btn btn-outline-primary btn rainbow rainbow:hover" type="button" v-on:click="sendFriendRequest">Send!</button>
+                    </div>
             </div>
+            <!---->
             <div class="profile-container">
                 <div class="row row-space-20">
                         <div class="tab-content p-0">
-        
                             <div class="tab-pane fade active show" id="profile-friends">
-                                <div class="m-b-10"><b>Friend Requests (3)</b></div>
-        
+                                <div class="m-b-10"><b>Friend Requests:</b></div>
                                 <ul class="friend-list clearfix">
-                                    <li>
+                                    <li v-for="friend of friendsreq">
                                         <a href="#">
-                                            <div class="friend-img img-list"><img src="https://images.generated.photos/LYhunV48Y29CNnbLqsFOOeKi5lNfHypXvlcVUyOxVls/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MjEwMDI3LmpwZw.jpg" alt="" /></div>
                                             <div class="friend-info">
-                                                <h4>CK Lim</h4>
-                                                <p>1 friend</p>
+                                                <h4>{{ friend }}</h4>
                                                 <button type='button' class='btn btn-success' id="accept" onClick="document.getElementById('reject').setAttribute('disabled',true);">Approve</button> | <button type='button' class='btn btn-danger' id="reject" onClick="document.getElementById('accept').setAttribute('disabled',true);">Reject</button>
                                             </div>
                                         </a>
                                     </li>
-                                    
-                                    <li>
-                                        <a href="#">
-                                            <div class="friend-img"><img src="https://images.generated.photos/Ks8dZ1KXqRSjpvHGmuUezhLUYr483SWoz9SjFcE4j28/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTMwNTY1LmpwZw.jpg" alt="" /></div>
-                                            <div class="friend-info">
-                                                <h4>Bentley</h4>
-                                                <p>10,001 friends</p>
-                                                <button type='button' class='btn btn-success' id="accept2" onClick="document.getElementById('reject2').setAttribute('disabled',true);">Approve</button> | <button type='button' class='btn btn-danger' id="reject2" onClick="document.getElementById('accept2').setAttribute('disabled',true);">Reject</button>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="friend-img"><img src="https://images.generated.photos/CW-fnwHSrr8nfKiva8lnzvAGI8sXd4Rw_1fYeLbuYlY/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NjM5MjY2LmpwZw.jpg" alt="" /></div>
-                                            <div class="friend-info">
-                                                <h4>Bern</h4>
-                                                <p>487 friends</p>
-                                                <button type='button' class='btn btn-success' id="accept3" onClick="setTimeout(document.getElementById('reject3').setAttribute('disabled',true),1000);">Approve</button> | <button type='button' class='btn btn-danger' id="reject3" onClick="document.getElementById('accept3').setAttribute('disabled',true);document.getElementById('friendlist2').lastElementChild.appendChild(document.getElementById(accept3));">Reject</button>
-
-                                            </div>
-                                        </a>
-                                    </li>
                                 </ul>
-                            
                         </div>
                     </div>
                 </div>
@@ -252,6 +224,7 @@ body{
                                     <li>
                                         <a href="#">
                                             <div class="friend-img img-list"><img src="https://i.scdn.co/image/ab6761610000e5eb8543b9b2b5d153d37c46606d" /></div>
+
                                             <div class="friend-info">
                                                 <h4>Lisa</h4>
                                                 <p>4,000 friends</p>
@@ -261,7 +234,16 @@ body{
                                     </li>
                                     <li>
                                         <a href="#">
+
                                             <div class="friend-img"><img src="https://images.generated.photos/W0fvc_o57L--J57JW15FiI2VROg5xrNJ3J723coBUGg/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MzQzMzY4LmpwZw.jpg"/></div>
+
+                                           
+
+                                            <div class="friend-img"><img src="https://images.generated.photos/W0fvc_o57L--J57JW15FiI2VROg5xrNJ3J723coBUGg/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MzQzMzY4LmpwZw.jpg"/></div>
+
+
+                                            <div class="friend-img"><img src="https://images.generated.photos/W0fvc_o57L--J57JW15FiI2VROg5xrNJ3J723coBUGg/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/MzQzMzY4LmpwZw.jpg"/></div>
+
                                             <div class="friend-info">
                                                 <h4>Chaeyoung</h4>
                                                 <p>4 friends</p>
@@ -270,7 +252,15 @@ body{
                                     </li>
                                     <li>
                                         <a href="#">
+
                                             <div class="friend-img"><img src="https://images.generated.photos/JNMJbvHFFi9EW_Qft2yChqZDiptOYjxICdXgdEmsvFU/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NzcwMDcxLmpwZw.jpg"/></div>
+
+                                           
+
+                                            <div class="friend-img"><img src="https://images.generated.photos/JNMJbvHFFi9EW_Qft2yChqZDiptOYjxICdXgdEmsvFU/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NzcwMDcxLmpwZw.jpg"/></div>
+
+                                            <div class="friend-img"><img src="https://images.generated.photos/JNMJbvHFFi9EW_Qft2yChqZDiptOYjxICdXgdEmsvFU/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/NzcwMDcxLmpwZw.jpg"/></div>
+
                                             <div class="friend-info">
                                                 <h4>Sunny</h4>
                                                 <p>2 friends</p>
@@ -279,7 +269,15 @@ body{
                                     </li>
                                     <li>
                                         <a href="#">
+
                                             <div class="friend-img"><img src="https://m.media-amazon.com/images/M/MV5BNjZiY2RhMzctMDc5Mi00ZmFiLTgzNjctM2E4YTFiMzk0Y2RiXkEyXkFqcGdeQXVyNDY5MjMyNTg@._V1_.jpg"/></div>
+
+                                           
+
+                                            <div class="friend-img"><img src="https://m.media-amazon.com/images/M/MV5BNjZiY2RhMzctMDc5Mi00ZmFiLTgzNjctM2E4YTFiMzk0Y2RiXkEyXkFqcGdeQXVyNDY5MjMyNTg@._V1_.jpg"/></div>
+
+                                            <div class="friend-img"><img src="https://m.media-amazon.com/images/M/MV5BNjZiY2RhMzctMDc5Mi00ZmFiLTgzNjctM2E4YTFiMzk0Y2RiXkEyXkFqcGdeQXVyNDY5MjMyNTg@._V1_.jpg"/></div>
+
                                             <div class="friend-info">
                                                 <h4>Jessica</h4>
                                                 <p>12,000 friends</p>
@@ -291,10 +289,9 @@ body{
                         </div>
                     </div>
                 </div>
-            </div>
-            
         </div>
-        </div>
+    </div>
+<script src="./js/displayfriendsrequests.js" type="module"></script>
 <script>
     
     function load(){ 
