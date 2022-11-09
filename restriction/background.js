@@ -103,6 +103,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo) {
 
     switch (resolution) {
     case CLOSE_TAB:
+      alert("Site is blocked! Go study la!")
       chrome.tabs.remove(tabId);
       break;
     case SHOW_BLOCKED_INFO_PAGE:
@@ -110,4 +111,5 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo) {
       break;
     }
   });
+
 });

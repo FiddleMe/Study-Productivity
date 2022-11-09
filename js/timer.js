@@ -7,6 +7,7 @@ function session(){
     document.getElementsByClassName("session")[0].style.display = "block";
 }
 function displayTime(){
+    
     display_countdown_timer(document.getElementById('hours').value, document.getElementById('minutes').value)
 }
 

@@ -5,7 +5,7 @@
   "version": "1.0",
   "options_page": "options.html",
   "externally_connectable": {
-    "matches": ["http://127.0.0.1:5501/mainpage2.html"]
+    "matches": ["http://127.0.0.1:5501/mainpage2.html","http://127.0.0.1:5501/index.html"]
   },
   "permissions": ["storage", "tabs", "nativeMessaging"],
   "background": {

@@ -2,18 +2,16 @@
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
-body{
-    background: #eaeaea;
-    margin-top:40px;
-}
+
 
 .profile-header {
     position: relative;
     overflow: hidden;
+    width: 100%;
 }
 .profile-header .profile-header-cover {
     background: url(https://bootdey.com/img/Content/bg1.jpg) center no-repeat;
-    background-size: 100% auto;
+    background-size: cover;
     position: absolute;
     left: 0;
     right: 0;
@@ -43,6 +41,7 @@ body{
 .profile-header .profile-header-content {
     color: #fff;
     padding: 1.25rem;
+    width: 100%;
 }
 .profile-header-img {
     float: left;
@@ -154,3 +153,6 @@ body{
     float: left;
 
 }
+button{
+    font-size: 13px;
+  }
