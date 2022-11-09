@@ -67,20 +67,20 @@
                 <div class="profile-header-cover"></div>
                 <div class="profile-header-content">
                     <div class="profile-header-img mb-4">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Jessi_2017_%28derived%29.jpg/800px-Jessi_2017_%28derived%29.jpg" class="mb-4"/>
+                        <img src="images/profile_pic.jpg" class="mb-4"/>
                     </div>
                     <div class="profile-header-info">
                         <h4 class="m-t-sm">{{ currentuser }}</h4>
-                        <p class="m-b-sm">Feelin' Productive</p>
+                        <p class="m-b-sm">Mic Drop</p>
                     </div>
                 </div>
             </div>
             <!---->
             <div class="profile-container container-fluid">     
-                <label style="margin-top: 20px"><b>Send a friend request today!</b></label>
+                <label style="margin-top: 10px; margin-bottom: 10px"><b>Send a friend request today!</b></label>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" id="frienduser" placeholder="Friend's username" >
-                        <button class="btn btn-outline-primary btn rainbow rainbow:hover" type="button" v-on:click="sendFriendRequest">Send!</button>
+                        <button class="glow-on-hover" type="button" v-on:click="sendFriendRequest" style="font-size: large;">Send!</button>
                     </div>
             </div>
             <!---->
