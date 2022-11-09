@@ -173,9 +173,10 @@
   
       <div class="container-fluid d-flex justify-content-center">
         <button id="save"  class="btn glow-on-hover mb-3 text-light" style="font-size:13px">Start Session</button>
-        <button id="close" class="btn glow-on-hover mb-3 text-light"  style="font-size:13px;margin-left: 10px" onclick="closeSession()">Close Sessions</button>
-  
-        <button id="end" onclick="endTime()" class="btn btn-danger mb-3" style="display:none" style="font-size:13px">End Session</button>
+        <button id="editsession"  class="btn glow-on-hover mb-3 text-light" style="font-size:13px; margin-left:10px">Edit BlockSites</button>
+
+        <button id="close" class="btn glow-on-hover mb-3 text-light"  style="font-size:13px;margin-left: 10px;margin-right: 10px;" onclick="closeSession()">Close Sessions</button>
+        <button id="end"  class="btn btn-danger mb-3" style="display:none" style="font-size:13px;">End Session</button>
       </div>
     </div>
       
@@ -260,9 +261,15 @@
   <!-- music bar -->
 <div class="container">
     <div id="musicbar">'
-      
+      <div class="playpause">
+        <button><img src="./images/media-skip-backward-xxl.png" width="30px"></button>
+      </div>
       <div class="playpause">
         <div id="togglePlay" class="button"></div>
+        
+      </div>
+      <div class="playpause">
+        <button><img src="./images/media-skip-forward-xxl.png" width="30px"></button>
       </div>
       <button id="sticky_add_note">Add Note</button>
       

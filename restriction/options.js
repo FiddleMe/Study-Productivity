@@ -119,12 +119,12 @@ checkbox.addEventListener("change", (event) => {
   
 });
 closeoptions.addEventListener("click",() =>{
-  chrome.storage.local.get(["blocked","enabled"], function(local){
-    const { blocked, enabled } = local;
-    if(Array.isArray(blocked) && enabled == true){
-      
-    }
-  })
+  // chrome.storage.local.get(["blocked","enabled"], function(local){
+  //   const { blocked, enabled } = local;
+  //   if(Array.isArray(blocked) && enabled == true){
+      window.close();
+  //   }
+  // })
 })
 window.addEventListener("DOMContentLoaded", () => {
   chrome.storage.local.get(["blocked", "enabled"], function (local) {
