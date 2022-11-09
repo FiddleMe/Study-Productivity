@@ -1,8 +1,64 @@
 // input time(hrs, mins) specified by user
 //updates element with id="timer" with a countdown timer
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, setPersistence, browserSessionPersistence} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+import { getStorage } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-storage.js";
+import { getFirestore, doc, setDoc, getDoc, onSnapshot, documentId, addDoc, updateDoc, arrayRemove, arrayUnion,deleteField, query, collection, where} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-firestore.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  
+const firebaseConfig = {
+  apiKey: "AIzaSyAgq38ay3TXdY5Ily5pobcCAXxGNe7A-wQ",
+  authDomain: "wad-project-f3ec0.firebaseapp.com",
+  projectId: "wad-project-f3ec0",
+  storageBucket: "wad-project-f3ec0.appspot.com",
+  messagingSenderId: "220264558494",
+  appId: "1:220264558494:web:475684e268fa655215308f",
+  measurementId: "G-1H6J376K8X"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth();
+const db = getFirestore();
 var x;
+document.getElementById("session").addEventListener("click",session)
+document.getElementById("save").addEventListener("click",startSession)
+async function startSession(){
 
+    const auth = getAuth();
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        var ref = doc(db, "Users",uid);   
+              const docSnap = await getDoc(ref);
+              if (docSnap.exists()) {
+                console.log(docSnap.data())
+                var extensionId = docSnap.data().Extension;
+                console.log(extensionId)
+                chrome.runtime.sendMessage(extensionId, 'showOptions');
+               
+                
+                //
+              } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+              }
+              
+        // ...
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
+   
+  }
 function session(){
     document.getElementsByClassName("session")[0].style.display = "block";
 }
@@ -19,21 +75,21 @@ function displayTime(){
 //     document.getElementById('input1').style.display = 'block'
 //     document.getElementById('input2').style.display = 'block'
 // }
-function endTime(){
-    clearInterval(x);
-    document.getElementById("timer").innerHTML = "Start Again?";
-    document.getElementById('save').style.display = ''
-    document.getElementById('end').style.display = 'none'
-    document.getElementById('bar').style.display = 'none'
+// function endTime(){
+//     clearInterval(x);
+//     document.getElementById("timer").innerHTML = "Start Again?";
+//     document.getElementById('save').style.display = ''
+//     document.getElementById('end').style.display = 'none'
+//     document.getElementById('bar').style.display = 'none'
     // document.getElementById("progressBar").innerHTML = 'none'
-    document.getElementById('input1').style.display = ''
-    document.getElementById('input2').style.display = ''
+    // document.getElementById('input1').style.display = ''
+    // document.getElementById('input2').style.display = ''
     // isDone = true
     // document.getElementById("timer").innerHTML = "Start Again?";
     // document.getElementById("progressBar").innerHTML = ''
     // document.getElementById('input1').style.display = ''
     // document.getElementById('input2').style.display = ''
-}
+// }
 function endTime(){
     clearInterval(x);
     document.getElementById("timer").innerHTML = "Start Again?";
