@@ -356,3 +356,35 @@ button{
   .session{
     display: none;
   }
+
+  #nexttrack{
+    
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-radius: 45%;
+      background: transparent;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+    
+    
+  
+  }
+  #nexttrack:hover {
+    background: #464646;
+  }
+  #prevtrack{
+    
+    padding-top: 10px;
+    padding-bottom: 10px;
+   
+    border-radius: 45%;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+  
+  
+
+}
+#prevtrack:hover {
+  background: #464646;
+}
