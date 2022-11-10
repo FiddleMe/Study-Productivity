@@ -86,7 +86,7 @@ async function display_stats(uid){
         datasets: [{
         label: 'Time spent being productive',
         // pink color
-        backgroundColor: 'rgb(255,148,224)',
+        backgroundColor: 'rgb(120,238,134)',
         borderColor: 'rgb(255,148,224)',
         // take in input of array
         data: time,
@@ -109,10 +109,7 @@ async function display_stats(uid){
     var names = [];
     var totaltimes = [];
     if (docSnap.exists()) {
-        var namesArr = [];
         var friends = docSnap.data().FriendRequests;
-        // var names = []
-        // var totaltimes = []
         for (var friend of friends){
             console.log(Object.values(friend)[0]);
             if (Object.values(friend)[0] == true){
@@ -122,33 +119,41 @@ async function display_stats(uid){
                 totaltimes.push(docSnap.data().TotalTime);
             };
         }
-                
 
     }
+    if (names.length == 0){
+        document.getElementById("friends_chart").innerHTML = `
+        <p class="text-light">looks like you have no friends :( Add some here:</p>
+        <button  class="glow-on-hover" style="margin: 5px;">
+        <a class="nav-link text-light" aria-current="page" href="./friendtemplate_pre.html">Add Friends</a>
+        </button>`;
+    }
+    else{
+        var data_things2 = {
+            labels: names,
+            datasets: [{
+            label: 'Friend\'s Scores',
+            // pink color
+            backgroundColor: 'rgb(120,238,134)',
+            borderColor: 'rgb(255,148,224)',
+            // take in input of array
+            data: totaltimes,
+            }]
+        };
+        var config2 = {
+            type: 'bar',
+            data: data_things2,
+            options: {
+                
+            }
+        };
+        var myChart2 = new Chart(
+            document.getElementById('myChart2'),
+            config2
+        );  
+    }
     
-    var data_things2 = {
-        labels: names,
-        datasets: [{
-        label: 'Friend\'s Scores',
-        // pink color
-        backgroundColor: 'rgb(255,148,224)',
-        borderColor: 'rgb(255,148,224)',
-        // take in input of array
-        data: totaltimes,
-        }]
-    };
-    var config2 = {
-        type: 'bar',
-        data: data_things2,
-        options: {
-            
-        }
-    };
-    var myChart2 = new Chart(
-        document.getElementById('myChart2'),
-        config2
-    );  
-
+    
 
     var friends_scores = []
     for (var n in names){
@@ -161,33 +166,48 @@ async function display_stats(uid){
         if (keyA > keyB) return -1;
         return 0;
         });
-    console.log(friends_scores);
-    
-    //data for table highscores
-    var counter = 1
-    for (var n in friends_scores){
-        var tr_element = document.createElement("tr");
+    console.log(friends_scores);//data for table highscores
 
-        var td_rank = document.createElement("td");
-        const rank = document.createTextNode(counter);
-        td_rank.appendChild(rank);
-        tr_element.appendChild(td_rank);
-
-        var td_name = document.createElement("td");
-        const name = document.createTextNode(friends_scores[n].name);
-        td_name.appendChild(name);
-        tr_element.appendChild(td_name);
-
-        var td_time = document.createElement("td");
-        const time = document.createTextNode(friends_scores[n].time);
-        td_time.appendChild(time);
-        tr_element.appendChild(td_time);
-
-        document.getElementById("table_data").appendChild(tr_element);
-
-        counter ++;
+    if(friends_scores.length == 0){//if no friends ask them to add friends
+        document.getElementById("table_rank").style.display = "none";
+        var p = document.createElement("p");
+        const text_node = document.createTextNode("looks like you have no friends :( Add some here: ");
+        p.appendChild(text_node);
+        p.setAttribute("class", "text-light");
+        document.getElementById("table_rank_div").appendChild(p);
+        document.getElementById("table_rank_div").innerHTML += 
+            `<button  class="glow-on-hover" style="margin: 5px;">
+            <a class="nav-link text-light" aria-current="page" href="./friendtemplate_pre.html">Add Friends</a>
+            </button>`;
     }
-    //average
+    else{//show friend's scores ranked table
+        var counter = 1
+        for (var n in friends_scores){
+            var tr_element = document.createElement("tr");
+
+            var td_rank = document.createElement("td");
+            const rank = document.createTextNode(counter);
+            td_rank.appendChild(rank);
+            tr_element.appendChild(td_rank);
+
+            var td_name = document.createElement("td");
+            const name = document.createTextNode(friends_scores[n].name);
+            td_name.appendChild(name);
+            tr_element.appendChild(td_name);
+
+            var td_time = document.createElement("td");
+            const time = document.createTextNode(friends_scores[n].time);
+            td_time.appendChild(time);
+            tr_element.appendChild(td_time);
+
+            document.getElementById("table_data").appendChild(tr_element);
+
+            counter ++;
+    }
+    }
+    
+    
+    //shows average time spent in sessions/day
     const average = arr => arr.reduce( ( p, c ) => p + c, 0 ) / arr.length;
     console.log(time);
     document.getElementById("average_time").innerText = parseInt(average(time))+"min";
