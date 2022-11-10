@@ -37,6 +37,10 @@ onAuthStateChanged(auth, (user) => {
       document.getElementById("footer").style.display = "none";
       document.getElementById("logoutlist").style.display ="block"
       document.getElementById("loginpage").style.display = "none" 
+      document.getElementById("addfriendbtn").style.display = "block"
+      document.getElementById("addsessionbtn").style.display = "block"
+      document.getElementById("addleaderboardbtn").style.display = "block"
+      document.getElementById("auth").style.display = "block"
       document.getElementsByClassName("container")[0].style.display = "flex" 
       // var btn = document.getElementById("loginbutton");
       // btn.setAttribute("onClick", "");
@@ -169,7 +173,8 @@ function login(){
         Username: username,
         FriendsRequests: friends,
         TotalTime: 0,
-        PastScores: {}
+        PastScores: {},
+        Extension: ""
       }
       var paramTotal = {
         [username]:user.uid
@@ -194,6 +199,10 @@ function login(){
        document.getElementById("logoutlist").style.display ="none"
        document.getElementsByClassName("container")[0].style.display = "none" 
        document.getElementById("loginbutton").style.display = "block"
+       document.getElementById("addfriendbtn").style.display = "none"
+        document.getElementById("addsessionbtn").style.display = "none"
+        document.getElementById("addleaderboardbtn").style.display = "none"
+        document.getElementById("auth").style.display = "none"
     })
   }
  
