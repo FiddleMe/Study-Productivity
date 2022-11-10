@@ -277,7 +277,7 @@ function display_countdown_timer(hours,minutes){
               })
           
           };
-          add_score(original_time/1000, localStorage.getItem("uid")); //add scores to databse using original time
+          add_score(original_time/60000, localStorage.getItem("uid")); //add scores to databse using original time
           
             
         }
