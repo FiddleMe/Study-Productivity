@@ -1,4 +1,3 @@
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, setPersistence, browserSessionPersistence} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
@@ -60,11 +59,11 @@ async function display_stats(uid){
         return formatted_date;
         });
     
-
+        //data for past 7 days
     var dates = [];
     var time = [];
 
-    for (var day of past7Days){
+    for (var day of past7Days.reverse()){
         //display days
         console.log(day)
         
@@ -75,7 +74,7 @@ async function display_stats(uid){
         }
         else{
             dates.push(day);
-            time.push(past_scores[day]);
+            time.push(0);
             console.log(`data unavailble on ${day}`)
         }
 
@@ -127,9 +126,6 @@ async function display_stats(uid){
 
     }
     
-    
-
-    
     var data_things2 = {
         labels: names,
         datasets: [{
@@ -153,5 +149,47 @@ async function display_stats(uid){
         config2
     );  
 
+
+    var friends_scores = []
+    for (var n in names){
+        friends_scores.push({"name":names[n],"time":totaltimes[n]})
+    }
+    friends_scores.sort(function(a, b) {
+        var keyA = new Date(a.time),
+            keyB = new Date(b.time);
+        if (keyA < keyB) return 1;
+        if (keyA > keyB) return -1;
+        return 0;
+        });
+    console.log(friends_scores);
+    
+    //data for table highscores
+    var counter = 1
+    for (var n in friends_scores){
+        var tr_element = document.createElement("tr");
+
+        var td_rank = document.createElement("td");
+        const rank = document.createTextNode(counter);
+        td_rank.appendChild(rank);
+        tr_element.appendChild(td_rank);
+
+        var td_name = document.createElement("td");
+        const name = document.createTextNode(friends_scores[n].name);
+        td_name.appendChild(name);
+        tr_element.appendChild(td_name);
+
+        var td_time = document.createElement("td");
+        const time = document.createTextNode(friends_scores[n].time);
+        td_time.appendChild(time);
+        tr_element.appendChild(td_time);
+
+        document.getElementById("table_data").appendChild(tr_element);
+
+        counter ++;
+    }
+    //average
+    const average = arr => arr.reduce( ( p, c ) => p + c, 0 ) / arr.length;
+    console.log(time);
+    document.getElementById("average_time").innerText = parseInt(average(time))+"min";
 }
 display_stats(localStorage.getItem("uid"));
