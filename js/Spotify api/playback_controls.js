@@ -82,11 +82,11 @@ function startSpotify() {
             player.togglePlay();
         };
     
-        document.getElementById('next').onclick = function next() {
+        document.getElementById('nexttrack').onclick = function next() {
                 player.nextTrack();
         };
         
-        document.getElementById('back').onclick = function() {
+        document.getElementById('prevtrack').onclick = function() {
             player.previousTrack();
         };
         test();
