@@ -212,45 +212,38 @@
             var formatted_date = formatDate(date);
             return formatted_date;
             });
-        var scores_data = []
+        
+
+        var dates = [];
+        var time = [];
+
         for (var day of past7Days){
             //display days
             console.log(day)
             
             if (day in past_scores){
                 //display scores if available
-                scores_data.push({"name":day, "study":past_scores[day]});
+                dates.push(day);
+                time.push(past_scores[day]);
             }
             else{
-                scores_data.push({"name":day, "study":past_scores[day]});
+                dates.push(day);
+                time.push(past_scores[day]);
                 console.log(`data unavailble on ${day}`)
             }
     
         }
-        
-        console.log(scores_data)// Data for past 7 days
 
-        
-        var data_labels = [];
-        
-        var data_numbers = [];
-        for (var obj of scores_data){
-            data_numbers.push(obj.study)
-        }
-        for (var obj of scores_data){
-            data_labels.push(obj.name)
-        }
-
-
+        //setting up past 7 days chart
         var data_things = {
-            labels: data_labels,
+            labels: dates,
             datasets: [{
             label: 'Time spent being productive',
             // pink color
             backgroundColor: 'rgb(255,148,224)',
             borderColor: 'rgb(255,148,224)',
             // take in input of array
-            data: data_numbers,
+            data: time,
         
             }]
         };
@@ -267,23 +260,27 @@
         );
 
         // Data for friend's scores
-        var friends = docSnap.data().FriendsRequests;
-        console.log(friends);
-        var names = []
-        var totaltimes = []
-        for (var friend of friends){
-            // console.log(Object.values(friend)[0]);
-            if (Object.values(friend)[0] == true){
-                
-                var ref = doc(db, "Users", Object.keys(friend)[0]);
-                const docSnap = await getDoc(ref);
-                names.push( docSnap.data().Username);
-                totaltimes.push(docSnap.data().TotalTime);
+        var names = [];
+        var totaltimes = [];
+        if (docSnap.exists()) {
+            var namesArr = [];
+            var friends = docSnap.data().FriendRequests;
+            // var names = []
+            // var totaltimes = []
+            for (var friend of friends){
+                console.log(Object.values(friend)[0]);
+                if (Object.values(friend)[0] == true){
+                    var ref = doc(db, "Users", Object.keys(friend)[0]);
+                    const docSnap = await getDoc(ref);
+                    names.push(docSnap.data().Username);
+                    totaltimes.push(docSnap.data().TotalTime);
+                };
             }
-            else{
-                console.log("friend not yet accepted req")
-            }
+                    
+
         }
+        
+        
 
         
         var data_things2 = {
