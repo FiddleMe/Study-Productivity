@@ -24,9 +24,9 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const auth = getAuth();
 const db = getFirestore();
-document.getElementById("extensionbutton").addEventListener("click","updateExtension")
+document.getElementById("extensionbutton").addEventListener("click",updateExtension)
 function updateExtension(){
-    var extensionid = document.getElementById("extension")
+    var extensionid = document.getElementById("extension").value
     onAuthStateChanged(auth, async (user) => {
         if (user) {
           // User is signed in, see docs for a list of available properties
@@ -37,6 +37,8 @@ function updateExtension(){
             Extension: extensionid
           });
           // ...
+          alert("extension saved")
+          location.replace("index.html")
         } else {
           // User is signed out
           // ...
