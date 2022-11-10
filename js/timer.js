@@ -211,6 +211,64 @@ function display_countdown_timer(hours,minutes){
                 document.getElementById('gif_now').src = "gifs/gif1.gif"
                 document.getElementById("gif_now").style.display = ""
             },3000)
+
+            
+            
+            async function add_score(score, userId){
+              //update TotalScore from db
+              var ref = doc(db, "Users", userId);
+          
+              const docSnap = await getDoc(ref);
+                  
+              var curr_score = docSnap.data().TotalTime;
+                  console.log(curr_score);
+              curr_score += score;
+                  console.log("Total time")
+                  console.log(curr_score);
+              var data = {
+                  TotalTime: curr_score
+              }
+              updateDoc(ref, data)
+              .then(ref => {
+                  console.log("Total time updated");
+              })
+              .catch(error => {
+                  console.log(error);
+              })
+              
+              //update PastScores from db
+              
+              var past_scores = docSnap.data().PastScores;
+              
+              var today = formatDate(new Date());
+              console.log("Past Scores")
+              if (today in past_scores){
+                  //If date already present, add score to present score
+                  past_scores[today] = past_scores[today] + score
+                  console.log(past_scores);
+                  }
+              
+              else {
+                  //Else add new entry to past scores
+                  past_scores[today] = score;
+                  console.log(past_scores);
+              }
+          
+              var data = {
+                  PastScores: past_scores
+              }
+              updateDoc(ref, data)
+              .then(ref => {
+                  console.log("past scores updated");
+          
+              })
+              .catch(error => {
+                  console.log(error);
+              })
+          
+          };
+          add_score(original_time, uid);
+          
             
         }
 
