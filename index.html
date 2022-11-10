@@ -15,8 +15,7 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
     
-  #signupemail{
-    margin-bottom: 40px;
+  #signupemail{ 
     background-color: pink;
   }
    </style>
@@ -53,19 +52,19 @@
                   </li>
                   <li class="nav-item">
                     <!-- <a class="nav-link text-light" aria-current="page" href="#">Add Friends</a> -->
-                    <button  class="glow-on-hover" style="margin: 5px;">
+                    <button id="addfriendbtn" class="glow-on-hover" style="margin: 5px; display: none;">
                       <a class="nav-link text-light" aria-current="page" href="./friendtemplate_pre.html">Add Friends</a>
                     </button>
                   </li>
                   <li class="nav-item">
                     <!-- <a class="nav-link text-light" aria-current="page" href="#">Block Settings</a> -->
-                    <button  class="glow-on-hover" style="margin: 5px;">
-                      <a class="nav-link text-light" aria-current="page" href="#" id="session">Sessions</a>
+                    <button  id="addsessionbtn"class="glow-on-hover" style="margin: 5px; display: none;">
+                      <a class="nav-link text-light" aria-current="page" href="#" id="session" >Sessions</a>
                     </button>
                   </li>
                   <li class="nav-item">
                     <!-- <a class="nav-link text-light" aria-current="page" href="#">LeaderBoard</a> -->
-                    <button  class="glow-on-hover" style="margin: 5px;">
+                    <button  id="addleaderboardbtn" class="glow-on-hover" style="margin: 5px; display: none;">
                       <a class="nav-link text-light" aria-current="page" href="friendly.html">LeaderBoard</a>
                     </button>
                     
@@ -99,7 +98,7 @@
                     </li>-->
                    
               
-                  <li><button id="auth" class="glow-on-hover" style="margin: 5px;">Connect to Spotify</button></li>
+                  <li><button id="auth" class="glow-on-hover" style="margin: 5px; display: none;">Connect to Spotify</button></li>
                   
                   <li><button id="loginbutton" class="glow-on-hover" style="margin: 5px;" onclick="displaygetStarted()">Login</button></li>
                   <li id="logoutlist" style="display:none;"><button id="logout" class="glow-on-hover" style="margin: 5px;">Logout</button></li>
@@ -119,7 +118,7 @@
             <i class="far fa-times-circle" id="hide"></i>
            <input type="text" class="email" placeholder="email" id="email">
            <input type="password" class="password" placeholder="Password" id="password" >
-           <button class="btn btn-primary" id="login">Login</button>
+           <button class="btn btn-primary" id="login" style="margin-top: 10px;">Login</button>
            <div id="signupoption">
              Don't have an account? <button class="btn btn-outline-primary"onclick="displaySignup()">Sign up now!</button>
            </div>
@@ -128,17 +127,15 @@
        <div class="modal" id="signuppage">
          <div class="inner_modal">
            <i class="far fa-times-circle" id="hide_sign" ></i>
-           <label>Email : </label>   
+           <label>Email :</label>   
             <input id="signupemail" type="text" placeholder="Enter Email" name="email" required>
-            
             <input id="username" type="text" placeholder="Enter Username" name="username" required>
-          
             <input id="signupPassword" type="password" placeholder="Enter Password" name="password" required>
             <input type="password" id="confirm" placeholder="Confirm password" name="confirms" required>  
-            <button class="btn btn-primary" id="signupbtn">Signup</button> 
-           <div>
-            <button class="btn btn-primary" onclick="displaygetStarted()">Back to login!</button>
-           </div>
+            <button class="btn btn-primary" id="signupbtn" style="margin-top: 10px;">Signup</button> 
+   
+            <button class="btn btn-primary" onclick="displaygetStarted()" style="margin-top: 10px">Back to login!</button>
+        
          </div>
        </div>
        <div id="footer" class="text-center p-3">
@@ -261,16 +258,12 @@
   <!-- music bar -->
 <div class="container">
     <div id="musicbar">'
-      <div class="playpause">
-        <button><img src="./images/media-skip-backward-xxl.png" width="30px"></button>
-      </div>
+      
       <div class="playpause">
         <div id="togglePlay" class="button"></div>
         
       </div>
-      <div class="playpause">
-        <button><img src="./images/media-skip-forward-xxl.png" width="30px"></button>
-      </div>
+      
       <button id="sticky_add_note">Add Note</button>
       
       

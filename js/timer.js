@@ -43,8 +43,14 @@ async function startSession(){
               if (docSnap.exists()) {
                 console.log(docSnap.data())
                 var extensionId = docSnap.data().Extension;
-                console.log(extensionId)
-                chrome.runtime.sendMessage(extensionId, 'showOptions');
+                if (extensionId != ""){
+                  console.log(extensionId)
+                  chrome.runtime.sendMessage(extensionId, 'showOptions');
+                } 
+                else{
+                  location.replace("install.html")
+                }
+                
                
                 
                 //

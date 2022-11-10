@@ -97,7 +97,7 @@ save.addEventListener("click", () => {
 
 checkbox.addEventListener("change", (event) => {
   if(checkbox.checked != true){
-    is_executed = confirm("Are you sure you want to enable? Do click save after enabling!")
+    is_executed = confirm("Are you sure you want to disable? Do click save after disabling!")
     if(is_executed){
       const enabled = event.target.checked;
       chrome.storage.local.set({ enabled });
@@ -107,7 +107,7 @@ checkbox.addEventListener("change", (event) => {
     }
   }
   else{
-    disable = confirm("Are you sure you want to disable? Do click save after disabling!")
+    disable = confirm("Are you sure you want to enable? Do click save after enabling!")
     if(disable){
       const enabled = event.target.checked;
       chrome.storage.local.set({ enabled });

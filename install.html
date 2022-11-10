@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+   
+    <title>Install instructions</title>
+    <style>
+        body{
+            background-image: url("./restriction/6875483.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center center;
+            background-size: cover;
+            
+        }
+        .main{
+            width: 100%;
+            height: 100vh;
+            background-color:  rgba(0, 0, 0, 0.50);
+            text-align: center;
+            color: white;
+            
+        }
+        h2{
+           padding: 20px;
+        }
+        
+        p{
+            margin: 20px;
+            float: inline-start;
+        }
+        #extensioninput{
+            width: 70%;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        
+    </style>
+    
+</head>
+<body>
+    <!--navbar-->
+    <div class="main">
+        <div id="instructions">
+            <h2>How to install the custom block site extension</h2>
+        
+            <span>How to install the block site extension for use in a few clicks</span>
+            <div style="text-align: inline-start">
+                <p>
+                    1.Download the extension files <a href="./restriction.zip" download>here</a>
+                </p>
+                <p> 
+                    2. Visit the chrome extension page <a href="chrome://extensions/">here</a>, enable <b>developer mode</b> and select <b>Load unpacked</b>
+                    
+                </p>
+                <img src="./images/requiredgif.gif" alt="" height="80%">
+                <p>
+                    3. Navigate to the where the downloaded extension file is located and select the downloaded folder.
+                </p>
+                <p>
+                    4. Once loaded, copy the extension ID and input it below. Submit and you are all set!
+                </p>
+                <img src="./images/required3.png" height="200px" width="600px">
+            </div>
+            <div class="input-group mb-3" id="extensioninput">
+                <input type="text" class="form-control" id="extension" placeholder="Extension ID" aria-label="Extension ID" aria-describedby="button-addon2">
+                <button class="btn btn-secondary" type="button" id="extensionbutton">Button</button>
+            </div>
+              
+        </div>
+        
+       
+        <!--<div>
+            <span>
+                1. Visit the chrome extension page <a href="">here</a> and select Load unpacked
+            </span>>
+        </div> -->
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="install.js" type="module"></script>
+</body>
+</html>
