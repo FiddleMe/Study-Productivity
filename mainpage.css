@@ -356,3 +356,80 @@ button{
   .session{
     display: none;
   }
+
+  #nexttrack{
+    
+      padding-top: 10px;
+      padding-bottom: 10px;
+      border-radius: 45%;
+      background: transparent;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+    
+    
+  
+  }
+  #nexttrack:hover {
+    background: #464646;
+  }
+  #prevtrack{
+    
+    padding-top: 10px;
+    padding-bottom: 10px;
+   
+    border-radius: 45%;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+  
+  
+
+}
+#prevtrack:hover {
+  background: #464646;
+}
+
+/* FOR PLAYLISTS BUTTON */
+.dropupbutton {
+
+  padding: 8px;
+  outline: none;
+  cursor: pointer;
+  font-family: inherit;
+  border-radius: 5px;
+  background: whitesmoke;
+  border: 1px solid lightgray;
+  
+}
+
+.dropup {
+  position:absolute;
+  left:20px;
+  display: inline-block;
+}
+
+#playlists {
+  display: none;
+  position: relative;
+  overflow: scroll;
+  max-height: 70px;
+  background-color: #ffffff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  margin:0;
+  padding:0;
+
+}
+
+#playlists li {
+  color:  rgb(0, 0, 0);
+  text-decoration: none;
+  display: block;
+}
+
+#playlists li:hover {background-color: #ddd;}
+
+.dropup:hover #playlists {display: inline-block;}
+
+.dropup:hover .dropupbutton {display:none; background-color: #3e8e41;}

@@ -182,6 +182,7 @@ function login(){
       addUser(user.uid, paramaters);
         // ...
       addTotalUsers(paramTotal);
+      document.getElementById("signuppage").style.display = "none"
     })
     .catch((error) => {
       const errorCode = error.code;

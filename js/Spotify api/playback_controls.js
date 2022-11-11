@@ -82,15 +82,16 @@ function startSpotify() {
             player.togglePlay();
         };
     
-        document.getElementById('next').onclick = function next() {
+        document.getElementById('nexttrack').onclick = function next() {
                 player.nextTrack();
         };
         
-        document.getElementById('back').onclick = function() {
+        document.getElementById('prevtrack').onclick = function() {
             player.previousTrack();
         };
         test();
     };
+
     async function set_playlist(){
         console.log("Getting Playlist");
         const response = await fetch("https://api.spotify.com/v1/me/playlists",
@@ -183,7 +184,7 @@ function startSpotify() {
         var songs = await get_songs_from_playlist(uri);
         play_song(songs);
     }
-        
+
 
 }
 

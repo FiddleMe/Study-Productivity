@@ -10,82 +10,118 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+    <link rel="stylesheet" href="glow.css">
+    <link rel="stylesheet" href="mainpage.css">
+    <style>
+        canvas{
+            min-height: 200px;
+        }
+    </style>
 </head>
-<style>
-*{
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* change this to white */
-    color: black;
-}
 
-</style>
 
 <body>
-
-<h2 class="text-warning">Analytics</h1>
-<span id="app1">
-<div>
-    <canvas id="myChart" style="position: relative; height:40vh; width:80vw"></canvas>
-</div>
-
-<table class="table" border='1'>
-    <thead>
-        <tr>
-            <th scope="col">Friends</th>
-            <th scope="col">Study Minutes</th>
-            <th scope="col">Profile</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr v-for="friend in series"> 
-            <td>{{friend.name}}</td> 
-            <td>{{friend.study}} minutes</td> 
-            <!-- tooltips are triggered when hovering over -->
-            <td><a href='#' data-bs-toggle="tooltip" data-bs-placement="right" title="Under Construction">View me!</a>
-            </td>
-        </tr>   
-    </tbody>
-</table>
-<div>
-    <canvas id="myChart2" style="position: relative; height:40vh; width:80vw"></canvas>
-</div>
-<table class="table" border='1'>
-    <thead>
-        <tr>
-            <th scope="col">Friends</th>
-            <th scope="col">Study Minutes</th>
-            <th scope="col">Profile</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr v-for="friend in series2"> 
-            <td>{{friend.name}}</td> 
-            <td>{{friend.study}} minutes</td> 
-            <!-- tooltips are triggered when hovering over -->
-            <td><a href='#' data-bs-toggle="tooltip" data-bs-placement="right" title="Under Construction">View me!</a>
-            </td>
-        </tr>   
-    </tbody>
-</table>
-<form>
-    <div class="form-group-inline justify-content-center">
-        <div>
-            <label>Add friend:</label>
-            <input v-model="friendname" class="form-control" id="addfriend" placeholder="Friend's Name">
+    <!--NAVBAR-->
+    <nav class="navbar navbar-expand-lg  bg-dark">
+            
+        <!-- <img src="images/possiblegif1.gif" alt="" id="possiblegif1"> -->
+        <div class="container-fluid">
+            <button class="navbar-toggler bg-dark navbar-dark"  type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
         </div>
         
+            <div class="collapse navbar-collapse  " id="navbarNav">
+            <ul class="navbar-nav">
+
+                <li class="nav-item">
+                <img src="gifs/gif1.gif" id="gif_now" style="margin-top: 7px; height:50px; width: 150px">
+                </li>
+                
+                <li class="nav-item">
+                <!-- <a class="nav-link active text-light" aria-current="page" href="#">Home</a> -->
+                <button  class="glow-on-hover" style="margin: 5px;">
+                    <a class="nav-link  text-light" aria-current="page" href="index.html">Home</a>
+                </button>
+                </li>
+                
+                <li class="nav-item">
+                <!-- <a class="nav-link text-light" aria-current="page" href="#">Add Friends</a> -->
+                <button  class="glow-on-hover" style="margin: 5px;">
+                    <a class="nav-link text-light" aria-current="page" href="friendtemplate_pre.html">Add Friends</a>
+                </button>
+                </li>
+                
+                <li class="nav-item">
+                <!-- <a class="nav-link text-light" aria-current="page" href="#">LeaderBoard</a> -->
+                <button  class="glow-on-hover" style="margin: 5px;">
+                    <a class="nav-link text-light" aria-current="page" href="leaderboard.html">LeaderBoard</a>
+                </button>
+                
+                </li>
+                
+
+                <li id="logoutlist"><button id="logout" class="glow-on-hover" style="margin: 5px;">Logout</button></li>
+            </ul>
+            
+            </div>
+        
+        
+        </div>
+    </nav>
+    <!--CONTENT-->
+    <div class="container-fluid bg-secondary px-1 py-1">
+        <div class="row gx-1 gy-1 d-flex justify-content-evenly">
+            <!--time/7days chart-->
+            <div class=" bg-secondary col-lg-4 col-md-6 col-sm-12 ">
+                <canvas class="rounded-3 border border-secondary bg-dark w-100 h-100" id="myChart"></canvas>
+            </div>
+            <!--average time spent/day-->
+            <div class=" border border-secondary bg-secondary col-lg-4 col-md-6 col-sm-12  fs-1 text-light ">
+                <div class="p-2 d-flex align-items-center flex-column w-100 h-100 rounded-3 border border-secondary bg-dark">
+                    <p id="average_time" class=" mt-auto"></p>
+                    <p id="avg_p" class="fs-5 font-light mt-auto">Average Time per day</p>
+                </div>
+             
+            </div>
+            <!--friend's scores chart-->
+            <div class="border border-secondary bg-secondary col-lg-4 col-md-6 col-sm-12 " id="friends_chart">
+                <canvas class="rounded-3 border border-secondary bg-dark w-100 h-100" id="myChart2"></canvas>
+            </div>
+            <!--friend's scores ranked table-->
+            <div class="border border-secondary bg-secondary col-lg-12 col-md-6 col-sm-12" id="table_rank_div">
+
+                <table class="rounded-3 bg-dark w-100 h-100 border border-secondary table table-dark table-striped vertical-align-middle" id="table_rank">
+                    <thead>
+                        <tr class="table-dark">
+                            <th class="table-dark">Rank</th>
+                            <th class="table-dark">Friends</th>
+                            <th class="table-dark">High Score</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-dark" id="table_data">
+
+                    </tbody>
+                </table>
+
+                
+            </div>
+
+            
+
+
+        </div>
+       
     </div>
-</form>
-<div class="container-fluid" style="padding:0px; margin:20px 20px 20px 0;">
-    <a href ="mainpage.html"><button type="button" class="btn btn-secondary btn-block">Skip for Now</button></a>
-    <a href ="#"><button type="button" class="btn btn-primary btn-block" @click="addfriend()">Add Friends</button></a>
-</div>
-</span>
+    
+    
 
 
 
 
+
+
+<!-- 
 <script>
     
     const vm = Vue.createApp({
@@ -149,10 +185,25 @@
     }
 
     ).mount('#app1')
-</script>
+</script> -->
 
 <script type="module" src="js/leaderboard.js">//loads charts for friends' totaltime and past scores</script>
 
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+<!-- 
+<table class="table" border='1'>
+    <thead>
+        <tr>
+            <th scope="col">Friends</th>
+            <th scope="col">Study Minutes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr v-for="friend in series2"> 
+            <td>{{friend.name}}</td> 
+            <td>{{friend.study}} minutes</td>  
+        <!-- </tr>   
+    </tbody>
+</table> -->

@@ -25,8 +25,10 @@ const analytics = getAnalytics(app);
 const auth = getAuth();
 const db = getFirestore();
 document.getElementById("extensionbutton").addEventListener("click",updateExtension)
+
 function updateExtension(){
     var extensionid = document.getElementById("extension").value
+    extensionid = extensionid.trim();
     onAuthStateChanged(auth, async (user) => {
         if (user) {
           // User is signed in, see docs for a list of available properties
@@ -39,6 +41,11 @@ function updateExtension(){
           // ...
           alert("extension saved")
           location.replace("index.html")
+          window.close();
+          setTimeout(()=>{
+            window.open("https://fiddleme.github.io/WAD-2-Group-Project/")
+          },1000)
+         
         } else {
           // User is signed out
           // ...
