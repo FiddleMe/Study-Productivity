@@ -111,6 +111,7 @@
                             <div  id="profile-friends">
                                 <div class="m-b-10"><b>Friend List (4)</b></div>
                                 <ul class="friend-list" id="friendlist2">
+                                    <li v-if="friendsreq.length == 0">Looks like you have 0 friends!</li>
                                     <li class="col-lg-6 col-md-12 col-sm-12" v-for="(friend,idx) of friendlist">
                                         <a style="height:70px;min-width: 400px;" href="#">
                                             <div class="friend-img img-list"><img src="https://i.scdn.co/image/ab6761610000e5eb8543b9b2b5d153d37c46606d" /></div>
