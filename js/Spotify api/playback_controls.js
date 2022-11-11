@@ -91,6 +91,7 @@ function startSpotify() {
         };
         test();
     };
+
     async function set_playlist(){
         console.log("Getting Playlist");
         const response = await fetch("https://api.spotify.com/v1/me/playlists",
@@ -183,7 +184,7 @@ function startSpotify() {
         var songs = await get_songs_from_playlist(uri);
         play_song(songs);
     }
-        
+
 
 }
 
