@@ -66,27 +66,27 @@
         </div>
     </nav>
     <!--CONTENT-->
-    <div class="container-fluid bg-light">
-        <div class="row d-flex justify-content-evenly">
+    <div class="container-fluid bg-secondary px-1">
+        <div class="row gx-1 d-flex justify-content-evenly">
             <!--time/7days chart-->
-            <div class="border border-secondary bg-dark col-lg-4 col-md-6 col-sm-12 ">
-                <canvas id="myChart"></canvas>
+            <div class=" bg-secondary col-lg-4 col-md-6 col-sm-12 ">
+                <canvas class="rounded-3 border border-secondary bg-dark w-100 h-100" id="myChart"></canvas>
             </div>
             <!--average time spent/day-->
-            <div id="avg_div" class="d-flex align-items-center flex-column border border-secondary bg-dark col-lg-4 col-md-6 col-sm-12  fs-1 text-light ">
-
-                <p id="average_time" class=" mt-auto"></p>
-                <p class="fs-5 font-light mt-auto">Average Time per day</p>
-
+            <div id="avg_div" class=" border border-secondary bg-secondary col-lg-4 col-md-6 col-sm-12  fs-1 text-light ">
+                <div class="d-flex align-items-center flex-column w-100 h-100 rounded-3 border border-secondary bg-dark">
+                    <p id="average_time" class=" mt-auto"></p>
+                    <p class="fs-5 font-light mt-auto">Average Time per day</p>
+                </div>
              
             </div>
             <!--friend's scores chart-->
-            <div class="border border-secondary bg-dark col-lg-4 col-md-6 col-sm-12 " id="friends_chart">
-                <canvas id="myChart2"></canvas>
+            <div class="border border-secondary bg-secondary col-lg-4 col-md-6 col-sm-12 " id="friends_chart">
+                <canvas class="rounded-3 border border-secondary bg-dark w-100 h-100" id="myChart2"></canvas>
             </div>
             <!--friend's scores ranked table-->
-            <div class="bg-dark col-lg-12 col-md-6 col-sm-12" id="table_rank_div">
-                <table class="table table-dark" id="table_rank">
+            <div class="border border-secondary bg-secondary col-lg-12 col-md-6 col-sm-12" id="table_rank_div">
+                <table class="table table-dark table-striped vertical-align-middle rounded-3 w-100 h-100" id="table_rank">
                     <thead>
                         <tr class="table-dark">
                             <th class="table-dark">Rank</th>
