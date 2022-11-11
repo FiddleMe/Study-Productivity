@@ -113,10 +113,14 @@ async function display_stats(uid){
         if (friends == undefined){
             console.log("not available");
             document.getElementById("friends_chart").innerHTML = `
-                <p class="text-light">looks like you have no friends :( Add some here:</p>
-                <button  class="glow-on-hover" style="margin: 5px;">
-                <a class="nav-link text-light" aria-current="page" href="./friendtemplate_pre.html">Add Friends</a>
-                </button>`;
+                <div class="pt-2 d-flex align-items-center flex-column w-100 h-100 rounded-3 border border-secondary bg-dark">
+                
+                <button  class="glow-on-hover mt-auto " style="margin: 5px;padding:0;width:130px; ">
+                <a class="nav-link text-light " aria-current="page" href="./friendtemplate_pre.html">Find Friends</a>
+                </button>
+                <p class="text-light fs-5 mt-auto">looks like you have no friends :(</p>
+                </div>
+                `;
             document.getElementById("table_rank").style.display = "none";
             // var p = document.createElement("p");
             // const text_node = document.createTextNode("looks like you have no friends :( Add some here: ");
@@ -208,11 +212,11 @@ async function display_stats(uid){
         console.log(time);
         var avg = parseInt(average(time));
         if (avg == 0){
-            document.getElementById("avg_div").innerHTML = "You have not studied in the last 7 days.";
+            document.getElementById("avg_p").innerHTML = `<p class="fs-5 font-light mt-auto"> You have not studied in the last 7 days.</p>`;
         }
-        else{
-            document.getElementById("average_time").innerText = avg+" min";
-        }
+        
+        document.getElementById("average_time").innerText = avg+" min";
+        
         
 
     } 

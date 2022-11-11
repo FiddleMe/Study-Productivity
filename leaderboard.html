@@ -70,17 +70,17 @@
         </div>
     </nav>
     <!--CONTENT-->
-    <div class="container-fluid bg-secondary px-1">
-        <div class="row gx-1 d-flex justify-content-evenly">
+    <div class="container-fluid bg-secondary px-1 py-1">
+        <div class="row gx-1 gy-1 d-flex justify-content-evenly">
             <!--time/7days chart-->
             <div class=" bg-secondary col-lg-4 col-md-6 col-sm-12 ">
                 <canvas class="rounded-3 border border-secondary bg-dark w-100 h-100" id="myChart"></canvas>
             </div>
             <!--average time spent/day-->
-            <div id="avg_div" class=" border border-secondary bg-secondary col-lg-4 col-md-6 col-sm-12  fs-1 text-light ">
-                <div class="d-flex align-items-center flex-column w-100 h-100 rounded-3 border border-secondary bg-dark">
+            <div class=" border border-secondary bg-secondary col-lg-4 col-md-6 col-sm-12  fs-1 text-light ">
+                <div class="p-2 d-flex align-items-center flex-column w-100 h-100 rounded-3 border border-secondary bg-dark">
                     <p id="average_time" class=" mt-auto"></p>
-                    <p class="fs-5 font-light mt-auto">Average Time per day</p>
+                    <p id="avg_p" class="fs-5 font-light mt-auto">Average Time per day</p>
                 </div>
              
             </div>
@@ -90,18 +90,21 @@
             </div>
             <!--friend's scores ranked table-->
             <div class="border border-secondary bg-secondary col-lg-12 col-md-6 col-sm-12" id="table_rank_div">
-                <table class="table table-dark table-striped vertical-align-middle rounded-3 w-100 h-100" id="table_rank">
+
+                <table class="rounded-3 bg-dark w-100 h-100 border border-secondary table table-dark table-striped vertical-align-middle" id="table_rank">
                     <thead>
                         <tr class="table-dark">
                             <th class="table-dark">Rank</th>
                             <th class="table-dark">Friends</th>
-                            <th class="table-dark">Study Minutes</th>
+                            <th class="table-dark">High Score</th>
                         </tr>
                     </thead>
                     <tbody class="table-dark" id="table_data">
 
                     </tbody>
                 </table>
+
+                
             </div>
 
             
