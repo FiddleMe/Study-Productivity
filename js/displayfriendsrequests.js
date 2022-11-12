@@ -102,8 +102,8 @@ const vueapp = Vue.createApp({
                 const friends = friendarr.users;
                 console.log(friends);
                 for (var valu of friends){
-                for (const [key, value] of Object.entries(valu)) {           
-                    if(`${key}` == getFriendUsername){
+                for (const [key, value] of Object.entries(valu)) {      
+                    if(`${key}` == getFriendUsername && `${key}` != this.currentuser){
                         friendUID = `${value}`;
                     }
                 }
