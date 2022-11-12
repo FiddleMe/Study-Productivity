@@ -433,3 +433,10 @@ button{
 .dropup:hover #playlists {display: inline-block;}
 
 .dropup:hover .dropupbutton {display:none; background-color: #3e8e41;}
+
+
+@media only screen and (max-width: 300px) {
+  .hide_on_sm{
+    display:none;
+  }
+}
