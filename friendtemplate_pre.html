@@ -100,8 +100,8 @@
                                             </div>
                                             <div class="friend-info">
                                                 <h4>{{ friend.name }}</h4>
-                                                <button type='button' class='btn btn-success' id="accept" @click="accept(friend,index)">Approve</button> |
-                                                <button type='button' class='btn btn-danger' id="reject" @click="reject(friend,index)">Reject</button>
+                                                <button type='button' class='btn btn-success' id="accept" @click="accept(friend.name,index)">Approve</button> |
+                                                <button type='button' class='btn btn-danger' id="reject" @click="reject(friend.name,index)">Reject</button>
                                             </div>
                                         </a>
                                     </li>

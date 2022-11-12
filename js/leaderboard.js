@@ -200,7 +200,7 @@ async function display_stats(uid){
                 tr_element.appendChild(td_name);
     
                 var td_time = document.createElement("td");
-                const time = document.createTextNode(friends_scores[n].time);
+                const time = document.createTextNode(Math.round(friends_scores[n].time));
                 td_time.appendChild(time);
                 tr_element.appendChild(td_time);
     
@@ -218,7 +218,7 @@ async function display_stats(uid){
         console.log(time);
         var avg = parseInt(average(time));
         if (avg == 0){
-            document.getElementById("avg_p").innerHTML = `<p class="fs-5 font-light mt-auto"> You have not studied in the last 7 days.</p>`;
+            document.getElementById("avg_p").innerHTML = `<p class="fs-6 font-light mt-auto"> You have not studied in the last 7 days.</p>`;
         }
         
         document.getElementById("average_time").innerText = avg+" min";

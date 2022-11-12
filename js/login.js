@@ -177,7 +177,7 @@ function login(){
       const user = userCredential.user;
       var paramaters = {
         Username: username,
-        FriendsRequests: friends,
+        FriendRequests: friends,
         TotalTime: 0,
         PastScores: {},
         Extension: ""
