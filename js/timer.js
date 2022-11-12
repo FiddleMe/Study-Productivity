@@ -71,7 +71,7 @@ function session(){
     document.getElementsByClassName("session")[0].style.display = "block";
 }
 function displayTime(){
-    
+    document.getElementsByClassName("session")[0].style.display = "none";
     display_countdown_timer(document.getElementById('hours').value, document.getElementById('minutes').value)
 }
 
@@ -100,10 +100,12 @@ function displayTime(){
 // }
 function endTime(){
     clearInterval(x);
+    document.getElementsByClassName("session")[0].style.display = "block";
     document.getElementById("timer").innerHTML = "Start Again?";
     document.getElementById('save').style.display = ''
     document.getElementById('end').style.display = 'none'
     document.getElementById('bar').style.display = 'none'
+    document.getElementById("timerNav").style.display = 'none'
     // document.getElementById("progressBar").innerHTML = 'none'
     document.getElementById('input1').style.display = ''
     document.getElementById('input2').style.display = ''
@@ -162,7 +164,9 @@ function display_countdown_timer(hours,minutes){
         // Display the result in the element with id="timer"
         document.getElementById("timer").innerHTML = ''
         document.getElementById("timer").innerHTML = `Time left: ` + hours + "h " + minutes + "m " + seconds + "s ";
+   
         document.getElementById("timerNav").innerHTML = ''
+        document.getElementById("timerNav").style.display = 'block'
         document.getElementById("timerNav").innerHTML = `Time left: ` + hours + "h " + minutes + "m " + seconds + "s ";
 
         // console.log(document.getElementById('progressBar').innerHTML)
@@ -171,7 +175,9 @@ function display_countdown_timer(hours,minutes){
         <div class="progress-bar" role="progressbar" style='width: ${progresswidth}%' aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
       </div>`
 
-
+        
+        
+        
 
         // If the count down is finished, update the element with id="timer"
         if (time < 0) {
