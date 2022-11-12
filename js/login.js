@@ -112,10 +112,12 @@ function login(){
       }*/
     )
     .then(()=>{
-      alert("data added successfully")
+      // alert("data added successfully")
+      console.log("data added successfully");
     })
     .catch((error)=>{
-      alert("Unsuccessfuly")
+      // alert("Unsuccessfuly")
+      console.log("data added unsuccessfully");
     })
   }
 
@@ -129,10 +131,12 @@ function login(){
       }*/
     )
     .then(()=>{
-      alert("data added successfully")
+      // alert("data added successfully")
+      console.log("data added successfully");
     })
     .catch((error)=>{
-      alert("Unsuccessfuly")
+      // alert("Unsuccessfuly")
+      console.log("data added unsuccessfully");
     })
   }
 
@@ -142,11 +146,13 @@ function login(){
       users: arrayUnion(param)
     })
     .then(()=>{
-      alert("updated total successfully")
+      // alert("updated total successfully")
+      console.log("database updated successfully")
     
     })
     .catch((error)=>{
-      alert("Unsuccessfuly")
+      // alert("Unsuccessfuly")
+      console.log("database unsuccessfull")
     })
   }
 

@@ -110,15 +110,19 @@ async function display_stats(uid){
     var totaltimes = [];
     if (docSnap.exists()) {
         var friends = docSnap.data().FriendRequests;
-        for (var friend of friends){
-            console.log(Object.values(friend)[0]);
-            if (Object.values(friend)[0] == true){
-                var ref = doc(db, "Users", Object.keys(friend)[0]);
-                const docSnap = await getDoc(ref);
-                names.push(docSnap.data().Username);
-                totaltimes.push(docSnap.data().TotalTime);
-            };
+        console.log(friends);
+        if (friends != undefined){
+            for (var friend of friends){
+                console.log(Object.values(friend)[0]);
+                if (Object.values(friend)[0] == true){
+                    var ref = doc(db, "Users", Object.keys(friend)[0]);
+                    const docSnap = await getDoc(ref);
+                    names.push(docSnap.data().Username);
+                    totaltimes.push(docSnap.data().TotalTime);
+                };
+            }
         }
+        
         console.log(names)
         if (names.length == 0){
             console.log("not available");
