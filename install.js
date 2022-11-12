@@ -39,12 +39,8 @@ function updateExtension(){
             Extension: extensionid
           });
           // ...
-          alert("extension saved")
-          location.replace("index.html")
-          window.close();
-          setTimeout(()=>{
-            window.open("https://fiddleme.github.io/WAD-2-Group-Project/")
-          },1000)
+          alert("Extension submitted!")
+          window.open("index.html");
          
         } else {
           // User is signed out
