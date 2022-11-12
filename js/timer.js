@@ -162,7 +162,8 @@ function display_countdown_timer(hours,minutes){
         // Display the result in the element with id="timer"
         document.getElementById("timer").innerHTML = ''
         document.getElementById("timer").innerHTML = `Time left: ` + hours + "h " + minutes + "m " + seconds + "s ";
-
+        document.getElementById("timerNav").innerHTML = ''
+        document.getElementById("timerNav").innerHTML = `Time left: ` + hours + "h " + minutes + "m " + seconds + "s ";
 
         // console.log(document.getElementById('progressBar').innerHTML)
 
@@ -201,8 +202,7 @@ function display_countdown_timer(hours,minutes){
         else if (isHalf && !isDone){
             document.getElementById('gif_now').style.display = "none"
             document.getElementById("gif2").style.display = ""
-         
-            alert("You're halfway there! Keep Going!")
+    
             isHalf = false
         }
 
