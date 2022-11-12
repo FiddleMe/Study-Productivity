@@ -95,6 +95,7 @@
                                     <li v-if="friendsreq.length == 0">Looks like you have 0 friend requests!</li>
                                     <li v-for="(friend, index) in friendsreq" class="col-lg-6">
                                         <a href="#">
+                                            <div class="friend-img img-list mt-3"><img src="https://i.scdn.co/image/ab6761610000e5eb8543b9b2b5d153d37c46606d" /></div>
                                             <div class="friend-info">
                                                 <h4>{{ friend }}</h4>
                                                 <button type='button' class='btn btn-success' id="accept" @click="accept(friend,index)">Approve</button> |
