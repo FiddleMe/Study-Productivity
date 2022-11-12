@@ -70,7 +70,7 @@ const vueapp = Vue.createApp({
                             for (var vals of userArr) {
                                 for(var[k,v] of Object.entries(vals)){
                                     if(v == elem){      
-                                        nArr.push(k);
+                                        nArr.push({"name": k, "profilepic": "images/profile pictures/pp" + Math.round((Math.random() * 5 + 1)) + ".jpg"});
                                     }
                                 }
                             }
@@ -174,7 +174,7 @@ const vueapp = Vue.createApp({
                 let interArr = [];
                 for(const[key,value] of Object.entries(namesArr)){
                     for(const[x,y] of Object.entries(value)){
-                        interArr.push(x)
+                        interArr.push({"name": x, "profilepic": "images/profile pictures/pp" + Math.round((Math.random() * 5 + 1)) + ".jpg"})
                     }    
                 }
                 this.friendsreq = interArr;
@@ -217,6 +217,7 @@ const vueapp = Vue.createApp({
                         await updateDoc(dref2,{
                             FriendRequests: arrayUnion(addtofriendparam)
                         })
+                        alert(`Added ${name} as friend!`)
                     })
                   })
                 } else {

@@ -95,9 +95,11 @@
                                     <li v-if="friendsreq.length == 0">Looks like you have 0 friend requests!</li>
                                     <li v-for="(friend, index) in friendsreq" class="col-lg-6">
                                         <a href="#">
-                                            <div class="friend-img img-list mt-3"><img src="https://i.scdn.co/image/ab6761610000e5eb8543b9b2b5d153d37c46606d" /></div>
+                                            <div class="friend-img img-list mt-3">
+                                                <img :src="friend.profilepic" style="object-fit: cover; width: 48px; height: 48px;"/>
+                                            </div>
                                             <div class="friend-info">
-                                                <h4>{{ friend }}</h4>
+                                                <h4>{{ friend.name }}</h4>
                                                 <button type='button' class='btn btn-success' id="accept" @click="accept(friend,index)">Approve</button> |
                                                 <button type='button' class='btn btn-danger' id="reject" @click="reject(friend,index)">Reject</button>
                                             </div>
@@ -117,9 +119,11 @@
                                     <li v-if="friendlist.length == 0">Looks like you have 0 friends!</li>
                                     <li class="col-lg-6 col-md-12 col-sm-12" v-for="(friend,idx) of friendlist">
                                         <a style="height:70px;min-width: 400px;" href="#">
-                                            <div class="friend-img img-list"><img src="https://i.scdn.co/image/ab6761610000e5eb8543b9b2b5d153d37c46606d" /></div>
+                                            <div class="friend-img img-list">
+                                                <img :src="friend.profilepic" style="object-fit: cover; width: 48px; height: 48px;"/>
+                                            </div>
                                             <div class="friend-info">
-                                                <h4>{{ friend }}</h4>
+                                                <h4>{{ friend.name }}</h4>
                                             </div>
                                         </a>
                                     </li>  
