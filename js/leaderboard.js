@@ -110,7 +110,17 @@ async function display_stats(uid){
     var totaltimes = [];
     if (docSnap.exists()) {
         var friends = docSnap.data().FriendRequests;
-        if (friends == undefined){
+        for (var friend of friends){
+            console.log(Object.values(friend)[0]);
+            if (Object.values(friend)[0] == true){
+                var ref = doc(db, "Users", Object.keys(friend)[0]);
+                const docSnap = await getDoc(ref);
+                names.push(docSnap.data().Username);
+                totaltimes.push(docSnap.data().TotalTime);
+            };
+        }
+        console.log(names)
+        if (names.length == 0){
             console.log("not available");
             document.getElementById("friends_chart").innerHTML = `
                 <div class="pt-2 d-flex align-items-center flex-column w-100 h-100 rounded-3 border border-secondary bg-dark">
@@ -134,15 +144,7 @@ async function display_stats(uid){
         }
 
         else{
-            for (var friend of friends){
-                console.log(Object.values(friend)[0]);
-                if (Object.values(friend)[0] == true){
-                    var ref = doc(db, "Users", Object.keys(friend)[0]);
-                    const docSnap = await getDoc(ref);
-                    names.push(docSnap.data().Username);
-                    totaltimes.push(docSnap.data().TotalTime);
-                };
-            }
+            
             var data_things2 = {
                 labels: names,
                 datasets: [{

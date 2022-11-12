@@ -12,7 +12,7 @@
     <script src="https://unpkg.com/vue@next"></script>
     <link rel="stylesheet" href="friends.css">
 </head>
-<body id="displayfriends">
+<body>
     
     <nav class="navbar navbar-expand-lg  bg-dark">
             
@@ -51,17 +51,19 @@
                 </button>
                 
                 </li>
-                <li><button id="auth" class="glow-on-hover" style="margin: 5px;">Connect to Spotify</button></li>
+                
 
-                <li id="logoutlist"><button id="logout" class="glow-on-hover" style="margin: 5px;">Logout</button></li>
+                <li id="logoutlist">
+                    <button id="logout" class="glow-on-hover" style="margin: 5px;"><a class="nav-link  text-light" aria-current="page" href="index.html">Logout</a></button>
+                </li>
             </ul>
-            <script src="js/Spotify api/playback_controls.js"></script>  
+            
             </div>
         
         
         </div>
     </nav>
-    <div>
+    <div id="displayfriends">
         <div id="content" class="content">
             <div class="profile-header">
                 <div class="profile-header-cover"></div>
@@ -131,54 +133,7 @@
     
 <script src="./js/displayfriendsrequests.js" type="module"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    
-    // function load(){ 
-    // //     <div class="d-flex justify-content-center">
-    // //     <div class="spinner-border" role="status">
-    // //     <span class="visually-hidden">Loading...</span>
-    // //     </div>
-    // // </div>
-    // var notification = document.getElementById("notification");
-    // if(notification) {
-    //         notification.remove();
-    //     }
-    // let check= document.getElementById("maybefriend").value;
-    // // or invalid
-    // if (check===""){
-    //     var main_container_div = document.getElementById("dosomething");
-    //     var div = document.createElement("div");
-    //     var text = document.createTextNode("You can skip for now if you don't have anyone in mind :)");
-    //     div.appendChild(text);
-    //     div.setAttribute("id", "notification");
-    //     div.setAttribute("class", "alert alert-warning");
-    //     div.setAttribute("role", "alert");
-    //     div.setAttribute("style", "margin-top: 20px")
-    //     main_container_div.appendChild(div);
-    //     return 
-    // }
-    // else{
-    //     var main_container_div = document.getElementById("dosomething");
-    //     var div = document.createElement("div");
-    //     var text = document.createTextNode("Looks like everything's gucci!");
-    //     div.appendChild(text);
-    //     div.setAttribute("id", "notification");
-    //     div.setAttribute("class", "rainbow-box");
-    //     div.setAttribute("style", "margin-top: 20px")
-    //     main_container_div.appendChild(div);
-    //     return 
-    
-    // }
-    // }
-    // function myGreeting() {
-    // document.getElementById("demo").innerHTML = "Happy Birthday!"
-    // }
-
-    // function myStopFunction() {
-    // clearTimeout(myTimeout);
-    // }
-</script>
-<script src="./js/login.js" type="module"></script>
+<script src="./js/away_navbar.js" type="module"></script>
 
 </body>
 </html>
