@@ -108,8 +108,7 @@ const vueapp = Vue.createApp({
                     }
                 }
                 }
-        
-                if(friendUID==null){
+                if(friendUID==""){
                 alert("Invalid username");
                 return;
                 }
@@ -207,11 +206,12 @@ const vueapp = Vue.createApp({
                   await updateDoc(dref,{
                     FriendRequests: arrayRemove(parameters),
                   }).then(async ()=>{
-                    alert("Done");
+                    // alert("Done");
                     await updateDoc(dref,{
                         FriendRequests: arrayUnion(param2)
                     }).then(async ()=>{
-                        alert("done2")
+                        // alert("done2")
+                        console.log("FriendRequests retrieved");
                         let addtofriendparam ={[uid]: true}
                         let dref2 = doc(db,"Users",frienduid);
                         await updateDoc(dref2,{
