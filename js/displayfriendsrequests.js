@@ -108,7 +108,7 @@ const vueapp = Vue.createApp({
                     }
                 }
                 }
-                if(friendUID==""){
+                if(friendUID=="" ){
                 alert("Invalid username");
                 return;
                 }
@@ -147,7 +147,9 @@ const vueapp = Vue.createApp({
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
             }
-            })   
+            })  
+            
+             
         },
         async getUserFromUID(result){  
             const docRef = doc(db, "TotalUsers", "Users");
@@ -218,6 +220,7 @@ const vueapp = Vue.createApp({
                             FriendRequests: arrayUnion(addtofriendparam)
                         })
                         alert(`Added ${name} as friend!`)
+                        this.displayFriends();
                     })
                   })
                 } else {
@@ -241,6 +244,7 @@ const vueapp = Vue.createApp({
                 else{
 
                 }
+
             });
         }
     },
