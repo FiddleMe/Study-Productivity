@@ -221,7 +221,7 @@ function display_countdown_timer(hours,minutes){
             
             //add scores to databse using original time
             function formatDate(date){
-              var formatted_date = date.getDate().toString()+"/"+date.getMonth().toString()+"/"+date.getFullYear().toString();
+              var formatted_date = date.getDate().toString()+"/"+(date.getMonth()+1).toString()+"/"+date.getFullYear().toString();
               return formatted_date;
             }
             async function add_score(score, userId){
