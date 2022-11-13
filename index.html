@@ -21,7 +21,7 @@
     <body>
 
       <!--NAVBAR-->
-        <nav class="navbar navbar-expand-lg ">
+        <nav class="navbar navbar-expand-xl ">
           
             <!-- <img src="images/possiblegif1.gif" alt="" id="possiblegif1"> -->
           <div class="container-fluid" style="display: flex;">
@@ -39,14 +39,15 @@
             
           </div>
 
-          <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
-            <ul class="navbar-nav">
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav text-end">
               <li class="nav-item ">
                 <!-- <a class="nav-link active text-light" aria-current="page" href="#">Home</a> -->
                 <button  class="glow-on-hover" style="margin: 5px;">
                   <a class="nav-link  text-light" aria-current="page" href="#">Home</a>
                 </button>
               </li>
+              
               <li class="nav-item">
                 <!-- <a class="nav-link text-light" aria-current="page" href="#">Add Friends</a> -->
                 <button id="addfriendbtn" class="glow-on-hover" style="margin: 5px; display: none;">
@@ -68,15 +69,15 @@
                 </button>
               </li>
             
-              <li>
+              <li class="nav-item">
                 <button id="auth" class="glow-on-hover" style="margin: 5px; display: none;">Connect to Spotify</button>
               </li>
               
-              <li>
+              <li class="nav-item">
                 <button id="loginbutton" class="glow-on-hover" style="margin: 5px;" onclick="displaygetStarted()">Login</button>
               </li>
 
-              <li id="logoutlist" style="display:none;">
+              <li id="logoutlist" style="display:none;" class="nav-item">
                 <button id="logout" class="glow-on-hover" style="margin: 5px;">Logout</button>
               </li>
             </ul>
