@@ -167,6 +167,7 @@ function display_countdown_timer(hours,minutes){
    
         document.getElementById("timerNav").innerHTML = ''
         document.getElementById("timerNav").style.display = 'block'
+        
         document.getElementById("timerNav").innerHTML = `Time left: ` + hours + "h " + minutes + "m " + seconds + "s ";
 
         // console.log(document.getElementById('progressBar').innerHTML)
