@@ -22,51 +22,65 @@
 
 <body>
     <!--NAVBAR-->
-    <nav class="navbar navbar-expand-lg  bg-dark">
-            
+    <nav class="navbar navbar-expand-xl bg-dark">
+          
         <!-- <img src="images/possiblegif1.gif" alt="" id="possiblegif1"> -->
-        <div class="container-fluid">
-            <button class="navbar-toggler bg-dark navbar-dark"  type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="container-fluid" style="display: flex;">
+        <div class="navbar-brand">
+          <img src="gifs/gif1.gif" id="gif_now" style="height:50px; width: 150px">
+          <img src="gifs/gif3.gif" id="gif2" style=" height:50px; width: 150px;display: none;">
+          <img src="gifs/gif4.gif" id="gif3" style=" height:50px; width: 150px;display: none;">
+        </div>
+        <div>
+          <span id="timerNav" class="text-white" style="display: none; font-size: 20px; font-weight: bold;"></span>
+        </div>
+          <button class="navbar-toggler bg-dark navbar-dark"  type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
+          </button>
+        
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav text-end position-absolute bg-dark" style="z-index:100;right:0;">
+          <li class="nav-item ">
+            <!-- <a class="nav-link active text-light" aria-current="page" href="#">Home</a> -->
+            <button  class="glow-on-hover" style="margin: 5px;">
+              <a class="nav-link  text-light" aria-current="page" href="index.html">Home</a>
             </button>
-        </div>
+          </li>
+          
+          <li class="nav-item">
+            <!-- <a class="nav-link text-light" aria-current="page" href="#">Add Friends</a> -->
+            <button id="addfriendbtn" class="glow-on-hover" style="margin: 5px;">
+              <a class="nav-link text-light" aria-current="page" href="friendtemplate_pre.html">Add Friends</a>
+            </button>
+          </li>
 
-            <div class="collapse navbar-collapse  " id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                <img src="gifs/gif1.gif" id="gif_now" style="margin-top: 7px; height:50px; width: 150px">
-                </li>
-                <li class="nav-item">
-                <!-- <a class="nav-link active text-light" aria-current="page" href="#">Home</a> -->
-                <button  class="glow-on-hover" style="margin: 5px;">
-                    <a class="nav-link  text-light" aria-current="page" href="index.html">Home</a>
-                </button>
-                </li>
-                <li class="nav-item">
-                <!-- <a class="nav-link text-light" aria-current="page" href="#">Add Friends</a> -->
-                <button  class="glow-on-hover" style="margin: 5px;">
-                    <a class="nav-link text-light" aria-current="page" href="friendtemplate_pre.html">Add Friends</a>
-                </button>
-                </li>
-                <li class="nav-item">
-                <!-- <a class="nav-link text-light" aria-current="page" href="#">LeaderBoard</a> -->
-                <button  class="glow-on-hover" style="margin: 5px;">
-                    <a class="nav-link text-light" aria-current="page" href="leaderboard.html">LeaderBoard</a>
-                </button>
-                
-                </li>
-                
+          <li class="nav-item">
+            <!-- <a class="nav-link text-light" aria-current="page" href="#">Block Settings</a> -->
+            <button  id="addsessionbtn"class="glow-on-hover " style="margin: 5px;">
+              <a class="nav-link text-light" aria-current="page" href="#" id="session" >Sessions</a>
+            </button>
+          </li>
 
-                <li id="logoutlist">
-                    <button id="logout" class="glow-on-hover" style="margin: 5px;"><a class="nav-link  text-light" aria-current="page" href="index.html">Logout</a></button>
-                </li>
-            </ul>
-            
-            </div>
-        
-        
-        </div>
-    </nav>
+          <li class="nav-item">
+            <!-- <a class="nav-link text-light" aria-current="page" href="#">LeaderBoard</a> -->
+            <button  id="addleaderboardbtn" class="glow-on-hover" style="margin: 5px;">
+              <a class="nav-link text-light" aria-current="page" href="leaderboard.html">LeaderBoard</a>
+            </button>
+          </li>
+
+          <li id="logoutlist" style="display:none;" class="nav-item">
+            <button id="logout" class="glow-on-hover" style="margin: 5px;">Logout</button>
+          </li>
+        </ul>
+          
+      </div>
+       
+
+  </nav>
+  <!--ENDS:NAVBAR-->
+  
     <!--CONTENT-->
     <div class="container-fluid bg-secondary px-1 py-1">
         <div class="row gx-1 gy-1 d-flex justify-content-evenly">
