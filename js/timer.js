@@ -29,9 +29,8 @@ var x;
 document.getElementById("session").addEventListener("click",session)
 document.getElementById("save").addEventListener("click",displayTime)
 document.getElementById("editsession").addEventListener("click",startSession)
-document.getElementById("end").addEventListener("click",endTime)
-async function startSession(){
-
+function startSession(){
+    console.log("fk")
     const auth = getAuth();
     onAuthStateChanged(auth, async (user) => {
       if (user) {
