@@ -81,19 +81,31 @@ function login(){
             // Signed in 
             const user = userCredential.user;
             console.log("logged in");
-            alert("logged in!")
+     
+            Swal.fire(
+              'Logged In!',
+              'Welcome to LofiStudy!',
+              'success'
+            )
            
             // ...
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorCode);
-            window.alert("Message: " + errorMessage);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong. Error:' + errorMessage,
+            })
         });
     }
     else{
-      window.alert("Please fill up all fields!")
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please fill up all fields',
+      })
     }
     
   }
@@ -112,12 +124,19 @@ function login(){
       }*/
     )
     .then(()=>{
+
+      return true
+    })
+    .catch((error)=>{
+      return false
+
       // alert("data added successfully")
       console.log("data added successfully");
     })
     .catch((error)=>{
       // alert("Unsuccessfuly")
       console.log("data added unsuccessfully");
+
     })
   }
 
@@ -131,12 +150,19 @@ function login(){
       }*/
     )
     .then(()=>{
+
+      return true
+    })
+    .catch((error)=>{
+      return false
+
       // alert("data added successfully")
       console.log("data added successfully");
     })
     .catch((error)=>{
       // alert("Unsuccessfuly")
       console.log("data added unsuccessfully");
+
     })
   }
 
@@ -146,6 +172,13 @@ function login(){
       users: arrayUnion(param)
     })
     .then(()=>{
+
+      return true
+    
+    })
+    .catch((error)=>{
+      return false
+
       // alert("updated total successfully")
       console.log("database updated successfully")
     
@@ -153,6 +186,7 @@ function login(){
     .catch((error)=>{
       // alert("Unsuccessfuly")
       console.log("database unsuccessfull")
+
     })
   }
 
@@ -202,6 +236,48 @@ function login(){
         // ..
       });
     }
+    createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in 
+      console.log("signed up")
+      const user = userCredential.user;
+      var paramaters = {
+        Username: username,
+        FriendsRequests: friends,
+        TotalTime: 0,
+        PastScores: {},
+        Extension: ""
+      }
+      var paramTotal = {
+        [username]:user.uid
+      }
+      addusersucc = addUser(user.uid, paramaters);
+        // ...
+      addtotalsucc = addTotalUsers(paramTotal);
+      if(addusersucc == true && addtotalsucc == true){
+        Swal.fire(
+          'Sign up successful!',
+          'Welcome to LofiStudy',
+          'success'
+          
+        )
+        document.getElementById("signuppage").style.display = "none"
+      }
+     
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong. Error:' + errorMessage,
+      })
+    
+      // ..
+    });
+
+
   }
   function logout(event){
     event.preventDefault();
