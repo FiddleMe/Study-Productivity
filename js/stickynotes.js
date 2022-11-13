@@ -67,9 +67,33 @@ createStickyNote = (text) => {
 
 function update(){
 
-      let confirmation = confirm("Are you sure you want to remove this note. No content will be saved")
-      if(confirmation){
-        this.parentNode.remove();
-      }
+      // let confirmation = confirm("Are you sure you want to remove this note. No content will be saved")
+      // if(confirmation){
+      //   this.parentNode.remove();
+      // }
    
-  }
+
+      Swal.fire({
+                title: 'Are you sure you want to remove this note?',
+                text: "No content will be saved!",
+                type: 'warning',
+                showCancelButton: true,
+                color: '#fff',
+                confirmButtonText: 'Yes!',
+                cancelButtonText: 'No!',
+                confirmButtonColor: '#008000',
+                cancelButtonColor: '#DC143C',
+               
+            }).then((result) => {
+              if(result['isConfirmed']){
+                this.parentNode.remove();
+              }
+               
+               //success method
+              else{
+
+              }
+            }) 
+        }
+   
+  
