@@ -251,6 +251,10 @@ function login(){
             icon: 'success',
             
         })
+        document.getElementById("signupemail").value = "";
+        document.getElementById("signupPassword").value = "";
+        document.getElementById("confirm").value = "";
+        document.getElementById("username").value = "";
         document.getElementById("signuppage").style.display = "none"
         
     
