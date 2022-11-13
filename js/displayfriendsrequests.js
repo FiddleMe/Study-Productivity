@@ -214,7 +214,7 @@ const vueapp = Vue.createApp({
                 [friend]: param
             });
         },
-        accept(name,index){
+        async accept(name,index){
             onAuthStateChanged(auth, async (user) => {
                 if (user) {
                   // User is signed in, see docs for a list of available properties
@@ -251,7 +251,7 @@ const vueapp = Vue.createApp({
                          
                           })
                         this.displayFriends();
-                        this.getUserFromUID();
+                        this.load();
                     })
                   })
                 } else {
@@ -277,46 +277,51 @@ const vueapp = Vue.createApp({
                 }
 
             });
-        }
+        },
+        load(){
+            this.displayFriends();
+            var friends = []
+            var result = []
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                // User is signed in, see docs for a list of available properties
+                // https://firebase.google.com/docs/reference/js/firebase.User
+                    const uid = user.uid;
+                    const q = query(collection(db, "Users"), where(documentId(), "==", uid));
+                    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+                        querySnapshot.docChanges().forEach((change) => {
+                            console.log(change.type)
+                            if(change.type === "added" || change.type ==="removed"){
+                            
+                                friends.push(change.doc.data().FriendRequests);
+                            
+                                for(const v of friends){
+                                    for(const a of v){
+                                        for (const [key, value] of Object.entries(a)) {
+                                            console.log(`${value}`);
+                                            if(`${value}` == "false"){
+                                                result.push(`${key}`)               
+                                            }
+                                        }
+                                    }
+                                }   
+                            }
+                            this.getUserFromUID(result);
+                            result = [];
+                            // for(const[key,value] of Object.entries(inter)){
+                            //     this.friendsreq.push(`${key}`)
+                            // }   
+                        }); 
+                    });
+                // ...
+                }
+            });
+            }
     },
         
     created() { 
-        this.displayFriends();
-        var friends = []
-        var result = []
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-              // User is signed in, see docs for a list of available properties
-              // https://firebase.google.com/docs/reference/js/firebase.User
-                const uid = user.uid;
-                const q = query(collection(db, "Users"), where(documentId(), "==", uid));
-                const unsubscribe = onSnapshot(q, (querySnapshot) => {
-                    querySnapshot.docChanges().forEach((change) => {
-                        console.log(change.type)
-                        if(change.type === "added" || change.type ==="removed"){
-                           
-                            friends.push(change.doc.data().FriendRequests);
-                          
-                            for(const v of friends){
-                                for(const a of v){
-                                    for (const [key, value] of Object.entries(a)) {
-                                        if(`${value}` == "false"){
-                                            result.push(`${key}`)               
-                                        }
-                                    }
-                                }
-                            }   
-                        }
-                        this.getUserFromUID(result);
-                        result = [];
-                        // for(const[key,value] of Object.entries(inter)){
-                        //     this.friendsreq.push(`${key}`)
-                        // }   
-                    }); 
-                });
-              // ...
-            }
-        });
+        this.load();
+        
     }
 });
 const vm = vueapp.mount("#displayfriends");
