@@ -291,7 +291,8 @@ const vueapp = Vue.createApp({
                 const q = query(collection(db, "Users"), where(documentId(), "==", uid));
                 const unsubscribe = onSnapshot(q, (querySnapshot) => {
                     querySnapshot.docChanges().forEach((change) => {
-                        if(change.type === "added"){
+                        console.log(change.type)
+                        if(change.type === "added" || change.type ==="removed"){
                            
                             friends.push(change.doc.data().FriendRequests);
                           
