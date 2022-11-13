@@ -238,10 +238,10 @@ function login(){
         var paramTotal = {
           [username]:user.uid
         }
-        addusersucc = addUser(user.uid, paramaters);
+        addUser(user.uid, paramaters);
           // ...
-        addtotalsucc = addTotalUsers(paramTotal);
-        if(addusersucc && addtotalsucc){
+        addTotalUsers(paramTotal);
+        
           Swal.fire({
             title: 'Sign up successful!',
             text: 'Welcome to LofiStudy!',
@@ -251,7 +251,7 @@ function login(){
             
         })
         document.getElementById("signuppage").style.display = "none"
-        }
+        
     
       })
       .catch((error) => {
