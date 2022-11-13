@@ -31,33 +31,39 @@ document.getElementById("save").addEventListener("click",displayTime)
 document.getElementById("editsession").addEventListener("click",startSession)
 function startSession(){
 
-
-
+    const auth = getAuth();
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
-  const uid = localStorage.getItem("uid");
-  var ref = doc(db, "Users",uid);   
-  const docSnap = await getDoc(ref);
-  if (docSnap.exists()) {
-    console.log(docSnap.data())
-    var extensionId = docSnap.data().Extension;
-    if (extensionId != ""){
-      console.log(extensionId)
-      chrome.runtime.sendMessage(extensionId, 'showOptions');
-    } 
-    else{
-      location.replace("install.html")
-    }
-    
-    
-    
-    //
-  } else {
-    // doc.data() will be undefined in this case
-    console.log("No such document!");
-  }
+        const uid = user.uid;
+        var ref = doc(db, "Users",uid);   
+              const docSnap = await getDoc(ref);
+              if (docSnap.exists()) {
+                console.log(docSnap.data())
+                var extensionId = docSnap.data().Extension;
+                if (extensionId != ""){
+                  console.log(extensionId)
+                  chrome.runtime.sendMessage(extensionId, 'showOptions');
+                } 
+                else{
+                  location.replace("install.html")
+                }
+                
+               
+                
+                //
+              } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+              }
               
-
+        // ...
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
    
   }
 function session(){
