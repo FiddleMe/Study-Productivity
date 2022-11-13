@@ -45,11 +45,11 @@
     height: 100vh;
     flex-direction: column;
   }
-  input{
+  /* input{
     width: 300px;
     height: 38px;
     border-radius: 8px;
-  }
+  } */
   body {
     background-image: url('images/background.gif'); 
  
@@ -440,3 +440,22 @@ button{
     display:none;
   }
 }
+
+/* input#email{
+  background-image: url(image
+  s/email.png);
+  background-repeat: no-repeat;
+  text-indent: 28px;
+  background-size: 28px;
+  background-position: 10px;
+
+ }
+ input#password{
+  background-size: contain;
+  background-clip: padding-box;
+  background-image: url(images/lock.png);
+  background-repeat: no-repeat;
+  text-indent: 28px;
+  background-size: 25px;
+  background-position: 10px;
+ } */

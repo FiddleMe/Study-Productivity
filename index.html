@@ -121,8 +121,21 @@
        <div class="modal" id="loginpage">
          <div class="inner_modal">
             <i class="far fa-times-circle" id="hide"></i>
-           <input type="text" class="email" placeholder="email" id="email">
-           <input type="password" class="password" placeholder="Password" id="password" >
+
+            <div class="input-group mb-3 w-50 ">
+              <span class="input-group-text px-2" id="basic-addon1">
+                <img style="width:25px;" src="images/email.png">
+              </span>
+              <input type="text" class="form-control email" placeholder="Email" id="email" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+
+            <div class="input-group mb-3 w-50">
+              <span class="input-group-text px-2" id="basic-addon1">
+                <img style="width:25px;" src="images/lock.png">
+              </span>
+              <input type="password" class="form-control password" placeholder="Password" id="password" aria-label="Password" aria-describedby="basic-addon1">
+            </div>
+
            <button class="btn btn-primary" id="login" style="margin-top: 10px;">Login</button>
            <div id="signupoption">
              Don't have an account? <button class="btn btn-outline-primary"onclick="displaySignup()">Sign up now!</button>
@@ -132,11 +145,38 @@
        <div class="modal" id="signuppage">
          <div class="inner_modal">
            <i class="far fa-times-circle" id="hide_sign" ></i>
-           <label>Email :</label>   
-            <input id="signupemail" type="text" placeholder="Enter Email" name="email" required>
-            <input id="username" type="text" placeholder="Enter Username" name="username" required>
-            <input id="signupPassword" type="password" placeholder="Enter Password" name="password" required>
-            <input type="password" id="confirm" placeholder="Confirm password" name="confirms" required>  
+
+           <div class="input-group mb-3 w-50">
+            <span class="input-group-text px-2" id="basic-addon1">
+              <img style="width:25px;" src="images/email.png">
+            </span>
+            <input type="text" class="form-control email" placeholder="Email" id="signupemail" required aria-label="Username" aria-describedby="basic-addon1">
+          </div>
+
+          <div class="input-group mb-3 w-50">
+            <span class="input-group-text px-2" id="basic-addon1">
+              <img style="width:25px;" src="images/user.png">
+            </span>
+            <input type="text" class="form-control" placeholder="Username" id="username" required aria-label="Username" required aria-describedby="basic-addon1">
+          </div>
+
+          <div class="input-group mb-3 w-50">
+            <span class="input-group-text px-2" id="basic-addon1">
+              <img style="width:25px;" src="images/lock.png">
+            </span>
+            <input type="password" class="form-control password" placeholder="Password" id="signupPassword" required aria-label="Password" aria-describedby="basic-addon1">
+          </div>
+
+          <div class="input-group mb-3 w-50">
+            <span class="input-group-text px-2" id="basic-addon1">
+              <img style="width:25px;" src="images/lock.png">
+            </span>
+            <input type="password" class="form-control password" placeholder="Confirm Password" id="confirm" required aria-label="Password" aria-describedby="basic-addon1">
+          </div>
+            <!-- <input id="signupemail" type="text" placeholder="Enter Email" name="email" required> -->
+            <!-- <input id="username" type="text" placeholder="Enter Username" name="username" required> -->
+            <!-- <input id="signupPassword" type="password" placeholder="Enter Password" name="password" required> -->
+            <!-- <input type="password" id="confirm" placeholder="Confirm password" name="confirms" required>   -->
             <button class="btn btn-primary" id="signupbtn" style="margin-top: 10px;">Signup</button> 
    
             <button class="btn btn-primary" onclick="displaygetStarted()" style="margin-top: 10px">Back to login!</button>

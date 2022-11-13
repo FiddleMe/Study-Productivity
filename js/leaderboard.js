@@ -54,7 +54,7 @@ async function display_stats(uid){
 
     const past7Days = [...Array(7).keys()].map(index => {
         const date = new Date();
-        date.setDate(date.getDate() - (index + 1));
+        date.setDate(date.getDate() - (index));
         var formatted_date = formatDate(date);
         return formatted_date;
         });
@@ -148,7 +148,10 @@ async function display_stats(uid){
         }
 
         else{
-            
+            console.log(docSnap.data().Username);
+            console.log(docSnap.data().TotalTime);
+            names.push("You");
+            totaltimes.push(docSnap.data().TotalTime);
             var data_things2 = {
                 labels: names,
                 datasets: [{

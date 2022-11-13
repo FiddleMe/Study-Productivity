@@ -168,35 +168,40 @@ function login(){
     console.log(confirm)
     console.log(username)
     if(confirm != password){
-      return
+      alert("Passwords do not match. Please try again!")
     }
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in 
-      console.log("signed up")
-      const user = userCredential.user;
-      var paramaters = {
-        Username: username,
-        FriendRequests: friends,
-        TotalTime: 0,
-        PastScores: {},
-        Extension: ""
-      }
-      var paramTotal = {
-        [username]:user.uid
-      }
-      addUser(user.uid, paramaters);
-        // ...
-      addTotalUsers(paramTotal);
-      document.getElementById("signuppage").style.display = "none"
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      alert(errorMessage)
-    
-      // ..
-    });
+    else if(email == "" || password == "" || confirm == "" || username == ""){
+      window.alert("Please fill up all fields!");
+    }
+    else{
+      createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        window.alert("Signed up!")
+        const user = userCredential.user;
+        var paramaters = {
+          Username: username,
+          FriendRequests: friends,
+          TotalTime: 0,
+          PastScores: {},
+          Extension: ""
+        }
+        var paramTotal = {
+          [username]:user.uid
+        }
+        addUser(user.uid, paramaters);
+          // ...
+        addTotalUsers(paramTotal);
+        document.getElementById("signuppage").style.display = "none"
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorMessage)
+      
+        // ..
+      });
+    }
   }
   function logout(event){
     event.preventDefault();
