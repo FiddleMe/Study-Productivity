@@ -1,4 +1,3 @@
-
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
@@ -27,26 +26,10 @@
   const auth = getAuth();
   const db = getFirestore();
   
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      const uid = user.uid;
-      console.log(uid)
-      localStorage.setItem("uid",uid);
-      
-      document.getElementById("logoutlist").style.display =""
-    } else {
-
-      
-    }
-});
 
 
   document.getElementById("logout").addEventListener("click", logout);
-  // console.log(document.getElementById("signupbtn"));
-
-
+ 
 
   function logout(event){
     event.preventDefault();
