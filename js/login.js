@@ -257,7 +257,7 @@ function login(){
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        errormsg = "Error: " + errorMessage
+        var errormsg = "Error: " + errorMessage
         Swal.fire({
           title: 'Oops something went wrong!',
           text: errormsg,
