@@ -41,7 +41,7 @@ function updateExtension(){
           // ...
           Swal.fire({
             title: 'Extension Submitted',
-            text: 'Please close and open the main page should there be any error with blocking!',
+            text: 'Please close and reopen the page before using the website after submitting!',
             color: '#fff',
             confirmButtonColor: '#228B22',
             icon: 'success',
