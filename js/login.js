@@ -277,6 +277,7 @@ function login(){
        console.log("user signed out")
        document.getElementById("footer").style.display = "block";
        document.getElementById("logoutlist").style.display ="none"
+       document.getElementsByClassName("session")[0].style.display = "none"
        document.getElementsByClassName("container")[0].style.display = "none" 
        document.getElementById("loginbutton").style.display = ""
        document.getElementById("addfriendbtn").style.display = "none"

@@ -44,8 +44,8 @@
               
               <li class="nav-item ">
                 <!-- <a class="nav-link active text-light" aria-current="page" href="#">Home</a> -->
-                <button  class="glow-on-hover" style="margin: 5px;">
-                  <a class="nav-link  text-light" aria-current="page" href="#">Home</a>
+                <button id="homebtn" class="glow-on-hover" style="margin: 5px;">
+                  <a class="nav-link  text-light" aria-current="page" href="index.html">Home</a>
                 </button>
               </li>
               
@@ -381,19 +381,23 @@
       function displaygetStarted(){
         document.querySelector("#loginbutton").style.display = "none";
         document.querySelector("#signuppage").style.display = "none";
+        document.querySelector("#homebtn").style.display = "none";
         document.querySelector("#loginpage").style.display = "block";
       }
       document.querySelector("#hide").addEventListener("click", () => {
         document.querySelector("#loginbutton").style.display = "block";
+        document.querySelector("#homebtn").style.display = "block";
         document.querySelector("#loginpage").style.display = "none";
       });
       document.querySelector("#hide_sign").addEventListener("click", () => {
         document.querySelector("#loginbutton").style.display = "block";
+        document.querySelector("#homebtn").style.display = "block";
         document.querySelector("#signuppage").style.display = "none";
       });
     function displaySignup(){
       document.querySelector("#loginbutton").style.display = "none";
       document.querySelector("#loginpage").style.display = "none";
+      document.querySelector("#homebtn").style.display = "none";
       document.querySelector("#signuppage").style.display = "block";
       document.querySelector("#hide_sign").addEventListener("click", () => {
       document.querySelector("#getstarted").style.display = "block";
