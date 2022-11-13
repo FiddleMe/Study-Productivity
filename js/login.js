@@ -81,19 +81,31 @@ function login(){
             // Signed in 
             const user = userCredential.user;
             console.log("logged in");
-            alert("logged in!")
+     
+            Swal.fire(
+              'Logged In!',
+              'Welcome to LofiStudy!',
+              'success'
+            )
            
             // ...
         })
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
-            console.log(errorCode);
-            window.alert("Message: " + errorMessage);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong. Error:' + errorMessage,
+            })
         });
     }
     else{
-      window.alert("Please fill up all fields!")
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Please fill up all fields',
+      })
     }
     
   }
@@ -112,10 +124,10 @@ function login(){
       }*/
     )
     .then(()=>{
-      alert("data added successfully")
+      return true
     })
     .catch((error)=>{
-      alert("Unsuccessfuly")
+      return false
     })
   }
 
@@ -129,10 +141,10 @@ function login(){
       }*/
     )
     .then(()=>{
-      alert("data added successfully")
+      return true
     })
     .catch((error)=>{
-      alert("Unsuccessfuly")
+      return false
     })
   }
 
@@ -142,11 +154,11 @@ function login(){
       users: arrayUnion(param)
     })
     .then(()=>{
-      alert("updated total successfully")
+      return true
     
     })
     .catch((error)=>{
-      alert("Unsuccessfuly")
+      return false
     })
   }
 
@@ -179,15 +191,28 @@ function login(){
       var paramTotal = {
         [username]:user.uid
       }
-      addUser(user.uid, paramaters);
+      addusersucc = addUser(user.uid, paramaters);
         // ...
-      addTotalUsers(paramTotal);
-      document.getElementById("signuppage").style.display = "none"
+      addtotalsucc = addTotalUsers(paramTotal);
+      if(addusersucc == true && addtotalsucc == true){
+        Swal.fire(
+          'Sign up successful!',
+          'Welcome to LofiStudy',
+          'success'
+          
+        )
+        document.getElementById("signuppage").style.display = "none"
+      }
+     
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      alert(errorMessage)
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong. Error:' + errorMessage,
+      })
     
       // ..
     });
