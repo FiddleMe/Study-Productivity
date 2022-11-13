@@ -93,6 +93,7 @@ function login(){
               icon: 'success',
            
           })
+         
             // ...
         })
         .catch((error) => {
@@ -280,6 +281,8 @@ function login(){
     event.preventDefault();
     auth.signOut().then(() => {
        console.log("user signed out")
+       document.getElementById("email").value = "";
+       document.getElementById("password").value = "";
        document.getElementById("footer").style.display = "block";
        document.getElementById("logoutlist").style.display ="none"
        document.getElementsByClassName("session")[0].style.display = "none"
