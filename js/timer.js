@@ -71,7 +71,7 @@ function session(){
     document.getElementsByClassName("session")[0].style.display = "block";
 }
 function displayTime(){
-    document.getElementsByClassName("session")[0].style.display = "none";
+    // document.getElementsByClassName("session")[0].style.display = "none";
     display_countdown_timer(document.getElementById('hours').value, document.getElementById('minutes').value)
 }
 
@@ -136,7 +136,7 @@ function display_countdown_timer(hours,minutes){
         document.getElementById("timer").innerHTML = 'Please enter a valid duration to start'
         return
     }
-
+    document.getElementsByClassName("session")[0].style.display = "none";
     document.getElementById('input1').style.display = 'none'
     document.getElementById('input2').style.display = 'none'
     document.getElementById('save').style.display = 'none'
