@@ -251,6 +251,7 @@ const vueapp = Vue.createApp({
                          
                           })
                         this.displayFriends();
+                        this.getUserFromUID();
                     })
                   })
                 } else {
