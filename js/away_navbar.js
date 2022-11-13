@@ -35,7 +35,7 @@ onAuthStateChanged(auth, (user) => {
       console.log(uid)
       localStorage.setItem("uid",uid);
       
-      document.getElementById("logoutlist").style.display ="block"
+      document.getElementById("logoutlist").style.display =""
     } else {
 
       
