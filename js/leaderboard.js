@@ -179,8 +179,8 @@ async function display_stats(uid){
                 friends_scores.push({"name":names[n],"time":totaltimes[n]})
             }
             friends_scores.sort(function(a, b) {
-                var keyA = new Date(a.time),
-                    keyB = new Date(b.time);
+                var keyA = a.time,
+                    keyB = b.time;
                 if (keyA < keyB) return 1;
                 if (keyA > keyB) return -1;
                 return 0;
