@@ -39,9 +39,16 @@ function updateExtension(){
             Extension: extensionid
           });
           // ...
-          alert("Extension submitted!")
-          window.open("index.html");
-         
+          Swal.fire({
+            title: 'Extension Submitted',
+            text: 'Please close and open the main page should there be any error with blocking!',
+            color: '#fff',
+            confirmButtonColor: '#228B22',
+            icon: 'success',
+        })
+          setTimeout(()=>{
+            window.open("index.html");
+          },2000)
         } else {
           // User is signed out
           // ...
