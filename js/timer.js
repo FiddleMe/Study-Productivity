@@ -217,7 +217,14 @@ function display_countdown_timer(hours,minutes){
             document.getElementById("gif2").style.display = "none"
             document.getElementById("gif3").style.display = ""
             console.log( document.getElementById('gif_now'))
-            alert("Congratulations! You have completed your session!")
+            Swal.fire({
+                title: 'Yay!',
+                text: 'Congratulations! You have completed your session!',
+                color: '#fff',
+                confirmButtonColor: '#228B22',
+                icon: 'success',
+                
+            })
             setTimeout(()=>{
                 document.getElementById("gif3").style.display = "none"
                 document.getElementById('gif_now').src = "gifs/gif1.gif"

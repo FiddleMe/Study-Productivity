@@ -87,6 +87,7 @@ function login(){
               title: 'Logged in!',
               text: 'Welcome to LofiStudy!',
               color: '#fff',
+              confirmButtonColor: '#228B22',
               icon: 'success',
            
           })
@@ -97,6 +98,7 @@ function login(){
             const errorMessage = error.message;
             Swal.fire({
               icon: 'error',
+              confirmButtonColor: '#DC143C',
               title: 'Oops...',
               color: '#fff',
               text: 'Something went wrong. Error:' + errorMessage,
@@ -107,6 +109,7 @@ function login(){
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
+        confirmButtonColor: '#DC143C',
         color: '#fff',
         text: 'Please fill up all fields',
       })
@@ -134,11 +137,11 @@ function login(){
     .catch((error)=>{
       return false
 
-      // alert("data added successfully")
+      
       console.log("data added successfully");
     })
     .catch((error)=>{
-      // alert("Unsuccessfuly")
+
       console.log("data added unsuccessfully");
 
     })
@@ -160,11 +163,11 @@ function login(){
     .catch((error)=>{
       return false
 
-      // alert("data added successfully")
+ 
       console.log("data added successfully");
     })
     .catch((error)=>{
-      // alert("Unsuccessfuly")
+
       console.log("data added unsuccessfully");
 
     })
@@ -182,15 +185,7 @@ function login(){
     })
     .catch((error)=>{
       return false
-
-      // alert("updated total successfully")
-      console.log("database updated successfully")
     
-    })
-    .catch((error)=>{
-      // alert("Unsuccessfuly")
-      console.log("database unsuccessfull")
-
     })
   }
 
@@ -210,6 +205,7 @@ function login(){
       Swal.fire({
         title: 'Error!',
         text: 'Passwords do not match. Please try again!',
+        confirmButtonColor: '#DC143C',
         color: '#fff',
         icon: 'error',
      
@@ -219,8 +215,8 @@ function login(){
       Swal.fire({
         title: 'Error!',
         text: 'Please fill up all fields!',
+        confirmButtonColor: '#DC143C',
         color: '#fff',
-      
         icon: 'error',
      
       })
@@ -249,6 +245,7 @@ function login(){
             title: 'Sign up successful!',
             text: 'Welcome to LofiStudy!',
             color: '#fff',
+            confirmButtonColor: '#228B22',
             icon: 'success',
             
         })
@@ -259,11 +256,11 @@ function login(){
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        alert(errorMessage)
         errormsg = "Error: " + errorMessage
         Swal.fire({
           title: 'Oops something went wrong!',
           text: errormsg,
+          confirmButtonColor: '#DC143C',
           color: '#fff',
           icon: 'error',
        

@@ -109,7 +109,14 @@ const vueapp = Vue.createApp({
                 }
                 }
                 if(friendUID=="" ){
-                alert("Invalid username");
+                Swal.fire({
+                    title: 'Error!',
+                    text: 'Invalid username',
+                    color: '#fff',
+                    confirmButtonColor: '#DC143C',
+                    icon: 'error',
+                 
+                  })
                 return;
                 }
                 console.log(friendUID);
@@ -127,11 +134,26 @@ const vueapp = Vue.createApp({
                     await updateDoc(ref, {
                     FriendRequests: arrayUnion(param)
                     }).then(()=>{
-                    alert("friend request sent!")
+                   
+                    Swal.fire({
+                        title: 'Yay!',
+                        text: 'Friend request sent!',
+                        confirmButtonColor: '#228B22',
+                        color: '#fff',
+                        icon: 'success',
+                     
+                      })
                 
                     })
                     .catch((error)=>{
-                    alert("Unsuccessfuly")
+                        Swal.fire({
+                            title: 'Error!',
+                            text: 'Failed to send friend request',
+                            color: '#fff',
+                            confirmButtonColor: '#DC143C',
+                            icon: 'error',
+                         
+                          })
                     })
                     // ...
                 } 
@@ -208,18 +230,26 @@ const vueapp = Vue.createApp({
                   await updateDoc(dref,{
                     FriendRequests: arrayRemove(parameters),
                   }).then(async ()=>{
-                    // alert("Done");
+             
                     await updateDoc(dref,{
                         FriendRequests: arrayUnion(param2)
                     }).then(async ()=>{
-                        // alert("done2")
+             
                         console.log("FriendRequests retrieved");
                         let addtofriendparam ={[uid]: true}
                         let dref2 = doc(db,"Users",frienduid);
                         await updateDoc(dref2,{
                             FriendRequests: arrayUnion(addtofriendparam)
                         })
-                        alert(`Added ${name} as friend!`)
+                        let alertmsg = `Added ${name} as friend!`
+                        Swal.fire({
+                            title: 'Yay!',
+                            text: alertmsg,
+                            color: '#fff',
+                            confirmButtonColor: '#228B22',
+                            icon: 'success',
+                         
+                          })
                         this.displayFriends();
                     })
                   })
