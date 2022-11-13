@@ -29,9 +29,7 @@ var x;
 document.getElementById("session").addEventListener("click",session)
 document.getElementById("save").addEventListener("click",displayTime)
 document.getElementById("editsession").addEventListener("click",startSession)
-function startSession(){
-
-
+async function startSession(){
 
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
