@@ -1,7 +1,9 @@
 # WAD-2-Group-Project
 A+ Huat Ah
 User account details:
-feel free to create your own account for testing. do note that for login, email have to be used and password requires a length of at least 6.
+Email: test_user1@gmail.com
+Password: 123456
+
 
 To install extension:
 1) download the restriction folder by clicking the href in install.html/ https://fiddleme.github.io/WAD-2-Group-Project/install.html
