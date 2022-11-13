@@ -30,7 +30,7 @@ document.getElementById("session").addEventListener("click",session)
 document.getElementById("save").addEventListener("click",displayTime)
 document.getElementById("editsession").addEventListener("click",startSession)
 function startSession(){
-    console.log("fk")
+
     const auth = getAuth();
     onAuthStateChanged(auth, async (user) => {
       if (user) {
