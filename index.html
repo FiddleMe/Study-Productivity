@@ -376,7 +376,9 @@
     <script>
       
       function closeSession(){
+        document.getElementById("timerNav").style.display = 'block'
         document.getElementsByClassName("session")[0].style.display = "none"
+        
       }
       function displaygetStarted(){
         document.querySelector("#loginbutton").style.display = "none";

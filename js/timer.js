@@ -69,6 +69,7 @@ async function startSession(){
   }
 function session(){
     document.getElementsByClassName("session")[0].style.display = "block";
+    document.getElementById("timerNav").style.display = "none"
 }
 function displayTime(){
     // document.getElementsByClassName("session")[0].style.display = "none";
@@ -109,6 +110,7 @@ function endTime(){
     // document.getElementById("progressBar").innerHTML = 'none'
     document.getElementById('input1').style.display = ''
     document.getElementById('input2').style.display = ''
+    document.getElementById("timerNav").innerHTML = ''
     // isDone = true
     // document.getElementById("timer").innerHTML = "Start Again?";
     // document.getElementById("progressBar").innerHTML = ''
@@ -149,7 +151,7 @@ function display_countdown_timer(hours,minutes){
     // buttonAct.addEventListener('click', endTime())
 
 
-    
+    document.getElementById("timerNav").style.display = 'block'
 
     x = setInterval(function() {
         
@@ -166,7 +168,7 @@ function display_countdown_timer(hours,minutes){
         document.getElementById("timer").innerHTML = `Time left: ` + hours + "h " + minutes + "m " + seconds + "s ";
    
         document.getElementById("timerNav").innerHTML = ''
-        document.getElementById("timerNav").style.display = 'block'
+        
         document.getElementById("timerNav").innerHTML = `Time left: ` + hours + "h " + minutes + "m " + seconds + "s ";
 
         // console.log(document.getElementById('progressBar').innerHTML)
