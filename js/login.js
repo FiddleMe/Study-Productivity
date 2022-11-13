@@ -82,12 +82,14 @@ function login(){
             const user = userCredential.user;
             console.log("logged in");
      
-            Swal.fire(
-              'Logged In!',
-              'Welcome to LofiStudy!',
-              'success'
-            )
+            
+            Swal.fire({
+              title: 'Logged in!',
+              text: 'Welcome to LofiStudy!',
+              color: '#fff',
+              icon: 'success',
            
+          })
             // ...
         })
         .catch((error) => {
@@ -96,6 +98,7 @@ function login(){
             Swal.fire({
               icon: 'error',
               title: 'Oops...',
+              color: '#fff',
               text: 'Something went wrong. Error:' + errorMessage,
             })
         });
@@ -104,6 +107,7 @@ function login(){
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
+        color: '#fff',
         text: 'Please fill up all fields',
       })
     }
@@ -202,16 +206,30 @@ function login(){
     console.log(confirm)
     console.log(username)
     if(confirm != password){
-      alert("Passwords do not match. Please try again!")
+
+      Swal.fire({
+        title: 'Error!',
+        text: 'Passwords do not match. Please try again!',
+        color: '#fff',
+        icon: 'error',
+     
+    })
     }
     else if(email == "" || password == "" || confirm == "" || username == ""){
-      window.alert("Please fill up all fields!");
+      Swal.fire({
+        title: 'Error!',
+        text: 'Please fill up all fields!',
+        color: '#fff',
+      
+        icon: 'error',
+     
+      })
     }
     else{
       createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in 
-        window.alert("Signed up!")
+     
         const user = userCredential.user;
         var paramaters = {
           Username: username,
@@ -223,61 +241,37 @@ function login(){
         var paramTotal = {
           [username]:user.uid
         }
-        addUser(user.uid, paramaters);
+        addusersucc = addUser(user.uid, paramaters);
           // ...
-        addTotalUsers(paramTotal);
+        addtotalsucc = addTotalUsers(paramTotal);
+        if(addusersucc && addtotalsucc){
+          Swal.fire({
+            title: 'Sign up successful!',
+            text: 'Welcome to LofiStudy!',
+            color: '#fff',
+            icon: 'success',
+            
+        })
         document.getElementById("signuppage").style.display = "none"
+        }
+    
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         alert(errorMessage)
+        errormsg = "Error: " + errorMessage
+        Swal.fire({
+          title: 'Oops something went wrong!',
+          text: errormsg,
+          color: '#fff',
+          icon: 'error',
+       
+      })
       
         // ..
       });
     }
-    createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in 
-      console.log("signed up")
-      const user = userCredential.user;
-      var paramaters = {
-        Username: username,
-        FriendsRequests: friends,
-        TotalTime: 0,
-        PastScores: {},
-        Extension: ""
-      }
-      var paramTotal = {
-        [username]:user.uid
-      }
-      addusersucc = addUser(user.uid, paramaters);
-        // ...
-      addtotalsucc = addTotalUsers(paramTotal);
-      if(addusersucc == true && addtotalsucc == true){
-        Swal.fire(
-          'Sign up successful!',
-          'Welcome to LofiStudy',
-          'success'
-          
-        )
-        document.getElementById("signuppage").style.display = "none"
-      }
-     
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong. Error:' + errorMessage,
-      })
-    
-      // ..
-    });
-
-
   }
   function logout(event){
     event.preventDefault();
