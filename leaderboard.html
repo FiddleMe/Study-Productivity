@@ -30,28 +30,24 @@
             <span class="navbar-toggler-icon"></span>
             </button>
         </div>
-        
+
             <div class="collapse navbar-collapse  " id="navbarNav">
             <ul class="navbar-nav">
-
                 <li class="nav-item">
                 <img src="gifs/gif1.gif" id="gif_now" style="margin-top: 7px; height:50px; width: 150px">
                 </li>
-                
                 <li class="nav-item">
                 <!-- <a class="nav-link active text-light" aria-current="page" href="#">Home</a> -->
                 <button  class="glow-on-hover" style="margin: 5px;">
                     <a class="nav-link  text-light" aria-current="page" href="index.html">Home</a>
                 </button>
                 </li>
-                
                 <li class="nav-item">
                 <!-- <a class="nav-link text-light" aria-current="page" href="#">Add Friends</a> -->
                 <button  class="glow-on-hover" style="margin: 5px;">
                     <a class="nav-link text-light" aria-current="page" href="friendtemplate_pre.html">Add Friends</a>
                 </button>
                 </li>
-                
                 <li class="nav-item">
                 <!-- <a class="nav-link text-light" aria-current="page" href="#">LeaderBoard</a> -->
                 <button  class="glow-on-hover" style="margin: 5px;">
@@ -61,7 +57,9 @@
                 </li>
                 
 
-                <li id="logoutlist"><button id="logout" class="glow-on-hover" style="margin: 5px;">Logout</button></li>
+                <li id="logoutlist">
+                    <button id="logout" class="glow-on-hover" style="margin: 5px;"><a class="nav-link  text-light" aria-current="page" href="index.html">Logout</a></button>
+                </li>
             </ul>
             
             </div>
@@ -117,93 +115,10 @@
     
 
 
-
-
-
-
-<!-- 
-<script>
-    
-    const vm = Vue.createApp({
-        data() {
-            return {
-
-                // retrieve from database 
-                
-                series: [
-                    {name: 'Me', study: 110, profile: ""},
-                    {name: 'Jessica', study: 90, profile: ""},
-                    {name: 'Chaeyoung', study: 100, profile: ""},
-                    {name: 'Sunny', study: 45, profile: ""},
-                    {name: 'Lisa', study:80, profile: ""},
-                ],
-                series2: [
-                    {name: 'Me', study: 110, profile: ""},
-                    {name: 'Jessica', study: 90, profile: ""},
-                    {name: 'Chaeyoung', study: 100, profile: ""},
-                    {name: 'Sunny', study: 45, profile: ""},
-                    {name: 'Lisa', study:80, profile: ""},
-                ],
-                friendname:""
-            }
-        },
-        methods: { 
-            
-            addfriend() { 
-                var notification = document.getElementById("notification");
-                    if( notification ) {
-                        notification.remove();
-                    }
-                if (this.friendname==""){
-                    var main_container_div = document.getElementById("warningbox");
-                    var div = document.createElement("div");
-                    var text = document.createTextNode("You can skip for now if you don't have anyone in mind :)");
-                    div.appendChild(text);
-                    div.setAttribute("id", "notification");
-                    div.setAttribute("class", "alert alert-info");
-                    div.setAttribute("role", "alert");
-                    div.setAttribute("style", "margin-top: 20px")
-                    main_container_div.appendChild(div);
-                    return 
-                }
-                else{
-                // study_time is a placeholder of number to be retrieved from database
-                study_time=Math.floor(Math.random() * 100);
-                new_friend=this.friendname;
-                console.log(localStorage.getItem("uid"));
-                this.friendname="";
-                return this.series.push({ name: new_friend , study: study_time, profile:""});
-                }
-            },
-            
-        
-        async created(){
-            this.series = await display_stats(localStorage.getItem("uid"));
-            }
-          
-        }
-    }
-
-    ).mount('#app1')
-</script> -->
-
 <script type="module" src="js/leaderboard.js">//loads charts for friends' totaltime and past scores</script>
+<script type="module" src="js/away_navbar.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-<!-- 
-<table class="table" border='1'>
-    <thead>
-        <tr>
-            <th scope="col">Friends</th>
-            <th scope="col">Study Minutes</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr v-for="friend in series2"> 
-            <td>{{friend.name}}</td> 
-            <td>{{friend.study}} minutes</td>  
-        <!-- </tr>   
-    </tbody>
-</table> -->
+

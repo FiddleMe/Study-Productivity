@@ -70,7 +70,7 @@ const vueapp = Vue.createApp({
                             for (var vals of userArr) {
                                 for(var[k,v] of Object.entries(vals)){
                                     if(v == elem){      
-                                        nArr.push(k);
+                                        nArr.push({"name": k, "profilepic": "images/profile pictures/pp" + Math.round((Math.random() * 5 + 1)) + ".jpg"});
                                     }
                                 }
                             }
@@ -102,14 +102,13 @@ const vueapp = Vue.createApp({
                 const friends = friendarr.users;
                 console.log(friends);
                 for (var valu of friends){
-                for (const [key, value] of Object.entries(valu)) {           
-                    if(`${key}` == getFriendUsername){
+                for (const [key, value] of Object.entries(valu)) {      
+                    if(`${key}` == getFriendUsername && `${key}` != this.currentuser){
                         friendUID = `${value}`;
                     }
                 }
                 }
-        
-                if(friendUID==null){
+                if(friendUID=="" ){
                 alert("Invalid username");
                 return;
                 }
@@ -148,7 +147,9 @@ const vueapp = Vue.createApp({
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
             }
-            })   
+            })  
+            
+             
         },
         async getUserFromUID(result){  
             const docRef = doc(db, "TotalUsers", "Users");
@@ -175,7 +176,7 @@ const vueapp = Vue.createApp({
                 let interArr = [];
                 for(const[key,value] of Object.entries(namesArr)){
                     for(const[x,y] of Object.entries(value)){
-                        interArr.push(x)
+                        interArr.push({"name": x, "profilepic": "images/profile pictures/pp" + Math.round((Math.random() * 5 + 1)) + ".jpg"})
                     }    
                 }
                 this.friendsreq = interArr;
@@ -207,16 +208,19 @@ const vueapp = Vue.createApp({
                   await updateDoc(dref,{
                     FriendRequests: arrayRemove(parameters),
                   }).then(async ()=>{
-                    alert("Done");
+                    // alert("Done");
                     await updateDoc(dref,{
                         FriendRequests: arrayUnion(param2)
                     }).then(async ()=>{
-                        alert("done2")
+                        // alert("done2")
+                        console.log("FriendRequests retrieved");
                         let addtofriendparam ={[uid]: true}
                         let dref2 = doc(db,"Users",frienduid);
                         await updateDoc(dref2,{
                             FriendRequests: arrayUnion(addtofriendparam)
                         })
+                        alert(`Added ${name} as friend!`)
+                        this.displayFriends();
                     })
                   })
                 } else {
@@ -240,6 +244,7 @@ const vueapp = Vue.createApp({
                 else{
 
                 }
+
             });
         }
     },

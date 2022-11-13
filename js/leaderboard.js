@@ -54,7 +54,7 @@ async function display_stats(uid){
 
     const past7Days = [...Array(7).keys()].map(index => {
         const date = new Date();
-        date.setDate(date.getDate() - (index + 1));
+        date.setDate(date.getDate() - (index));
         var formatted_date = formatDate(date);
         return formatted_date;
         });
@@ -110,7 +110,21 @@ async function display_stats(uid){
     var totaltimes = [];
     if (docSnap.exists()) {
         var friends = docSnap.data().FriendRequests;
-        if (friends == undefined){
+        console.log(friends);
+        if (friends != undefined){
+            for (var friend of friends){
+                console.log(Object.values(friend)[0]);
+                if (Object.values(friend)[0] == true){
+                    var ref = doc(db, "Users", Object.keys(friend)[0]);
+                    const docSnap = await getDoc(ref);
+                    names.push(docSnap.data().Username);
+                    totaltimes.push(docSnap.data().TotalTime);
+                };
+            }
+        }
+        
+        console.log(names)
+        if (names.length == 0){
             console.log("not available");
             document.getElementById("friends_chart").innerHTML = `
                 <div class="pt-2 d-flex align-items-center flex-column w-100 h-100 rounded-3 border border-secondary bg-dark">
@@ -134,15 +148,10 @@ async function display_stats(uid){
         }
 
         else{
-            for (var friend of friends){
-                console.log(Object.values(friend)[0]);
-                if (Object.values(friend)[0] == true){
-                    var ref = doc(db, "Users", Object.keys(friend)[0]);
-                    const docSnap = await getDoc(ref);
-                    names.push(docSnap.data().Username);
-                    totaltimes.push(docSnap.data().TotalTime);
-                };
-            }
+            console.log(docSnap.data().Username);
+            console.log(docSnap.data().TotalTime);
+            names.push("You");
+            totaltimes.push(docSnap.data().TotalTime);
             var data_things2 = {
                 labels: names,
                 datasets: [{
@@ -194,7 +203,7 @@ async function display_stats(uid){
                 tr_element.appendChild(td_name);
     
                 var td_time = document.createElement("td");
-                const time = document.createTextNode(friends_scores[n].time);
+                const time = document.createTextNode(Math.round(friends_scores[n].time));
                 td_time.appendChild(time);
                 tr_element.appendChild(td_time);
     
@@ -212,7 +221,7 @@ async function display_stats(uid){
         console.log(time);
         var avg = parseInt(average(time));
         if (avg == 0){
-            document.getElementById("avg_p").innerHTML = `<p class="fs-5 font-light mt-auto"> You have not studied in the last 7 days.</p>`;
+            document.getElementById("avg_p").innerHTML = `<p class="fs-6 font-light mt-auto"> You have not studied in the last 7 days.</p>`;
         }
         
         document.getElementById("average_time").innerText = avg+" min";
