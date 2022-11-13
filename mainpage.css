@@ -396,10 +396,8 @@ button{
   outline: none;
   cursor: pointer;
   font-family: inherit;
-  border-radius: 5px;
-  background: whitesmoke;
-  border: 1px solid lightgray;
-  
+  border-color: rgb(159, 94, 94);
+
 }
 
 .dropup {
