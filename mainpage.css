@@ -392,17 +392,17 @@ button{
 /* FOR PLAYLISTS BUTTON */
 .dropupbutton {
 
-  padding: 8px;
   outline: none;
   cursor: pointer;
   font-family: inherit;
   border-color: rgb(159, 94, 94);
+  width: 73px;
 
 }
 
 .dropup {
   position:absolute;
-  left:20px;
+  left:10px;
   display: inline-block;
 }
 
