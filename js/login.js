@@ -36,7 +36,7 @@ onAuthStateChanged(auth, (user) => {
       localStorage.setItem("uid",uid);
       document.getElementById("footer").style.display = "none";
       document.getElementById("logoutlist").style.display ="block"
-      document.getElementById("loginpage").style.display = "none" 
+      document.getElementById("loginpage").style.display = "" 
       document.getElementById("addfriendbtn").style.display = ""
       document.getElementById("addsessionbtn").style.display = ""
       document.getElementById("addleaderboardbtn").style.display = ""
