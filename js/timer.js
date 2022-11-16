@@ -29,6 +29,7 @@ var x;
 document.getElementById("session").addEventListener("click",session)
 document.getElementById("save").addEventListener("click",displayTime)
 document.getElementById("editsession").addEventListener("click",startSession)
+document.getElementById("end").addEventListener("click",endTime)
 async function startSession(){
 
         // User is signed in, see docs for a list of available properties
